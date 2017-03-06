@@ -5,7 +5,7 @@ import {
   Image,
   TouchableWithoutFeedback,
   Dimensions,
-  StatusBar,
+  Platform,
 } from 'react-native';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
@@ -147,7 +147,6 @@ class NavBar extends Component {
     if (this.props.navBarProps) {
       content = (
         <View style={styles.navBarStyle}>
-          <StatusBar />
           {this.renderLeftButton()}
           {this.renderTitle()}
           {this.renderRightButton()}
@@ -166,7 +165,7 @@ const styles = {
     position: 'absolute',
     height: 54,
     width: Dimensions.get('window').width,
-    top: 0,
+    top: (Platform.OS === 'ios') ? 20 : 0, //if platform is iOS give it a height of 20, else no height (Android apps have their own status bar)
     flexDirection: 'row',
     backgroundColor: '#ce0000',
     alignItems: 'center',
