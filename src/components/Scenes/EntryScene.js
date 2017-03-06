@@ -50,6 +50,21 @@ class EntryScene extends Component {
     this.props.confirmDonation(this.props.userID, this.props.entry);
   }
 
+  completeDonation = () => {
+    let recipientEmail;
+    const { redirects, entry } = this.props;
+    for (const redirect of redirects) {
+      if (redirect.parameter.entry.id === entry.id) {
+        recipientEmail = redirect.parameter.recipientEmail;
+      }
+    }
+    console.log('this.props', this.props);
+    Actions.InstructionsScene({
+      entry: this.props.entry,
+      recipientEmail,
+    });
+  }
+
   deleteEntry = (entryId) => {
     Alert.alert(
       'Are you sure you want to delete this request?',
@@ -76,7 +91,7 @@ class EntryScene extends Component {
   }
 
   render() {
-    const { entry } = this.props;
+    const { entry, userID } = this.props;
     // showUserHistory: a boolean that determines whether to show a  link to the history
     // of this entry's creator, depending on how you reached this particular entry.
     const showUserHistory = (this.props.origin === 'MainScene');
@@ -85,17 +100,19 @@ class EntryScene extends Component {
     const ownEntry = (this.props.entry.creatorId === this.props.userID);
     let onButtonPress;
     let buttonText;
-
-    if (entry.status === 'active' && ownEntry) {
+    if (entry.status === 'active' && ownEntry) { // Does this entry lack a donor AND belong to the current user?
       onButtonPress = this.deleteEntry.bind(this, entry.id);
       buttonText = 'REMOVE';
-    } else if (entry.status === 'received') {
-      onButtonPress = null;
+    } else if (entry.status === 'active' && entry.donorId === userID) { // Has the current user committed to this request?
+      onButtonPress = this.completeDonation;
+      buttonText = 'FINISH DONATION';
+    } else if (entry.donorId !== null) { // Has someone committed to making this donation?
+      onButtonPress = null;              // Ignores whether recipient has acknowledged receipt or not.
       buttonText = 'RECEIVED';
-    } else if (entry.type === 'request' && entry.donorId === null) {
+    } else if (entry.status === 'active' && entry.donorId === null) { // Is this an active request?
       onButtonPress = this.onDonatePress;
       buttonText = 'DONATE';
-    } else {
+    } else { // Default Yay pizza button
       onButtonPress = this.onThankYouPress;
       buttonText = this.state.thanksText;
     }
@@ -121,9 +138,14 @@ class EntryScene extends Component {
   }
 }
 
-const mapStateToProps = ({ user }) => {
+const mapStateToProps = ({ user, notifications }) => {
   const { userID } = user;
-  return { userID };
+  const activeDonationNotifications = notifications.userNotifications.filter(notification => notification.id === 1);
+  const redirects = [];
+  for (const notification of activeDonationNotifications) {
+    redirects.push(notification.redirect);
+  }
+  return { userID, redirects };
 };
 
 const styles = {
