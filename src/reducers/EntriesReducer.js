@@ -2,7 +2,6 @@ import {
   GET_ENTRIES,
   GET_ENTRIES_SUCCESS,
   GET_USER_ENTRIES,
-  UPDATE_ENTRIES,
   SHOW_ENTRIES,
   TOGGLE_SCOPE,
   TOGGLE_SIDE_MENU,
@@ -12,7 +11,7 @@ import {
 } from '../actions/types';
 
 const INITIAL_STATE = {
-  scope: 'requests_and_thank_yous',
+  scope: 'global',
   shown: 'Requests',
   sideMenuOpen: false,
   loading: true,
@@ -64,12 +63,6 @@ export default (state = INITIAL_STATE, action) => {
         userFulfilled,
       };
     }
-    case UPDATE_ENTRIES:
-      return {
-        ...state,
-        requests: action.payload.requests,
-        thankYous: action.payload.thankYous
-      };
     case SHOW_ENTRIES:
       return {
         ...state,
@@ -96,7 +89,7 @@ export default (state = INITIAL_STATE, action) => {
     case HANDLE_USER_LOGOUT:
       return {
         ...state,
-        scope: 'requests_and_thank_yous',
+        scope: 'global',
         shown: 'Requests',
       };
     default:

@@ -148,9 +148,10 @@ export const updateEmail = (updatedEmail, userID, redirect = null) => {
           dispatch({ type: REDIRECT, payload: redirect });
         }
       } else {
-        alert(response.json().errorMessage);
+        return response.json();
       }
     })
+    .then(responseJson => alert(responseJson.errorMessage))
     .catch(error => console.error(error));
   };
 };
