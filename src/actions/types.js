@@ -10,7 +10,6 @@ export const HANDLE_VIDEO_DATA = 'handle_video_data';
 export const GET_ENTRIES = 'get_entries';
 export const GET_ENTRIES_SUCCESS = 'get_entries_success';
 export const GET_USER_ENTRIES = 'get_user_entries';
-export const UPDATE_ENTRIES = 'update_entries';
 export const SHOW_ENTRIES = 'show_entries';
 export const TOGGLE_SCOPE = 'toggle_scope';
 export const DELETE_ENTRY = 'delete_entry';

@@ -2,7 +2,6 @@ import {
   GET_ENTRIES,
   GET_ENTRIES_SUCCESS,
   GET_USER_ENTRIES,
-  UPDATE_ENTRIES,
   SHOW_ENTRIES,
   TOGGLE_SCOPE,
   TOGGLE_SIDE_MENU,
@@ -64,12 +63,6 @@ export default (state = INITIAL_STATE, action) => {
         userFulfilled,
       };
     }
-    case UPDATE_ENTRIES:
-      return {
-        ...state,
-        requests: action.payload.requests,
-        thankYous: action.payload.thankYous
-      };
     case SHOW_ENTRIES:
       return {
         ...state,
