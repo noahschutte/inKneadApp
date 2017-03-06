@@ -34,15 +34,15 @@
 		2D02E4C81E0B4AEC006451C7 /* libRCTWebSocket-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DAD3E991DF850E9000B6D8A /* libRCTWebSocket-tvOS.a */; };
 		2D02E4C91E0B4AEC006451C7 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DAD3EA31DF850E9000B6D8A /* libReact.a */; };
 		2DCD954D1E0B4F2C00145EB5 /* inKneadAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* inKneadAppTests.m */; };
-		5156CAD8760649E5A24BFF3F /* libRCTVideo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 69636AF2F9EF455EA5A8259A /* libRCTVideo.a */; };
 		5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
+		6A04743C1E6C99DD00A07E56 /* libRCTCamera.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A7E38AE1E6C89F2007441C6 /* libRCTCamera.a */; };
+		6A04743D1E6C99E700A07E56 /* libRCTFBSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A7E38B11E6C89F2007441C6 /* libRCTFBSDK.a */; };
+		6A04743E1E6C99F100A07E56 /* libRCTVideo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A7E38C01E6C89F2007441C6 /* libRCTVideo.a */; };
 		6A7E38DD1E6C8E9F007441C6 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A7E38D91E6C8E9F007441C6 /* Bolts.framework */; };
 		6A7E38DE1E6C8E9F007441C6 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A7E38DA1E6C8E9F007441C6 /* FBSDKCoreKit.framework */; };
 		6A7E38DF1E6C8E9F007441C6 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A7E38DB1E6C8E9F007441C6 /* FBSDKLoginKit.framework */; };
 		6A7E38E01E6C8E9F007441C6 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A7E38DC1E6C8E9F007441C6 /* FBSDKShareKit.framework */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
-		B9788EC8B931426EAA7621EB /* libRCTFBSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 91E48E7377BD4C5DB4FB6D6B /* libRCTFBSDK.a */; };
-		D14B9E1EB392440990179604 /* libRCTCamera.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A7D567C947B74486804758F7 /* libRCTCamera.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -282,15 +282,13 @@
 		2D02E47B1E0B4A5D006451C7 /* inKneadApp-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "inKneadApp-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* inKneadApp-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "inKneadApp-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
-		69636AF2F9EF455EA5A8259A /* libRCTVideo.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRCTVideo.a; sourceTree = "<group>"; };
+		6A04743F1E6C9A2900A07E56 /* inKneadApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = inKneadApp.entitlements; path = inKneadApp/inKneadApp.entitlements; sourceTree = "<group>"; };
 		6A7E38D91E6C8E9F007441C6 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = ../../../Documents/FacebookSDK/Bolts.framework; sourceTree = "<group>"; };
 		6A7E38DA1E6C8E9F007441C6 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = ../../../Documents/FacebookSDK/FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		6A7E38DB1E6C8E9F007441C6 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = ../../../Documents/FacebookSDK/FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		6A7E38DC1E6C8E9F007441C6 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKShareKit.framework; path = ../../../Documents/FacebookSDK/FBSDKShareKit.framework; sourceTree = "<group>"; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
-		91E48E7377BD4C5DB4FB6D6B /* libRCTFBSDK.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRCTFBSDK.a; sourceTree = "<group>"; };
-		A7D567C947B74486804758F7 /* libRCTCamera.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRCTCamera.a; sourceTree = "<group>"; };
 		AC7359640F9E4869937B7247 /* RCTCamera.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RCTCamera.xcodeproj; path = "../node_modules/react-native-camera/ios/RCTCamera.xcodeproj"; sourceTree = "<group>"; };
 		E3A5C994076A41739543D075 /* RCTFBSDK.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RCTFBSDK.xcodeproj; path = "../node_modules/react-native-fbsdk/ios/RCTFBSDK.xcodeproj"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -308,6 +306,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6A04743E1E6C99F100A07E56 /* libRCTVideo.a in Frameworks */,
+				6A04743D1E6C99E700A07E56 /* libRCTFBSDK.a in Frameworks */,
+				6A04743C1E6C99DD00A07E56 /* libRCTCamera.a in Frameworks */,
 				6A7E38DD1E6C8E9F007441C6 /* Bolts.framework in Frameworks */,
 				6A7E38DE1E6C8E9F007441C6 /* FBSDKCoreKit.framework in Frameworks */,
 				6A7E38DF1E6C8E9F007441C6 /* FBSDKLoginKit.framework in Frameworks */,
@@ -323,9 +324,6 @@
 				832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */,
 				00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */,
 				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
-				D14B9E1EB392440990179604 /* libRCTCamera.a in Frameworks */,
-				B9788EC8B931426EAA7621EB /* libRCTFBSDK.a in Frameworks */,
-				5156CAD8760649E5A24BFF3F /* libRCTVideo.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -434,6 +432,7 @@
 		13B07FAE1A68108700A75B9A /* inKneadApp */ = {
 			isa = PBXGroup;
 			children = (
+				6A04743F1E6C9A2900A07E56 /* inKneadApp.entitlements */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
@@ -657,6 +656,11 @@
 					};
 					13B07F861A680F5B00A75B9A = {
 						DevelopmentTeam = Q9JC339X7H;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 					2D02E47A1E0B4A5D006451C7 = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -1142,6 +1146,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = inKneadApp/inKneadApp.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = Q9JC339X7H;
@@ -1169,6 +1175,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = inKneadApp/inKneadApp.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = Q9JC339X7H;
 				FRAMEWORK_SEARCH_PATHS = "~/Documents/FacebookSDK";

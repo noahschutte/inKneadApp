@@ -3,15 +3,16 @@ import { Scene, Router } from 'react-native-router-flux';
 import * as Scenes from './components/Scenes';
 import * as NavProps from './components/Scenes/NavProps';
 import NavBar from './components/NavBar';
+import { Platform } from 'react-native';
 
 const RouterComponent = () => {
   const sceneStyle = {
-    marginTop: 54,
+    marginTop: (Platform.OS === 'ios') ? 74 : 54, //this is just to test if the platform is iOS to give it a height of 20, else, no height (Android apps have their own status bar)
+
   };
 
   return (
     <Router >
-
       <Scene
         initial
         hideNavBar
