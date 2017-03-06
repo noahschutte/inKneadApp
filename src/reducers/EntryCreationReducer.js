@@ -1,7 +1,6 @@
 import {
   UPDATE_SELECTED_PIZZAS,
   UPDATE_SELECTED_VENDOR,
-  UPLOAD_BEGIN,
   UPLOAD_PROGRESS,
   UPLOAD_COMPLETE,
   HANDLE_ERRORS,
@@ -27,11 +26,6 @@ export default (state = INITIAL_STATE, action) => {
       return {
         ...state,
         vendor: action.payload
-      };
-    case UPLOAD_BEGIN:
-      return {
-        ...state,
-        uploading: true,
       };
     case UPLOAD_PROGRESS:
       return {
