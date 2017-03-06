@@ -27,7 +27,7 @@ export const confirmDonation = (donatorId, entry) => {
       if (responseJson.errorMessage) {
         alert(responseJson.errorMessage);
       } else {
-        const { anonEmail } = responseJson;
+        const { anonEmail } = responseJson.request;
         dispatch({
           type: REDIRECT,
           payload: {
