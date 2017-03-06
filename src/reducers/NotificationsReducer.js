@@ -108,8 +108,8 @@ export default (state = INITIAL_STATE, action) => {
               ],
             },
             redirect: {
-              userID: action.payload.userID,
-              requestID: action.payload.requestID,
+              scene: 'EntryCreationScene',
+              parameter: action.payload
             },
           },
         ],

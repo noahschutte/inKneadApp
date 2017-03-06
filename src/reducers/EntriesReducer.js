@@ -75,12 +75,13 @@ export default (state = INITIAL_STATE, action) => {
         ...state,
         shown: action.payload,
       };
-    case DELETE_ENTRY:
+    case DELETE_ENTRY: {
+      const requests = [...state.requests.filter(request => request.id !== action.payload)];
       return {
         ...state,
-        requests: action.payload.requests,
-        thankYous: action.payload.thankYous
+        requests,
       };
+    }
     case TOGGLE_SCOPE:
       return {
         ...state,

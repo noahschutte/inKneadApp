@@ -28,7 +28,6 @@ export const retrieveNotifications = (userID) => {
       return response.json();
     })
     .then(responseJson => {
-      console.log('responseJson: ', responseJson);
       //  Expect:
       const {
         currentEmail, // The user's current email. Returns null if email has not yet been verified
@@ -57,10 +56,7 @@ export const retrieveNotifications = (userID) => {
       if (recentSuccessfulRequests.length > 0) {
         dispatch({
           type: INCOMING_PIZZA,
-          payload: {
-            requestID: recentSuccessfulRequests[0].id,
-            userID,
-          }
+          payload: recentSuccessfulRequests[0]
         });
       }
       if (thankYouReminders.length > 0) {
@@ -108,23 +104,24 @@ export const createSession = (userInfo, redirect = { scene: 'MainScene', paramet
   };
 };
 
-export const confirmDonationReceived = (userID, requestID) => {
+export const confirmDonationReceived = (successfulRequest) => {
   return dispatch => {
-    fetch(`https://d1dpbg9jbgrqy5.cloudfront.net/requests/${requestID}`, {
+    fetch(`https://d1dpbg9jbgrqy5.cloudfront.net/requests/${successfulRequest.id}`, {
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json',
       },
       method: 'PATCH',
       body: JSON.stringify({
-        userID,
+        userID: successfulRequest.creator_id,
         receivedDonation: true,
       })
     })
-    .then(response => response.json())
-    .then(responseJson => {
-      dispatch({ type: CREATE_THANK_YOU_REMINDER, payload: responseJson.recentSuccessfulRequest });
-      Actions.EntryCreationScene({ createThankYou: true });
+    .then(response => {
+      if (response.status === 200) {
+        dispatch({ type: CREATE_THANK_YOU_REMINDER, payload: successfulRequest });
+        Actions.EntryCreationScene({ createThankYou: true, entry: successfulRequest });
+      }
     })
     .catch(error => {
       console.error(error);
@@ -142,17 +139,16 @@ export const updateEmail = (updatedEmail, userID, redirect = null) => {
       method: 'PATCH',
       body: JSON.stringify({ updatedEmail })
     })
-    .then(response => response.json())
-    .then(responseJson => {
-      if (responseJson.errorMessage) {
-        alert(responseJson.errorMessage);
-      } else {
+    .then(response => {
+      if (response.status === 200) {
         dispatch({ type: UPDATE_EMAIL, payload: updatedEmail });
         if (!redirect) {
           dispatch({ type: REDIRECT, payload: { scene: 'ProfileScene' } });
         } else {
           dispatch({ type: REDIRECT, payload: redirect });
         }
+      } else {
+        alert(response.json().errorMessage);
       }
     })
     .catch(error => console.error(error));

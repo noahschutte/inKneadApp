@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View, Alert } from 'react-native';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
-import { confirmDonation } from '../../actions';
+import { confirmDonation, confirmDelete } from '../../actions';
 import EntryVideo from '../EntryVideo';
 import EntryDetails from '../EntryDetails';
 
@@ -51,18 +51,20 @@ class EntryScene extends Component {
   }
 
   deleteEntry = (entryId) => {
-    fetch(`https://d1dpbg9jbgrqy5.cloudfront.net/requests/${entryId}`, {
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json'
-      },
-      method: 'DELETE',
-    })
-    .then(() => {
-      Actions.MainScene({ type: 'reset' });
-    })
-    .catch(err => alert(err));
-  };
+    Alert.alert(
+      'Are you sure you want to delete this request?',
+      null,
+      [
+        {
+          text: 'Cancel',
+        },
+        {
+          text: 'Delete',
+          onPress: () => this.props.confirmDelete(entryId)
+        },
+      ]
+    );
+  }
 
   navigateToUser = () => {
     this.setState({ paused: true });
@@ -129,4 +131,4 @@ const styles = {
   },
 };
 
-export default connect(mapStateToProps, { confirmDonation })(EntryScene);
+export default connect(mapStateToProps, { confirmDonation, confirmDelete })(EntryScene);
