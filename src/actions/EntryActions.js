@@ -8,6 +8,7 @@ import {
   TOGGLE_SIDE_MENU,
   REDIRECT,
   UPDATE_TOTAL_DONATED_PIZZAS,
+  DELETE_ENTRY,
 } from './types';
 
 export const confirmDonation = (donatorId, entry) => {
@@ -39,6 +40,23 @@ export const confirmDonation = (donatorId, entry) => {
       }
     })
     .catch(error => console.error(error));
+  };
+};
+
+export const confirmDelete = (entryId) => {
+  return (dispatch) => {
+    fetch(`https://d1dpbg9jbgrqy5.cloudfront.net/requests/${entryId}`, {
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+      },
+      method: 'DELETE',
+    })
+    .then(() => {
+      dispatch({ type: DELETE_ENTRY, payload: entryId });
+      Actions.MainScene({ type: 'reset' });
+    })
+    .catch(err => alert(err));
   };
 };
 

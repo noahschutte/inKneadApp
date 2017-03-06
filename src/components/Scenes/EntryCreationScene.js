@@ -136,13 +136,14 @@ class EntryCreationScene extends Component {
 
   dispatchThankYou = () => {
     const { userID, fb_userID, videoData, entry } = this.props;
+    console.log('this props: ', this.props);
     const videoKey = `${fb_userID + Date.now()}`;
     const file = {
       uri: videoData.path,
       name: videoKey,
       type: 'video/quicktime'
     };
-    const { pizzas, vendor } = entry;
+    const { pizzas, vendor, donor_id, id: requestId } = entry;
 
     fetch('https://d1dpbg9jbgrqy5.cloudfront.net/thank_you', {
       headers: {
@@ -152,6 +153,8 @@ class EntryCreationScene extends Component {
       method: 'POST',
       body: JSON.stringify({
         userID,
+        donor_id,
+        requestId,
         pizzas,
         vendor,
         videoKey

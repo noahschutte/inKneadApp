@@ -17,7 +17,7 @@ class NotificationsScene extends Component {
       case 'completeDonation':
         return () => this.props.redirectTo(redirect);
       case 'confirmDonation':
-        return () => this.props.confirmDonationReceived(redirect.userID, redirect.requestID);
+        return () => this.props.confirmDonationReceived(redirect.parameter);
       case 'createThankYou':
         return () => this.props.redirectTo(redirect);
       case 'viewThankYou':
