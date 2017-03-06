@@ -64,7 +64,7 @@ class EntryCreationScene extends Component {
     } = this.props;
 
     /* eslint camelcase: 0 */
-    const videoKey = `${Date.now() + fb_userID}`;
+    let videoKey = `${Date.now() + fb_userID}`;
     fetch('https://d1dpbg9jbgrqy5.cloudfront.net/requests', {
       headers: {
         Accept: 'application/json',
@@ -90,9 +90,10 @@ class EntryCreationScene extends Component {
         );
       } else {
         const url = responseJson.signedRequest;
+        videoKey = responseJson.videoKey;
         const file = {
           uri: videoData.path,
-          name: responseJson.videoKey,
+          name: videoKey,
           type: 'video/quicktime'
         };
         const xhr = new XMLHttpRequest();
@@ -136,7 +137,7 @@ class EntryCreationScene extends Component {
 
   dispatchThankYou = () => {
     const { userID, fb_userID, videoData, entry } = this.props;
-    const videoKey = `${fb_userID + Date.now()}`;
+    let videoKey = `${fb_userID + Date.now()}`;
     const { pizzas, vendor, donor_id, id: requestId } = entry;
 
     fetch('https://d1dpbg9jbgrqy5.cloudfront.net/thank_you', {
@@ -160,9 +161,10 @@ class EntryCreationScene extends Component {
         console.log('error: ', responseJson.errorMessage);
       } else {
         const url = responseJson.signedRequest;
+        videoKey = responseJson.videoKey;
         const file = {
           uri: videoData.path,
-          name: responseJson.videoKey,
+          name: videoKey,
           type: 'video/quicktime'
         };
         const xhr = new XMLHttpRequest();
