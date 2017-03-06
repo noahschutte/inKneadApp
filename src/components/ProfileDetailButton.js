@@ -28,7 +28,7 @@ const styles = {
   },
   line: {
     backgroundColor: '#aaa',
-    flex: 1,
+    flexGrow: 1,
     height: 1,
   },
   buttonStyle: {
