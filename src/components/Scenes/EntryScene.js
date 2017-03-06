@@ -51,6 +51,22 @@ class EntryScene extends Component {
   }
 
   deleteEntry = (entryId) => {
+    Alert.alert(
+      'Are you sure you want to delete this request?',
+      null,
+      [
+        {
+          text: 'Cancel',
+        },
+        {
+          text: 'Delete',
+          onPress: () => this.confirmDelete(entryId)
+        },
+      ]
+    );
+  }
+
+  confirmDelete = (entryId) => {
     fetch(`https://d1dpbg9jbgrqy5.cloudfront.net/requests/${entryId}`, {
       headers: {
         Accept: 'application/json',
@@ -62,7 +78,7 @@ class EntryScene extends Component {
       Actions.MainScene({ type: 'reset' });
     })
     .catch(err => alert(err));
-  };
+  }
 
   navigateToUser = () => {
     this.setState({ paused: true });
