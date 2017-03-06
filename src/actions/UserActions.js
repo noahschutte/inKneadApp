@@ -28,7 +28,6 @@ export const retrieveNotifications = (userID) => {
       return response.json();
     })
     .then(responseJson => {
-      console.log('responseJson: ', responseJson);
       //  Expect:
       const {
         currentEmail, // The user's current email. Returns null if email has not yet been verified
@@ -142,17 +141,16 @@ export const updateEmail = (updatedEmail, userID, redirect = null) => {
       method: 'PATCH',
       body: JSON.stringify({ updatedEmail })
     })
-    .then(response => response.json())
-    .then(responseJson => {
-      if (responseJson.errorMessage) {
-        alert(responseJson.errorMessage);
-      } else {
+    .then(response => {
+      if (response.status === 200) {
         dispatch({ type: UPDATE_EMAIL, payload: updatedEmail });
         if (!redirect) {
           dispatch({ type: REDIRECT, payload: { scene: 'ProfileScene' } });
         } else {
           dispatch({ type: REDIRECT, payload: redirect });
         }
+      } else {
+        alert(response.json().errorMessage);
       }
     })
     .catch(error => console.error(error));
