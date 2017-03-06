@@ -154,7 +154,11 @@ export const updateEmail = (updatedEmail, userID, redirect = null) => {
         return response.json();
       }
     })
-    .then(responseJson => alert(responseJson.errorMessage))
+    .then(responseJson => {
+      if (responseJson) {
+        alert(responseJson.errorMessage);
+      }
+    })
     .catch(error => console.error(error));
   };
 };
