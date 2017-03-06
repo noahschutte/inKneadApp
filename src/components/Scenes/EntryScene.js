@@ -105,7 +105,7 @@ class EntryScene extends Component {
     } else if (entry.status === 'active' && entry.donorId === userID) { // Has the current user committed to this request?
       onButtonPress = this.completeDonation;
       buttonText = 'FINISH DONATION';
-    } else if (entry.donorId !== null) { // Has someone committed to making this donation?
+    } else if (entry.type === 'request' && entry.donorId !== null) { // Has someone committed to making this donation?
       onButtonPress = null;              // Ignores whether recipient has acknowledged receipt or not.
       buttonText = 'RECEIVED';
     } else if (entry.status === 'active' && entry.donorId === null) { // Is this an active request?
