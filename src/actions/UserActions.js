@@ -106,6 +106,7 @@ export const createSession = (userInfo, redirect = { scene: 'MainScene', paramet
 
 export const confirmDonationReceived = (successfulRequest) => {
   return dispatch => {
+    const userID = successfulRequest.creator_id;
     fetch(`https://d1dpbg9jbgrqy5.cloudfront.net/requests/${successfulRequest.id}`, {
       headers: {
         Accept: 'application/json',
@@ -113,13 +114,14 @@ export const confirmDonationReceived = (successfulRequest) => {
       },
       method: 'PATCH',
       body: JSON.stringify({
-        userID: successfulRequest.creator_id,
+        userID,
         receivedDonation: true,
       })
     })
     .then(response => {
       if (response.status === 200) {
         dispatch({ type: CREATE_THANK_YOU_REMINDER, payload: successfulRequest });
+        retrieveNotifications(userID);
         Actions.EntryCreationScene({ createThankYou: true, entry: successfulRequest });
       }
     })
