@@ -9,6 +9,7 @@ import {
   ACTIVE_DONATION_REMINDER,
   INCOMING_GRATITUDE,
   EMAIL_NOT_VERIFIED,
+  REMOVE_NOTIFICATION,
   HANDLE_USER_LOGOUT,
   UPDATE_EMAIL,
   REDIRECT,
@@ -121,7 +122,7 @@ export const confirmDonationReceived = (successfulRequest) => {
     .then(response => {
       if (response.status === 200) {
         dispatch({ type: CREATE_THANK_YOU_REMINDER, payload: successfulRequest });
-        retrieveNotifications(userID);
+        dispatch({ type: REMOVE_NOTIFICATION, payload: 3 });
         Actions.EntryCreationScene({ createThankYou: true, entry: successfulRequest });
       }
     })

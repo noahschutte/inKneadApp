@@ -7,6 +7,7 @@ import {
   CREATE_THANK_YOU_REMINDER,
   AWAITING_THANK_YOUS,
   INCOMING_GRATITUDE,
+  REMOVE_NOTIFICATION,
   HANDLE_USER_LOGOUT,
 } from '../actions/types';
 
@@ -203,6 +204,14 @@ export default (state = INITIAL_STATE, action) => {
           },
         ],
       };
+    case REMOVE_NOTIFICATION: {
+      const userNotifications = [...this.state.userNotifications];
+      userNotifications.splice(userNotifications.indexOf(action.payload), 1);
+      return {
+        ...state,
+        userNotifications
+      };
+    }
     case REFRESH_COMPLETE:
       return {
         ...state,
