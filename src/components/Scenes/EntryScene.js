@@ -58,7 +58,6 @@ class EntryScene extends Component {
         recipientEmail = redirect.parameter.recipientEmail;
       }
     }
-    console.log('this.props', this.props);
     Actions.InstructionsScene({
       entry: this.props.entry,
       recipientEmail,
