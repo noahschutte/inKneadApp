@@ -1,4 +1,4 @@
-import Camera from 'react-native-camera';
+import { constants } from 'react-native-camera';
 import {
   START_RECORDING,
   STOP_RECORDING,
@@ -9,14 +9,14 @@ import {
 } from '../actions/types';
 
 const INITIAL_STATE = {
-  aspect: Camera.constants.Aspect.fill,
-  mode: Camera.constants.CaptureMode.video,
-  captureTarget: Camera.constants.CaptureTarget.disk,
-  type: Camera.constants.Type.front,
-  orientation: Camera.constants.Orientation.portrait,
-  flashMode: Camera.constants.FlashMode.off,
-  torchMode: Camera.constants.TorchMode.off,
-  captureQuality: Camera.constants.CaptureQuality.medium,
+  aspect: constants.Aspect.fill,
+  mode: constants.CaptureMode.video,
+  captureTarget: constants.CaptureTarget.disk,
+  type: constants.Type.front,
+  orientation: constants.Orientation.portrait,
+  flashMode: constants.FlashMode.off,
+  torchMode: constants.TorchMode.off,
+  captureQuality: constants.CaptureQuality.medium,
   isRecording: false,
   videoData: null,
 };
@@ -26,9 +26,9 @@ export default (state = INITIAL_STATE, action) => {
     case RESET_CAMERA_STATE:
       return {
         ...state,
-        type: Camera.constants.Type.front,
-        flashMode: Camera.constants.FlashMode.off,
-        torchMode: Camera.constants.TorchMode.off,
+        type: constants.Type.front,
+        flashMode: constants.FlashMode.off,
+        torchMode: constants.TorchMode.off,
         isRecording: false,
       };
     case START_RECORDING:
