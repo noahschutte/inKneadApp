@@ -205,7 +205,7 @@ export default (state = INITIAL_STATE, action) => {
         ],
       };
     case REMOVE_NOTIFICATION: {
-      const userNotifications = [...this.state.userNotifications];
+      const userNotifications = [...state.userNotifications];
       userNotifications.splice(userNotifications.indexOf(action.payload), 1);
       return {
         ...state,
