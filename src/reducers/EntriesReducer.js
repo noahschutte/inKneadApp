@@ -12,7 +12,7 @@ import {
 } from '../actions/types';
 
 const INITIAL_STATE = {
-  scope: 'requests_and_thank_yous',
+  scope: 'global',
   shown: 'Requests',
   sideMenuOpen: false,
   loading: true,
@@ -96,7 +96,7 @@ export default (state = INITIAL_STATE, action) => {
     case HANDLE_USER_LOGOUT:
       return {
         ...state,
-        scope: 'requests_and_thank_yous',
+        scope: 'global',
         shown: 'Requests',
       };
     default:

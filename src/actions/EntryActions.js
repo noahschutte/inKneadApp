@@ -11,6 +11,7 @@ import {
   DELETE_ENTRY,
 } from './types';
 
+// confirmDonation is invoked when a user commits to donating to a request
 export const confirmDonation = (donatorId, entry) => {
   return (dispatch) => {
     fetch(`https://d1dpbg9jbgrqy5.cloudfront.net/requests/${entry.id}`, {
@@ -90,7 +91,7 @@ export const sortEntries = (key) => {
 };
 
 export const toggleScope = (currentScope, userID = null) => {
-  if (currentScope === 'requests_and_thank_yous') {
+  if (currentScope === 'global') {
     if (!userID) {
       Actions.LoginScene();
     } else {
@@ -98,7 +99,7 @@ export const toggleScope = (currentScope, userID = null) => {
         dispatch({
           type: TOGGLE_SCOPE,
           payload: {
-            scope: 'user_history',
+            scope: 'private',
             shown: 'Requested',
           }
         });
@@ -114,7 +115,7 @@ export const toggleScope = (currentScope, userID = null) => {
   return ({
     type: TOGGLE_SCOPE,
     payload: {
-      scope: 'requests_and_thank_yous',
+      scope: 'global',
       shown: 'Requests'
     }
   });

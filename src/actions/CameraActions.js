@@ -26,6 +26,7 @@ export const stopRecording = () => {
 };
 
 export const switchCameraType = (newType) => {
+  // switch to front or back camera
   return {
     type: SWITCH_CAMERA_TYPE,
     payload: newType

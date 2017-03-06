@@ -105,6 +105,7 @@ class EntryScene extends Component {
         <EntryVideo
           togglePlay={this.togglePlay}
           source={entry.compressedVideo}
+          thumbnail={entry.thumbnail}
           paused={this.state.paused}
         />
         <EntryDetails

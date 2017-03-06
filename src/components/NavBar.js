@@ -31,7 +31,7 @@ class NavBar extends Component {
       case 'scope':
       onPress = this.props.toggleScope.bind(this, scope, userID);
         switch (scope) {
-          case 'requests_and_thank_yous':
+          case 'global':
           result = (
             <Image
               style={styles.centerButtonStyle}
@@ -39,7 +39,7 @@ class NavBar extends Component {
             />
           );
           break;
-          case 'user_history':
+          case 'private':
           result = (
             <Image
               style={styles.centerButtonStyle}
