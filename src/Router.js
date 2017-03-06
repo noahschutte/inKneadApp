@@ -1,9 +1,9 @@
 import React from 'react';
+import { Platform } from 'react-native';
 import { Scene, Router } from 'react-native-router-flux';
 import * as Scenes from './components/Scenes';
 import * as NavProps from './components/Scenes/NavProps';
 import NavBar from './components/NavBar';
-import { Platform } from 'react-native';
 
 const RouterComponent = () => {
   const sceneStyle = {

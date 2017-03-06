@@ -1,0 +1,14 @@
+{
+  "extends": "rallycoding",
+  "env": {
+    "browser": true
+    },
+  "rules": {
+    "linebreak-style": 0,
+    "global-require": "warn",
+    "arrow-body-style": 0,
+    "no-shadow": "warn",
+    "max-len": 0,
+    "no-underscore-dangle": ["error", "allowAfterThis": true]
+    }
+}
