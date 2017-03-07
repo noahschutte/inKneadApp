@@ -84,6 +84,10 @@ export const retrieveNotifications = (userID) => {
   };
 };
 
+export const removeNotification = (notificationID) => {
+  return ({ type: REMOVE_NOTIFICATION, payload: notificationID });
+};
+
 export const createSession = (userInfo, redirect = { scene: 'MainScene', parameter: 'root' }) => {
   return (dispatch) => {
     fetch('https://d1dpbg9jbgrqy5.cloudfront.net/users', {

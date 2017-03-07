@@ -164,11 +164,6 @@ export default (state = INITIAL_STATE, action) => {
                   text: 'Cool',
                   action: 'nothing',
                 },
-                {
-                  type: 'confirm',
-                  text: 'Clear',
-                  action: 'clear',
-                },
               ],
             },
           },
