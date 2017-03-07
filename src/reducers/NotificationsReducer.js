@@ -14,6 +14,7 @@ import {
 const INITIAL_STATE = {
   loading: false,
   userNotifications: [],
+  hasNotifications: false,
 };
 
 export default (state = INITIAL_STATE, action) => {
@@ -22,10 +23,12 @@ export default (state = INITIAL_STATE, action) => {
       return {
         loading: true,
         userNotifications: [],
+        hasNotifications: false,
       };
     case EMAIL_NOT_VERIFIED:
       return {
         ...state,
+        hasNotifications: true,
         userNotifications: [
           ...state.userNotifications,
           {
@@ -55,6 +58,7 @@ export default (state = INITIAL_STATE, action) => {
     case ACTIVE_DONATION_REMINDER:
       return {
         ...state,
+        hasNotifications: true,
         userNotifications: [
           ...state.userNotifications,
           {
@@ -88,6 +92,7 @@ export default (state = INITIAL_STATE, action) => {
     case INCOMING_PIZZA:
       return {
         ...state,
+        hasNotifications: true,
         userNotifications: [
           ...state.userNotifications,
           {
@@ -118,6 +123,7 @@ export default (state = INITIAL_STATE, action) => {
     case CREATE_THANK_YOU_REMINDER:
       return {
         ...state,
+        hasNotifications: true,
         userNotifications: [
           ...state.userNotifications,
           {
@@ -151,6 +157,7 @@ export default (state = INITIAL_STATE, action) => {
     case AWAITING_THANK_YOUS:
       return {
         ...state,
+        hasNotifications: true,
         userNotifications: [
           ...state.userNotifications,
           {
@@ -172,6 +179,7 @@ export default (state = INITIAL_STATE, action) => {
     case INCOMING_GRATITUDE:
       return {
         ...state,
+        hasNotifications: true,
         userNotifications: [
           ...state.userNotifications,
           {
@@ -203,8 +211,10 @@ export default (state = INITIAL_STATE, action) => {
     case REMOVE_NOTIFICATION: {
       const userNotifications = [...state.userNotifications];
       userNotifications.splice(userNotifications.indexOf(action.payload), 1);
+      const hasNotifications = (userNotifications.length > 0);
       return {
         ...state,
+        hasNotifications,
         userNotifications
       };
     }
