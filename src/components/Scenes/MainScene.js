@@ -38,8 +38,6 @@ class MainScene extends Component {
       userDonatedRequests,
       userDonatedThankYous,
     } = this.props.entries;
-    const { userID } = this.props;
-
     switch (shown) {
       case 'All':
         return [...requests, ...thankYous];

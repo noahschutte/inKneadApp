@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text } from 'react-native';
 import { connect } from 'react-redux';
-import { redirectTo, confirmDonationReceived } from '../../actions';
+import { redirectTo, confirmDonationReceived, removeNotification } from '../../actions';
 import Button from '../Button2';
 import DetailSection from '../DetailSection';
 
@@ -24,6 +24,8 @@ class NotificationsScene extends Component {
         return () => this.props.redirectTo(redirect);
       case 'nothing':
         return () => this.collapseNotification(this.state.expanded.indexOf(notificationID));
+      case 'clear':
+        return () => this.props.removeNotification(notificationID);
       default:
         return () => alert('this will work eventually');
     }
@@ -132,5 +134,6 @@ const mapStateToProps = (state) => {
 
 export default connect(mapStateToProps, {
   redirectTo,
-  confirmDonationReceived
+  confirmDonationReceived,
+  removeNotification,
 })(NotificationsScene);

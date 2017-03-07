@@ -34,7 +34,7 @@ export const confirmDonation = (donatorId, entry) => {
             scene: 'InstructionsScene',
             parameter: {
               recipientEmail: anonEmail,
-              entry: responseJson,
+              entry: responseJson.request,
             }
           }
         });

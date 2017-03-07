@@ -91,14 +91,18 @@ class EntryScene extends Component {
 
   render() {
     const { entry, userID } = this.props;
+    console.log('this.props', this.props);
+
     // showUserHistory: a boolean that determines whether to show a  link to the history
     // of this entry's creator, depending on how you reached this particular entry.
     const showUserHistory = (this.props.origin === 'MainScene');
+
     // ownEntry: a boolean that determines whether the user viewing this entry
     // is the user that created the entry.
     const ownEntry = (this.props.entry.creatorId === this.props.userID);
     let onButtonPress;
     let buttonText;
+
     if (entry.status === 'active' && ownEntry) { // Does this entry lack a donor AND belong to the current user?
       onButtonPress = this.deleteEntry.bind(this, entry.id);
       buttonText = 'REMOVE';
