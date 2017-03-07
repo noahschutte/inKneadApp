@@ -33,9 +33,10 @@ class MainScene extends Component {
       shown,
       requests,
       thankYous,
-      userRequests,
-      userFulfilled,
-      userThankYous
+      userCreatedRequests,
+      userCreatedThankYous,
+      userDonatedRequests,
+      userDonatedThankYous,
     } = this.props.entries;
     const { userID } = this.props;
 
@@ -51,14 +52,14 @@ class MainScene extends Component {
         return thankYous;
       case 'Fulfilled':
         return requests.filter(request => request.donorId !== null);
-      case 'Requested':
-        return userRequests;
-      case 'Received':
-        return userFulfilled;
+      case 'Requests ':
+        return userCreatedRequests;
+      case 'Thank Yous':
+        return userCreatedThankYous;
       case 'Donated':
-        return requests.filter(request => (request.donorId === userID));
+        return userDonatedRequests;
       case 'Gratitude':
-        return userThankYous;
+        return userDonatedThankYous;
       default:
         return requests;
     }
@@ -70,8 +71,11 @@ class MainScene extends Component {
   }
 
   assembleOptions = () => {
+    // Global requests is called 'Requests'
+    // Private requests is called 'Requests '
+    // The space is a hack, but it works so hey.
     const globalOptions = ['Requests', 'Fulfilled', 'Thanks', 'All'];
-    const userHistoryOptions = ['Requested', 'Received', 'Donated', 'Gratitude'];
+    const userHistoryOptions = ['Requests ', 'Thank Yous', 'Donated', 'Gratitude'];
     if (this.props.entries.scope === 'global') {
       return globalOptions;
     }

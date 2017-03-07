@@ -17,9 +17,10 @@ const INITIAL_STATE = {
   loading: true,
   requests: [],
   thankYous: [],
-  userRequests: [],
-  userThankYous: [],
-  userFulfilled: [],
+  userCreatedRequests: [],
+  userCreatedThankYous: [],
+  userDonatedRequests: [],
+  userDonatedThankYous: [],
   totalDonatedPizzas: 0,
 };
 
@@ -43,24 +44,16 @@ export default (state = INITIAL_STATE, action) => {
         loading: false,
       };
     case GET_USER_ENTRIES: {
-      const userEntries = [
-        ...state.requests.filter(request => request.creatorId === action.payload),
-        ...state.thankYous.filter(thankYou => thankYou.creatorId === action.payload)
-      ];
-      const userRequests =
-      userEntries.filter(entry => (entry.type === 'request' && entry.donorId === null));
-
-      const userThankYous =
-      userEntries.filter(entry => entry.type === 'thankYou');
-
-      const userFulfilled =
-      userEntries.filter(entry => entry.type === 'request' && entry.donorId !== null);
-
+      const userCreatedRequests = [...state.requests.filter(request => request.creatorId === action.payload)];
+      const userDonatedRequests = [...state.requests.filter(request => request.donorId === action.payload)];
+      const userCreatedThankYous = [...state.thankYous.filter(thankYou => thankYou.creatorId === action.payload)];
+      const userDonatedThankYous = [...state.thankYous.filter(thankYou => thankYou.donorId === action.payload)];
       return {
         ...state,
-        userRequests,
-        userThankYous,
-        userFulfilled,
+        userCreatedRequests,
+        userDonatedRequests,
+        userCreatedThankYous,
+        userDonatedThankYous,
       };
     }
     case SHOW_ENTRIES:
