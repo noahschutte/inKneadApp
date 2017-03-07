@@ -102,7 +102,7 @@ class EntryScene extends Component {
     let onButtonPress;
     let buttonText;
 
-    if (entry.status === 'active' && ownEntry) { // Does this entry lack a donor AND belong to the current user?
+    if (entry.status === 'active' && ownEntry && entry.donorId !== null) { // Does this entry lack a donor AND belong to the current user?
       onButtonPress = this.deleteEntry.bind(this, entry.id);
       buttonText = 'REMOVE';
     } else if (entry.status === 'active' && entry.donorId === userID && userID !== null) { // Has the current user committed to this request?

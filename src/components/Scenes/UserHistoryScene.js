@@ -15,7 +15,6 @@ class UserHistoryScene extends Component {
       userID,
       loading
     } = this.props;
-    console.log(userHistoryEntries);
     return (
       <View style={{ flex: 1 }}>
         <Entries

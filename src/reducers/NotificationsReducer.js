@@ -12,7 +12,7 @@ import {
 } from '../actions/types';
 
 const INITIAL_STATE = {
-  refreshing: false,
+  loading: false,
   userNotifications: [],
 };
 
@@ -20,7 +20,7 @@ export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case NOTIFICATIONS_REFRESHING:
       return {
-        refreshing: true,
+        loading: true,
         userNotifications: [],
       };
     case EMAIL_NOT_VERIFIED:
@@ -195,6 +195,7 @@ export default (state = INITIAL_STATE, action) => {
             redirect: {
               scene: 'EntryScene',
               parameter: action.payload,
+              origin: action.origin,
             },
           },
         ],
@@ -210,7 +211,7 @@ export default (state = INITIAL_STATE, action) => {
     case REFRESH_COMPLETE:
       return {
         ...state,
-        refreshing: false,
+        loading: false,
       };
     case HANDLE_USER_LOGOUT:
       return INITIAL_STATE;

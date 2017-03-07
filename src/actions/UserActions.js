@@ -24,11 +24,9 @@ export const retrieveNotifications = (userID) => {
       },
       method: 'GET'
     })
-    .then(response => {
-      dispatch({ type: NOTIFICATIONS_REFRESHING });
-      return response.json();
-    })
+    .then(response => response.json())
     .then(responseJson => {
+      dispatch({ type: NOTIFICATIONS_REFRESHING });
       //  Expect:
       const {
         currentEmail, // The user's current email. Returns null if email has not yet been verified
@@ -76,6 +74,7 @@ export const retrieveNotifications = (userID) => {
           dispatch({
             type: INCOMING_GRATITUDE,
             payload: receivedThankYou,
+            origin: 'notifications'
           });
         }
       }

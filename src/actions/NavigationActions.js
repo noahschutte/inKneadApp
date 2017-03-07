@@ -1,10 +1,11 @@
 import { REDIRECT, TOGGLE_SIDE_MENU, CLOSE_SIDE_MENU } from './types';
 
 export const redirectTo = (redirect) => {
-  const { scene, parameter } = redirect;
+  const { scene, parameter, origin } = redirect;
   return {
     type: REDIRECT,
     payload: { scene, parameter },
+    origin,
   };
 };
 

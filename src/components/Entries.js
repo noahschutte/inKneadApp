@@ -25,11 +25,21 @@ class Entries extends Component {
     for (const index of array) {
       result.push(index);
     }
-    return result;
+    return result.sort(this.compareEntries);
   }
 
   _onRefresh = () => {
     this.props.getEntries();
+  }
+
+  compareEntries = (a, b) => {
+    if (a.seconds < b.seconds) {
+      return -1;
+    }
+    if (a.seconds > b.seconds) {
+      return 1;
+    }
+    return 0;
   }
 
   render() {
@@ -42,6 +52,7 @@ class Entries extends Component {
         <View />
       );
     } else {
+      /* eslint no-underscore-dangle: 0 */
       if (dataSource._cachedRowCount === 0) {
         refreshPrompt = (
           <Text style={{ position: 'absolute', marginHorizontal: 30, textAlign: 'center', paddingTop: 20 }}>
