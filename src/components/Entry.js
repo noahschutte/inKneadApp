@@ -5,7 +5,7 @@ import EntryBadge from './EntryBadge';
 import TimeAgo from './TimeAgo';
 import RequestPizzas from './RequestPizzas';
 
-const Entry = ({ userEntry, selectedRequest, origin }) => {
+const Entry = ({ userEntry, selectedRequest, origin, anonID }) => {
   const {
     seconds,
     pizzas,
@@ -22,6 +22,7 @@ const Entry = ({ userEntry, selectedRequest, origin }) => {
       </View>
 
       <EntryBadge
+        anonID={anonID}
         entryData={selectedRequest}
         style={styles.badgeStyle}
       />

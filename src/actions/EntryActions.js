@@ -7,6 +7,7 @@ import {
   SHOW_ENTRIES,
   TOGGLE_SIDE_MENU,
   REDIRECT,
+  UPDATE_USER_HISTORY_ENTRIES,
   UPDATE_TOTAL_DONATED_PIZZAS,
   DELETE_ENTRY,
 } from './types';
@@ -80,6 +81,24 @@ export const getEntries = (userID = null) => {
       }
     })
     .catch(err => console.error(err));
+  };
+};
+
+export const getUserHistory = (userID) => {
+  return (dispatch) => {
+    dispatch({ type: GET_ENTRIES });
+    fetch(`https://d1dpbg9jbgrqy5.cloudfront.net/anon/${userID}`, {
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      method: 'GET'
+    })
+    .then(data => data.json())
+    .then(entries => {
+      dispatch({ type: UPDATE_USER_HISTORY_ENTRIES, payload: entries });
+    })
+    .catch(error => console.error(error));
   };
 };
 
