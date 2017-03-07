@@ -76,6 +76,7 @@ export const retrieveNotifications = (userID) => {
           dispatch({
             type: INCOMING_GRATITUDE,
             payload: receivedThankYou,
+            origin: 'notifications'
           });
         }
       }
