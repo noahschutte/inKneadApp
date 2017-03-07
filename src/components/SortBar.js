@@ -22,7 +22,7 @@ const SortBar = ({ shown, options, onPress }) => {
 
 const styles = {
   sortBarStyle: {
-    flex: 0.5,
+    flex: 0.75,
     flexDirection: 'row',
   }
 };

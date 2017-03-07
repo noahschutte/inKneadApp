@@ -100,7 +100,7 @@ export const toggleScope = (currentScope, userID = null) => {
           type: TOGGLE_SCOPE,
           payload: {
             scope: 'private',
-            shown: 'Requested',
+            shown: 'Requests ',
           }
         });
         if (userID) {
