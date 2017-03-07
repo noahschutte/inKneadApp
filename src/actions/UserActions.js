@@ -145,6 +145,7 @@ export const updateEmail = (updatedEmail, userID, redirect = null) => {
     .then(response => {
       if (response.status === 200) {
         dispatch({ type: UPDATE_EMAIL, payload: updatedEmail });
+        dispatch({ type: USER_VERIFIED });
         if (!redirect) {
           dispatch({ type: REDIRECT, payload: { scene: 'ProfileScene' } });
         } else {
