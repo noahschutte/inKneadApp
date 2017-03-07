@@ -129,9 +129,9 @@ const styles = {
 
 const mapStateToProps = (state) => {
   const notifications = state.notifications.userNotifications;
+  const loading = state.notifications.loading;
   return { notifications };
 };
-
 export default connect(mapStateToProps, {
   redirectTo,
   confirmDonationReceived,

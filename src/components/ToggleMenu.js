@@ -19,6 +19,11 @@ const ToggleMenu = (props) => {
     );
   }
 
+  const notificationsScene = () => {
+    props.retrieveNotifications();
+    Actions.NotificationsScene();
+  };
+
   return (
     <View style={styles.container}>
       <Text style={styles.donatedPizzasText}>
@@ -34,7 +39,9 @@ const ToggleMenu = (props) => {
         <Text style={styles.textStyle}>Requests</Text>
       </SideMenuButton>
 
-      <SideMenuButton onPress={props.userID ? onPress.bind(this, Actions.NotificationsScene) : onPress.bind(this, Actions.LoginScene)}>
+      <SideMenuButton
+        onPress={props.userID ? onPress.bind(this, notificationsScene) : onPress.bind(this, Actions.LoginScene)}
+      >
         <View style={styles.notificationStyle}>
           <Text style={styles.textStyle}>Notifications </Text>
           {notificationAlert}

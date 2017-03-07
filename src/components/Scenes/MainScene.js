@@ -90,6 +90,7 @@ class MainScene extends Component {
         userID={userID}
         toggle={this.props.toggleSideMenu}
         totalDonatedPizzas={totalDonatedPizzas}
+        retrieveNotifications={this.props.retrieveNotifications.bind(null, userID)}
       />
     );
 
