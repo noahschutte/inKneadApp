@@ -13,6 +13,7 @@ export const GET_USER_ENTRIES = 'get_user_entries';
 export const SHOW_ENTRIES = 'show_entries';
 export const TOGGLE_SCOPE = 'toggle_scope';
 export const DELETE_ENTRY = 'delete_entry';
+export const UPDATE_USER_HISTORY_ENTRIES = 'update_user_history_entries';
 export const UPDATE_TOTAL_DONATED_PIZZAS = 'update_total_donated_pizzas';
 
 // Entry creation constants

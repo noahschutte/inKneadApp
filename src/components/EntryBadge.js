@@ -1,15 +1,22 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 
-const EntryBadge = ({ entryData }) => {
+const EntryBadge = ({ entryData, anonID }) => {
   let text;
   if (entryData.type === 'thankYou') {
-    text = 'Thanks!';
+    if (anonID === entryData.donorId) {
+      text = 'Thanked!';
+    } else {
+      text = 'Thanks!';
+    }
   } else if (entryData.status !== 'expired') {
     text = entryData.status;
     text = text.charAt(0).toUpperCase() + text.slice(1);
     if (entryData.status === 'active' && entryData.donorId !== null) {
       text = 'Awaiting Pizza';
+    }
+    if (anonID === entryData.donorId && entryData.status === 'received') {
+      text = 'Donated';
     }
   }
   if (text) {

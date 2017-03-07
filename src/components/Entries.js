@@ -62,6 +62,7 @@ class Entries extends Component {
             (rowData) => (
               <Entry
                 userEntry={this.props.userID === rowData.creatorId}
+                anonID={this.props.anonID}
                 origin={this.props.origin}
                 selectedRequest={rowData}
               />

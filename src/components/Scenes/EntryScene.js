@@ -91,7 +91,6 @@ class EntryScene extends Component {
 
   render() {
     const { entry, userID } = this.props;
-    console.log('this.props', this.props);
 
     // showUserHistory: a boolean that determines whether to show a  link to the history
     // of this entry's creator, depending on how you reached this particular entry.
@@ -106,7 +105,7 @@ class EntryScene extends Component {
     if (entry.status === 'active' && ownEntry) { // Does this entry lack a donor AND belong to the current user?
       onButtonPress = this.deleteEntry.bind(this, entry.id);
       buttonText = 'REMOVE';
-    } else if (entry.status === 'active' && entry.donorId === userID) { // Has the current user committed to this request?
+    } else if (entry.status === 'active' && entry.donorId === userID && userID !== null) { // Has the current user committed to this request?
       onButtonPress = this.completeDonation;
       buttonText = 'FINISH DONATION';
     } else if (entry.type === 'request' && entry.donorId !== null) { // Has someone committed to making this donation?

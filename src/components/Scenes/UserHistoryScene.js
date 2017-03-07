@@ -1,29 +1,28 @@
 import React, { Component } from 'react';
 import { View } from 'react-native';
 import { connect } from 'react-redux';
-import { getEntries } from '../../actions';
+import { getUserHistory } from '../../actions';
 import Entries from '../Entries';
 
 class UserHistoryScene extends Component {
   componentDidMount() {
-    this.props.getEntries(this.props.userID);
+    this.props.getUserHistory(this.props.userID);
   }
 
   render() {
     const {
-      userRequests,
-      userFulfilled,
-      userThankYous,
+      userHistoryEntries,
       userID,
       loading
     } = this.props;
-    const entryRows = [...userRequests, ...userFulfilled, ...userThankYous];
+    console.log(userHistoryEntries);
     return (
       <View style={{ flex: 1 }}>
         <Entries
           origin='UserHistoryScene'
-          entryRows={entryRows}
-          getEntries={() => this.props.getEntries(userID)}
+          entryRows={userHistoryEntries}
+          getEntries={() => this.props.getUserHistory(userID)}
+          anonID={userID}
           loading={loading}
         />
       </View>
@@ -33,17 +32,13 @@ class UserHistoryScene extends Component {
 
 const mapStateToProps = ({ entries }) => {
   const {
-    userRequests,
-    userFulfilled,
-    userThankYous,
+    userHistoryEntries,
     loading
   } = entries;
   return {
-    userRequests,
-    userFulfilled,
-    userThankYous,
+    userHistoryEntries,
     loading
   };
 };
 
-export default connect(mapStateToProps, { getEntries })(UserHistoryScene);
+export default connect(mapStateToProps, { getUserHistory })(UserHistoryScene);

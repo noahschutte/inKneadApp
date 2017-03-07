@@ -7,6 +7,7 @@ import {
   TOGGLE_SIDE_MENU,
   HANDLE_USER_LOGOUT,
   DELETE_ENTRY,
+  UPDATE_USER_HISTORY_ENTRIES,
   UPDATE_TOTAL_DONATED_PIZZAS,
 } from '../actions/types';
 
@@ -21,6 +22,7 @@ const INITIAL_STATE = {
   userCreatedThankYous: [],
   userDonatedRequests: [],
   userDonatedThankYous: [],
+  userHistoryEntries: [],
   totalDonatedPizzas: 0,
 };
 
@@ -30,6 +32,15 @@ export default (state = INITIAL_STATE, action) => {
       return {
         ...state,
         totalDonatedPizzas: action.payload,
+      };
+    case UPDATE_USER_HISTORY_ENTRIES:
+      return {
+        ...state,
+        userHistoryEntries: [
+          ...action.payload.anonRequests,
+          ...action.payload.anonThankYous,
+        ],
+        loading: false,
       };
     case GET_ENTRIES:
       return {
