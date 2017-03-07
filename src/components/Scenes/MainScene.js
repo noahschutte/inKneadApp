@@ -63,11 +63,6 @@ class MainScene extends Component {
     }
   }
 
-  // Returns a boolean describing whether a user has waiting notifications
-  doesHaveNotifications = () => {
-    return this.props.notifications.userNotifications.length > 0;
-  }
-
   assembleOptions = () => {
     // Global requests is called 'Requests'
     // Private requests is called 'Requests '
@@ -82,18 +77,18 @@ class MainScene extends Component {
 
 
   render() {
-    const { userID, entries, sideMenuOpen } = this.props;
+    const { userID, entries, sideMenuOpen, notifications } = this.props;
     const { shown, loading, totalDonatedPizzas } = entries;
     const menu = (
       <ToggleMenu
-        doesHaveNotifications={this.doesHaveNotifications()}
+        doesHaveNotifications={notifications.hasNotifications}
         userID={userID}
         toggle={this.props.toggleSideMenu}
         totalDonatedPizzas={totalDonatedPizzas}
         retrieveNotifications={this.props.retrieveNotifications.bind(null, userID)}
       />
     );
-
+    console.log('notifications', notifications.hasNotifications);
     return (
       <SideMenu
         onChange={this.onChange}
