@@ -85,7 +85,6 @@ class NotificationsScene extends Component {
   }
 
   render() {
-    console.log('props: ', this.props);
     const { notifications } = this.props;
     let content;
     if (notifications.length > 0) {

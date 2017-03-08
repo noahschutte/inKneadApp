@@ -88,7 +88,6 @@ class MainScene extends Component {
         retrieveNotifications={this.props.retrieveNotifications.bind(null, userID)}
       />
     );
-    console.log('notifications', notifications.userNotifications);
     return (
       <SideMenu
         onChange={this.onChange}

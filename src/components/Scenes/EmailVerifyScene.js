@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, TextInput } from 'react-native';
+import { View, Text, TextInput, Platform } from 'react-native';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
 import { updateEmail } from '../../actions';
@@ -10,7 +10,6 @@ class EmailVerifyScene extends Component {
 
   state = {
     newEmailText: '',
-    update: false,
   };
 
   onPress = () => {
@@ -29,22 +28,35 @@ class EmailVerifyScene extends Component {
 
   render() {
     const currentEmail = this.props.currentEmail || this.props.signupEmail;
-    let bottomHalf;
-    if (this.props.userVerified || this.state.update) {
-      bottomHalf = (
+    let textInput = (
+      <TextInput
+        autoFocus
+        onChangeText={this.updateEmailText}
+        maxLength={254}
+        autoCorrect={false}
+        keyboardType='email-address'
+        autoCapitalize='none'
+        value={this.state.newEmailText}
+        style={Platform.OS === 'android' ? styles.androidTextInput : styles.iOSTextInput}
+      />
+    );
+    if (Platform.OS !== 'android') {
+      textInput = (
+        <View style={{ height: 25 }}>
+          {textInput}
+        </View>
+      );
+    }
+    return (
+      <View style={{ flex: 1 }}>
+
+        <DetailSection style={{ flex: 3, marginTop: 15 }} bannerText='Current Email'>
+          <Text>{currentEmail}</Text>
+        </DetailSection>
+
         <View style={{ flex: 4 }}>
-          <DetailSection style={{ flex: 5, flexDirection: 'column' }} bannerText='New Email'>
-            <View style={{ height: 25, borderColor: 'black', borderWidth: 0.5 }}>
-              <TextInput
-                onChangeText={this.updateEmailText}
-                maxLength={254}
-                autoCorrect={false}
-                keyboardType='email-address'
-                autoCapitalize='none'
-                value={this.state.newEmailText}
-                style={{ flex: 1, width: 150, textAlign: 'center' }}
-              />
-            </View>
+          <DetailSection style={{ flex: 5 }} bannerText='New Email'>
+            {textInput}
           </DetailSection>
           <DetailSection
             style={styles.buttonSectionStyle}
@@ -66,36 +78,7 @@ class EmailVerifyScene extends Component {
             </Button>
           </DetailSection>
         </View>
-      );
-    } else {
-      bottomHalf = (
-        <DetailSection
-          style={styles.buttonSectionStyle}
-          contentStyle={{ justifyContent: 'space-around' }}
-        >
-          <Button
-            touchableOpacity
-            onPress={() => this.setState({ update: true })}
-            buttonType={'cancel'}
-          >
-            <Text style={styles.buttonStyle}>Update</Text>
-          </Button>
-          <Button
-            touchableOpacity
-            onPress={this.onPress}
-            buttonStyle={{ backgroundColor: '#ce0000' }}
-          >
-            <Text style={styles.buttonStyle}>Verify</Text>
-          </Button>
-        </DetailSection>
-      );
-    }
-    return (
-      <View style={{ flex: 1 }}>
-        <DetailSection style={{ flex: 3, marginTop: 15 }} bannerText='Current Email'>
-          <Text>{currentEmail}</Text>
-        </DetailSection>
-        {bottomHalf}
+
       </View>
     );
   }
@@ -104,6 +87,16 @@ class EmailVerifyScene extends Component {
 const styles = {
   sectionStyle: {
     marginTop: 15,
+  },
+  androidTextInput: {
+    flex: 1,
+    marginHorizontal: 15,
+    textAlign: 'center',
+  },
+  iOSTextInput: {
+    flex: 1,
+    width: 150,
+    textAlign: 'center',
   },
   buttonSectionStyle: {
     flex: 4,
