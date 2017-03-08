@@ -13,10 +13,9 @@ class EmailVerifyScene extends Component {
   };
 
   onPress = () => {
-    const { currentEmail, signupEmail, userID, redirect } = this.props;
-    if (this.state.newEmailText === '') {
-      const newEmail = currentEmail || signupEmail;
-      this.props.updateEmail(newEmail, userID, redirect);
+    const { userID, redirect } = this.props;
+    if (this.state.newEmailText === '' || this.state.newEmailText < 'A') {
+      alert('Please enter a valid email address');
     } else {
       this.props.updateEmail(this.state.newEmailText, userID, redirect);
     }
