@@ -1,3 +1,4 @@
+import { Actions } from 'react-native-router-flux';
 import {
   NOTIFICATIONS_REFRESHING,
   REFRESH_COMPLETE,
@@ -211,6 +212,7 @@ export default (state = INITIAL_STATE, action) => {
       };
     }
     case REFRESH_COMPLETE:
+      Actions.refresh({ key: 'NotificationsScene' });
       return {
         ...state,
         loading: false,
