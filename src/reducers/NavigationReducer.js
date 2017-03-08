@@ -51,7 +51,8 @@ export default (state = INITIAL_STATE, action) => {
             Actions.EntryCreationScene({ createThankYou: true, entry: parameter.entry });
             return state;
           }
-          Actions.EntryCreationScene({ type: 'reset' });
+          Actions.root({ type: 'reset' });
+          Actions.EntryCreationScene();
           return state;
         case 'NotificationsScene':
           Actions.root({ type: 'reset' });
