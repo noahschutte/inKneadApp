@@ -170,11 +170,11 @@ export const updateEmail = (updatedEmail, userID, redirect = null) => {
 export const userLogout = () => {
   const redirectToMainScene = new Promise((resolve) => {
     Actions.root({ type: 'reset' });
-    resolve('success');
+    resolve([]);
   });
   return dispatch => {
-    redirectToMainScene.then(() => {
-      dispatch({ type: HANDLE_USER_LOGOUT });
+    redirectToMainScene.then((payload) => {
+      dispatch({ type: HANDLE_USER_LOGOUT, payload });
     })
     .catch(err => console.log(err));
   };
