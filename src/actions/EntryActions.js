@@ -135,7 +135,7 @@ export const toggleScope = (currentScope, userID = null) => {
     type: TOGGLE_SCOPE,
     payload: {
       scope: 'global',
-      shown: 'Requests'
+      shown: 'All'
     }
   });
 };

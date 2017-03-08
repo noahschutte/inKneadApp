@@ -13,7 +13,7 @@ import {
 
 const INITIAL_STATE = {
   scope: 'global',
-  shown: 'Requests',
+  shown: 'All',
   sideMenuOpen: false,
   loading: true,
   requests: [],
@@ -94,7 +94,7 @@ export default (state = INITIAL_STATE, action) => {
       return {
         ...state,
         scope: 'global',
-        shown: 'Requests',
+        shown: 'All',
       };
     default:
       return state;
