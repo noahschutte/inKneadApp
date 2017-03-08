@@ -54,6 +54,7 @@ export default (state = INITIAL_STATE, action) => {
           Actions.EntryCreationScene();
           return state;
         case 'NotificationsScene':
+          Actions.root({ type: 'reset' });
           Actions.NotificationsScene();
           return state;
         default:
