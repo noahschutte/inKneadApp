@@ -1,7 +1,12 @@
 import React, { Component } from 'react';
 import { View, Text } from 'react-native';
 import { connect } from 'react-redux';
-import { redirectTo, confirmDonationReceived, removeNotification } from '../../actions';
+import {
+  redirectTo,
+  confirmDonationReceived,
+  removeNotification,
+  updateEmail
+} from '../../actions';
 import Button from '../Button2';
 import DetailSection from '../DetailSection';
 
@@ -12,16 +17,20 @@ class NotificationsScene extends Component {
   }
 
   onPress = (action, notificationID, redirect = null) => {
+    const { signupEmail, userID } = this.props;
     switch (action) {
-      case 'verifyEmail':
+      case 'verifyEmailScene':
       case 'completeDonation':
+      case 'createThankYou':
+      case 'viewThankYou':
         return () => this.props.redirectTo(redirect);
       case 'confirmDonation':
         return () => this.props.confirmDonationReceived(redirect.parameter);
-      case 'createThankYou':
-        return () => this.props.redirectTo(redirect);
-      case 'viewThankYou':
-        return () => this.props.redirectTo(redirect);
+      case 'verifyEmail':
+        return () => {
+          this.props.updateEmail(signupEmail, userID, { scene: 'NotificationsScene' });
+          this.props.removeNotification(notificationID)
+        };
       case 'nothing':
         return () => this.collapseNotification(this.state.expanded.indexOf(notificationID));
       case 'clear':
@@ -76,6 +85,7 @@ class NotificationsScene extends Component {
   }
 
   render() {
+    console.log('props: ', this.props);
     const { notifications } = this.props;
     let content;
     if (notifications.length > 0) {
@@ -129,10 +139,12 @@ const styles = {
 
 const mapStateToProps = (state) => {
   const notifications = state.notifications.userNotifications;
-  return { notifications };
+  const { signupEmail, userID } = state.user;
+  return { notifications, signupEmail, userID };
 };
 export default connect(mapStateToProps, {
   redirectTo,
   confirmDonationReceived,
   removeNotification,
+  updateEmail,
 })(NotificationsScene);

@@ -53,7 +53,7 @@ class EmailVerifyScene extends Component {
             <Button
               touchableOpacity
               onPress={Actions.pop}
-              buttonStyle={{ backgroundColor: '#bebebe', borderColor: '#bebebe' }}
+              buttonType={'cancel'}
             >
               <Text style={[styles.buttonStyle]}>Cancel</Text>
             </Button>
@@ -75,17 +75,17 @@ class EmailVerifyScene extends Component {
         >
           <Button
             touchableOpacity
+            onPress={() => this.setState({ update: true })}
+            buttonType={'cancel'}
+          >
+            <Text style={styles.buttonStyle}>Update</Text>
+          </Button>
+          <Button
+            touchableOpacity
             onPress={this.onPress}
             buttonStyle={{ backgroundColor: '#ce0000' }}
           >
             <Text style={styles.buttonStyle}>Verify</Text>
-          </Button>
-          <Button
-            touchableOpacity
-            onPress={() => this.setState({ update: true })}
-            buttonStyle={{ backgroundColor: '#ce0000' }}
-          >
-            <Text style={styles.buttonStyle}>Update</Text>
           </Button>
         </DetailSection>
       );
