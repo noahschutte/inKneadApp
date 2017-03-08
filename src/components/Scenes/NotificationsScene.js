@@ -29,7 +29,7 @@ class NotificationsScene extends Component {
       case 'verifyEmail':
         return () => {
           this.props.updateEmail(signupEmail, userID, { scene: 'NotificationsScene' });
-          this.props.removeNotification(notificationID)
+          this.props.removeNotification(notificationID);
         };
       case 'nothing':
         return () => this.collapseNotification(this.state.expanded.indexOf(notificationID));
