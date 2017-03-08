@@ -7,6 +7,7 @@ import {
   TOGGLE_SIDE_MENU,
   HANDLE_USER_LOGOUT,
   DELETE_ENTRY,
+  MODIFY_ENTRY,
   UPDATE_USER_HISTORY_ENTRIES,
   UPDATE_TOTAL_DONATED_PIZZAS,
 } from '../actions/types';
@@ -74,6 +75,15 @@ export default (state = INITIAL_STATE, action) => {
       };
     case DELETE_ENTRY: {
       const requests = [...state.requests.filter(request => request.id !== action.payload)];
+      return {
+        ...state,
+        requests,
+      };
+    }
+    case MODIFY_ENTRY: {
+      const newEntry = action.payload;
+      const requests = [...state.requests.filter(request => request.id !== newEntry.id)];
+      requests.push(newEntry);
       return {
         ...state,
         requests,

@@ -10,6 +10,7 @@ import {
   UPDATE_USER_HISTORY_ENTRIES,
   UPDATE_TOTAL_DONATED_PIZZAS,
   DELETE_ENTRY,
+  MODIFY_ENTRY,
 } from './types';
 
 // confirmDonation is invoked when a user commits to donating to a request
@@ -29,6 +30,7 @@ export const confirmDonation = (donatorId, entry) => {
         alert(responseJson.errorMessage);
       } else {
         const { anonEmail } = responseJson.request;
+        dispatch({ type: MODIFY_ENTRY, payload: responseJson.request });
         dispatch({
           type: REDIRECT,
           payload: {
