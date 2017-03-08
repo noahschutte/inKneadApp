@@ -30,8 +30,7 @@ export const retrieveNotifications = (userID) => {
       //  Expect:
       const {
         currentEmail, // The user's current email. Returns null if email has not yet been verified
-        // userRequests, An array of requests for which the user is either the donor OR recipient
-        // userThankYous, An array of thankYous for which the user is either donor OR recipient
+        signupEmail, // The user's signup email. Used for email verify workflow.
         recentSuccessfulRequests, // An array containing a user's request that has been donated to, but not yet received
         thankYouReminders, // An array of requests the user has received but not uploaded a thankYou for
         recentDonations,  // An array of donations that have not been received
@@ -42,7 +41,7 @@ export const retrieveNotifications = (userID) => {
       if (currentEmail) {
         dispatch({ type: USER_VERIFIED });
       } else {
-        dispatch({ type: EMAIL_NOT_VERIFIED });
+        dispatch({ type: EMAIL_NOT_VERIFIED, payload: signupEmail });
       }
       if (recentDonations.length > 0) {
         for (const recentDonation of recentDonations) {

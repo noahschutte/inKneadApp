@@ -9,6 +9,7 @@ import {
   uploadComplete,
   handleVideoData,
   resetCameraState,
+  updateEmail,
 } from '../../actions';
 import { camcorderImage } from '../../assets';
 import EntryVideo from '../EntryVideo';
@@ -33,20 +34,26 @@ class EntryCreationScene extends Component {
   }
 
   verifiedUser = () => {
-    if (!this.props.userVerified) {
+    const { userVerified, signupEmail, userID } = this.props;
+    if (!userVerified) {
       Alert.alert(
         'No verified email address!',
-        'You must have a verified email to request pizza!',
+        `You must have a verified email to request pizza! \n\nIs ${signupEmail} your active email?`,
         [
-          { text: 'Cancel' },
           {
-            text: 'Verify Now',
+            text: 'No, Update',
             onPress: Actions.EmailVerifyScene.bind(this, {
               redirect: {
                 scene: 'EntryCreationScene'
-              }
-            })
-          }
+              },
+            }),
+          },
+          {
+            text: 'Yes, Verify!',
+            onPress: () => this.props.updateEmail(signupEmail, userID, {
+              scene: 'EntryCreationScene',
+            }),
+          },
         ]
       );
       return false;
@@ -331,7 +338,7 @@ const styles = {
 const mapStateToProps = ({ newEntry, camera, user }) => {
   const { pizzas, vendor, videoKey } = newEntry;
   const { videoData } = camera;
-  const { userVerified, fb_userID, userID } = user;
+  const { userVerified, fb_userID, userID, signupEmail } = user;
 
   return {
     pizzas,
@@ -340,7 +347,8 @@ const mapStateToProps = ({ newEntry, camera, user }) => {
     videoData,
     userVerified,
     fb_userID,
-    userID
+    userID,
+    signupEmail
   };
 };
 
@@ -350,4 +358,5 @@ export default connect(mapStateToProps, {
   uploadComplete,
   handleVideoData,
   resetCameraState,
+  updateEmail,
 })(EntryCreationScene);

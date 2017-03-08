@@ -33,16 +33,16 @@ export default (state = INITIAL_STATE, action) => {
             id: 0,
             text: 'Please verify your email',
             expandable: {
-              text: 'Gift cards are sent to you by email, it\'s import that yours is up to date!',
+              text: `Is ${action.payload} the best place to reach you at?`,
               buttons: [
                 {
                   type: 'cancel',
-                  text: 'Not Now',
-                  action: 'nothing',
+                  text: 'No, update',
+                  action: 'verifyEmailScene',
                 },
                 {
                   type: 'confirm',
-                  text: 'Verify',
+                  text: 'Yes it is',
                   action: 'verifyEmail',
                 }
               ]
