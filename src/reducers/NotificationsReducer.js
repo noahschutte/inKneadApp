@@ -218,7 +218,10 @@ export default (state = INITIAL_STATE, action) => {
         loading: false,
       };
     case HANDLE_USER_LOGOUT:
-      return INITIAL_STATE;
+      return {
+        loading: false,
+        userNotifications: action.payload,
+      };
     default:
       return state;
   }
