@@ -67,7 +67,7 @@ class MainScene extends Component {
     // Global requests is called 'Requests'
     // Private requests is called 'Requests '
     // The space is a hack, but it works so hey.
-    const globalOptions = ['Requests', 'Fulfilled', 'Thanks', 'All'];
+    const globalOptions = ['All', 'Requests', 'Fulfilled', 'Thanks'];
     const userHistoryOptions = ['Requests ', 'Thank Yous', 'Donated', 'Gratitude'];
     if (this.props.entries.scope === 'global') {
       return globalOptions;
