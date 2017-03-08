@@ -102,10 +102,8 @@ class EntryScene extends Component {
     let onButtonPress;
     let buttonText;
 
-    if (entry.status === 'active' && ownEntry && entry.donorId !== null) { // Does this entry lack a donor AND belong to the current user?
-      onButtonPress = this.deleteEntry.bind(this, entry.id);
-      buttonText = 'REMOVE';
-    } else if (entry.status === 'active' && entry.donorId === userID && userID !== null) { // Has the current user committed to this request?
+
+    if (entry.status === 'active' && entry.donorId === userID && userID !== null) { // Has the current user committed to this request?
       onButtonPress = this.completeDonation;
       buttonText = 'FINISH DONATION';
     } else if (entry.type === 'request' && entry.donorId !== null) { // Has someone committed to making this donation?
@@ -114,6 +112,10 @@ class EntryScene extends Component {
     } else if (entry.status === 'active' && entry.donorId === null) { // Is this an active request?
       onButtonPress = this.onDonatePress;
       buttonText = 'DONATE';
+      if (ownEntry) { // Does this entry lack a donor AND belong to the current user?
+        onButtonPress = this.deleteEntry.bind(this, entry.id);
+        buttonText = 'REMOVE';
+      }
     } else { // Default Yay pizza button
       onButtonPress = this.onThankYouPress;
       buttonText = this.state.thanksText;
