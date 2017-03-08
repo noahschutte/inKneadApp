@@ -81,14 +81,14 @@ class MainScene extends Component {
     const { shown, loading, totalDonatedPizzas } = entries;
     const menu = (
       <ToggleMenu
-        doesHaveNotifications={notifications.hasNotifications}
+        doesHaveNotifications={notifications.userNotifications.length > 0}
         userID={userID}
         toggle={this.props.toggleSideMenu}
         totalDonatedPizzas={totalDonatedPizzas}
         retrieveNotifications={this.props.retrieveNotifications.bind(null, userID)}
       />
     );
-    console.log('notifications', notifications.hasNotifications);
+    console.log('notifications', notifications.userNotifications);
     return (
       <SideMenu
         onChange={this.onChange}
