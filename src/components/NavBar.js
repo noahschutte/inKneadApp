@@ -129,7 +129,11 @@ class NavBar extends Component {
         if (this.props.userID) {
           onPress = Actions.EntryCreationScene;
         } else {
-          onPress = Actions.LoginScene;
+          onPress = () => Actions.LoginScene({
+            redirect: {
+              scene: 'EntryCreationScene'
+            }
+          });
         }
         break;
       default:
