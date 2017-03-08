@@ -50,7 +50,6 @@ class ReduxLogin extends Component {
             );
             new GraphRequestManager().addRequest(infoRequest).start();
           } else {
-            alert('reached');
             Actions.root({ type: 'reset' });
           }
         }
