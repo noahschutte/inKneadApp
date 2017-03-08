@@ -40,7 +40,7 @@ const ToggleMenu = (props) => {
       </SideMenuButton>
 
       <SideMenuButton
-        onPress={props.userID ? onPress.bind(this, notificationsScene) : onPress.bind(this, Actions.LoginScene)}
+        onPress={props.userID ? onPress.bind(this, notificationsScene) : onPress.bind(this, () => Actions.LoginScene({ redirect: { scene: 'NotificationsScene' } }))}
       >
         <View style={styles.notificationStyle}>
           <Text style={styles.textStyle}>Notifications </Text>
