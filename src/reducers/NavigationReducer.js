@@ -53,6 +53,9 @@ export default (state = INITIAL_STATE, action) => {
           }
           Actions.EntryCreationScene();
           return state;
+        case 'NotificationsScene':
+          Actions.NotificationsScene();
+          return state;
         default:
           Actions.pop();
           return state;
