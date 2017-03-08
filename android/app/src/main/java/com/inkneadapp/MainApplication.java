@@ -1,4 +1,4 @@
-package com.inkneadapp;
+package com.buddyghee.inkneadapp;
 
 import android.app.Application;
 
