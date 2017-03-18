@@ -35,6 +35,12 @@ class EntryCreationScene extends Component {
 
   verifiedUser = () => {
     const { userVerified, signupEmail, userID } = this.props;
+    const verifyAndSubmit = () => {
+      this.props.updateEmail(signupEmail, userID, {
+        scene: 'EntryCreationScene',
+      });
+      this.handleRequestSubmission();
+    };
     if (!userVerified) {
       Alert.alert(
         'No verified email address!',
@@ -50,9 +56,7 @@ class EntryCreationScene extends Component {
           },
           {
             text: 'Yes, Verify!',
-            onPress: () => this.props.updateEmail(signupEmail, userID, {
-              scene: 'EntryCreationScene',
-            }),
+            onPress: verifyAndSubmit,
           },
         ]
       );
@@ -221,7 +225,16 @@ class EntryCreationScene extends Component {
       errorMessages.push('Please choose a preferred pizza place');
     }
     if (errorMessages.length === 0) {
-      this.dispatchRequest();
+      Alert.alert(
+        'Please review our terms of use',
+        '1. Don\'t be a dick!',
+        [
+          { text: 'Cancel' },
+          { text: 'Accept',
+            onPress: this.dispatchRequest
+          },
+        ],
+      );
     } else {
       Alert.alert(
         'Problem!',
@@ -241,7 +254,16 @@ class EntryCreationScene extends Component {
       errorMessages.push('Please record a video.');
     }
     if (errorMessages.length === 0) {
-      this.dispatchThankYou();
+      Alert.alert(
+        'Please review our terms of use',
+        '1. Don\'t be a dick!',
+        [
+          { text: 'Cancel' },
+          { text: 'Accept',
+            onPress: this.dispatchThankYou
+          },
+        ],
+      );
     } else {
       Alert.alert(
         'Problem!',
