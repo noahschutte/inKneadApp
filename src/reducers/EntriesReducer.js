@@ -6,7 +6,8 @@ import {
   TOGGLE_SCOPE,
   TOGGLE_SIDE_MENU,
   HANDLE_USER_LOGOUT,
-  DELETE_ENTRY,
+  DELETE_REQUEST,
+  DELETE_THANK_YOU,
   MODIFY_ENTRY,
   UPDATE_USER_HISTORY_ENTRIES,
   UPDATE_TOTAL_DONATED_PIZZAS,
@@ -73,11 +74,18 @@ export default (state = INITIAL_STATE, action) => {
         ...state,
         shown: action.payload,
       };
-    case DELETE_ENTRY: {
+    case DELETE_REQUEST: {
       const requests = [...state.requests.filter(request => request.id !== action.payload)];
       return {
         ...state,
         requests,
+      };
+    }
+    case DELETE_THANK_YOU: {
+      const thankYous = [...state.thankYous.filter(request => request.id !== action.payload)];
+      return {
+        ...state,
+        thankYous,
       };
     }
     case MODIFY_ENTRY: {
