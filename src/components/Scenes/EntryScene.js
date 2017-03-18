@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { View, Alert } from 'react-native';
+import { Alert } from 'react-native';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
+import { MenuContext } from 'react-native-popup-menu';
 import { confirmDonation, confirmDelete } from '../../actions';
 import EntryVideo from '../EntryVideo';
 import EntryDetails from '../EntryDetails';
@@ -122,7 +123,7 @@ class EntryScene extends Component {
     }
 
     return (
-      <View style={styles.container}>
+      <MenuContext style={styles.container}>
         <EntryVideo
           togglePlay={this.togglePlay}
           source={entry.compressedVideo}
@@ -137,7 +138,7 @@ class EntryScene extends Component {
           onButtonPress={onButtonPress}
           buttonText={buttonText}
         />
-      </View>
+      </MenuContext>
     );
   }
 }

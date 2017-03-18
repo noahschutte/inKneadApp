@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text } from 'react-native';
+import { Menu, MenuOptions, MenuOption, MenuTrigger } from 'react-native-popup-menu';
 import DetailSection from './DetailSection';
 import Button from './Button2';
 import TimeAgo from './TimeAgo';
@@ -48,7 +49,14 @@ const EntryDetails = ({
     <View style={{ flex: 5 }}>
       <DetailSection contentStyle={{ justifyContent: 'space-between' }}>
         <TimeAgo secondsOld={seconds} />
-        {userHistoryButton}
+        {/* {userHistoryButton} */}
+        <Menu onSelect={value => value()} style={styles.userHistoryButton}>
+          <MenuTrigger text=' ... ' customStyles={{ triggerText: { fontSize: 16, fontWeight: 'bold' } }} />
+          <MenuOptions>
+            <MenuOption value={() => navigateToUser(creatorId)} text='User History' disabled={!showUserHistory} />
+            <MenuOption value={() => alert('report video?')} text='Report Video' />
+          </MenuOptions>
+        </Menu>
       </DetailSection>
 
       <DetailSection bannerText={bannerText}>
