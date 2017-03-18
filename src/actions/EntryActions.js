@@ -104,6 +104,41 @@ export const getUserHistory = (userID) => {
   };
 };
 
+export const reportVideo = (userID, entryId) => {
+  return (dispatch) => {
+    fetch(`https://d1dpbg9jbgrqy5.cloudfront.net/requests/${entryId}`, {
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+      },
+      method: 'PATCH',
+      body: JSON.stringify({ userID, reportVideo: true })
+    })
+    .then(response => {
+      if (response.status === 200) {
+        dispatch({ type: DELETE_ENTRY, payload: entryId });
+        alert('Video successfully reported');
+      } else {
+        alert('Something went wrong...');
+      }
+    })
+    .catch(err => alert(err));
+  };
+};
+
+export const sideMenuToggle = (isMenuOpen) => {
+  if (isMenuOpen) {
+    return {
+      type: TOGGLE_SIDE_MENU,
+      payload: false
+    };
+  }
+  return {
+    type: TOGGLE_SIDE_MENU,
+    payload: true
+  };
+};
+
 export const sortEntries = (key) => {
   return ({
     type: SHOW_ENTRIES,
@@ -140,17 +175,4 @@ export const toggleScope = (currentScope, userID = null) => {
       shown: 'All'
     }
   });
-};
-
-export const sideMenuToggle = (isMenuOpen) => {
-  if (isMenuOpen) {
-    return {
-      type: TOGGLE_SIDE_MENU,
-      payload: false
-    };
-  }
-  return {
-    type: TOGGLE_SIDE_MENU,
-    payload: true
-  };
 };

@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, Alert } from 'react-native';
 import { Menu, MenuOptions, MenuOption, MenuTrigger } from 'react-native-popup-menu';
 import DetailSection from './DetailSection';
 import Button from './Button2';
@@ -13,7 +13,8 @@ const EntryDetails = ({
   navigateToUser,
   onButtonPress,
   buttonText,
-  showUserHistory
+  showUserHistory,
+  reportVideo
 }) => {
   const { pizzas, vendor, seconds, creatorId } = entryData;
   let userHistoryButton;
@@ -53,8 +54,25 @@ const EntryDetails = ({
         <Menu onSelect={value => value()} style={styles.userHistoryButton}>
           <MenuTrigger text=' ... ' customStyles={{ triggerText: { fontSize: 16, fontWeight: 'bold' } }} />
           <MenuOptions>
-            <MenuOption value={() => navigateToUser(creatorId)} text='User History' disabled={!showUserHistory} />
-            <MenuOption value={() => alert('report video?')} text='Report Video' />
+            <MenuOption
+              value={() => navigateToUser(creatorId)}
+              text='User History'
+              disabled={!showUserHistory}
+            />
+            <MenuOption
+              value={() => Alert.alert(
+                'Report video?',
+                'Please only report videos with inappropriate content',
+                [
+                  { text: 'Nevermind' },
+                  {
+                    text: 'Report',
+                    onPress: reportVideo
+                  }
+                ]
+              )}
+              text='Report Video'
+            />
           </MenuOptions>
         </Menu>
       </DetailSection>
