@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { View, ListView, RefreshControl, Text } from 'react-native';
+import { connect } from 'react-redux';
 import Entry from './Entry';
 
 class Entries extends Component {
@@ -15,9 +16,18 @@ class Entries extends Component {
     this.updateDataSource(nextProps.entryRows);
   }
 
+  entryNotBlocked = (entry) => {
+    const { reportedVideos } = this.props;
+    if (entry.type === 'thankYou') {
+      return reportedVideos.thankYous.indexOf(entry.id) === -1;
+    }
+    return reportedVideos.requests.indexOf(entry.id) === -1;
+  }
+
   updateDataSource = (array = this.props.entryRows) => {
+    const filteredArray = array.filter(this.entryNotBlocked);
     const ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
-    this.setState({ dataSource: ds.cloneWithRows(this._genRows(array)) });
+    this.setState({ dataSource: ds.cloneWithRows(this._genRows(filteredArray)) });
   }
 
   _genRows(array) {
@@ -92,4 +102,9 @@ class Entries extends Component {
   }
 }
 
-export default Entries;
+const mapStateToProps = ({ user }) => {
+  const { reportedVideos } = user;
+  return { reportedVideos };
+};
+
+export default connect(mapStateToProps, {})(Entries);
