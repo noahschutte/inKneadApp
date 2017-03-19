@@ -3,6 +3,8 @@ import {
   USER_VERIFIED,
   UPDATE_EMAIL,
   HANDLE_USER_LOGOUT,
+  ADD_REPORTED_REQUEST,
+  ADD_REPORTED_THANK_YOU,
 } from '../actions/types';
 
 const INITIAL_STATE = {
@@ -11,6 +13,7 @@ const INITIAL_STATE = {
   signupEmail: null,
   fb_userID: null,
   userVerified: false,
+  reportedVideos: {}
 };
 
 export default (state = INITIAL_STATE, action) => {
@@ -23,6 +26,10 @@ export default (state = INITIAL_STATE, action) => {
         currentEmail: user.current_email,
         signupEmail: user.signup_email,
         fb_userID: user.fb_userID,
+        reportedVideos: {
+          thankYous: user.reported_thank_yous,
+          requests: user.reported_requests,
+        }
       };
     }
     case USER_VERIFIED: {
@@ -35,6 +42,28 @@ export default (state = INITIAL_STATE, action) => {
       return {
         ...state,
         currentEmail: action.payload,
+      };
+    case ADD_REPORTED_REQUEST:
+      return {
+        ...state,
+        reportedVideos: {
+          thankYous: state.reportedVideos.thankYous,
+          requests: [
+            ...state.reportedVideos.requests,
+            action.payload
+          ]
+        }
+      };
+    case ADD_REPORTED_THANK_YOU:
+      return {
+        ...state,
+        reportedVideos: {
+          requests: state.reportedVideos.requests,
+          thankYous: [
+            ...state.reportedVideos.thankYous,
+            action.payload
+          ]
+        }
       };
     case HANDLE_USER_LOGOUT:
       return INITIAL_STATE;

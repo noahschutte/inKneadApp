@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { View, Alert } from 'react-native';
+import { Alert } from 'react-native';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
-import { confirmDonation, confirmDelete } from '../../actions';
+import { MenuContext } from 'react-native-popup-menu';
+import { confirmDonation, confirmDelete, reportVideo } from '../../actions';
 import EntryVideo from '../EntryVideo';
 import EntryDetails from '../EntryDetails';
 
@@ -122,7 +123,7 @@ class EntryScene extends Component {
     }
 
     return (
-      <View style={styles.container}>
+      <MenuContext style={styles.container}>
         <EntryVideo
           togglePlay={this.togglePlay}
           source={entry.compressedVideo}
@@ -130,14 +131,16 @@ class EntryScene extends Component {
           paused={this.state.paused}
         />
         <EntryDetails
+          userID={userID}
           showUserHistory={showUserHistory}
           entryData={entry}
+          reportVideo={() => this.props.reportVideo(userID, entry)}
           deleteEntry={this.props.deleteEntry}
           navigateToUser={this.navigateToUser}
           onButtonPress={onButtonPress}
           buttonText={buttonText}
         />
-      </View>
+      </MenuContext>
     );
   }
 }
@@ -158,4 +161,4 @@ const styles = {
   },
 };
 
-export default connect(mapStateToProps, { confirmDonation, confirmDelete })(EntryScene);
+export default connect(mapStateToProps, { confirmDonation, confirmDelete, reportVideo })(EntryScene);

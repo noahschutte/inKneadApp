@@ -9,8 +9,11 @@ import {
   REDIRECT,
   UPDATE_USER_HISTORY_ENTRIES,
   UPDATE_TOTAL_DONATED_PIZZAS,
-  DELETE_ENTRY,
+  DELETE_REQUEST,
+  DELETE_THANK_YOU,
   MODIFY_ENTRY,
+  ADD_REPORTED_REQUEST,
+  ADD_REPORTED_THANK_YOU,
 } from './types';
 
 // confirmDonation is invoked when a user commits to donating to a request
@@ -57,7 +60,7 @@ export const confirmDelete = (entryId) => {
       method: 'DELETE',
     })
     .then(() => {
-      dispatch({ type: DELETE_ENTRY, payload: entryId });
+      dispatch({ type: DELETE_REQUEST, payload: entryId });
       Actions.MainScene({ type: 'reset' });
     })
     .catch(err => alert(err));
@@ -104,6 +107,50 @@ export const getUserHistory = (userID) => {
   };
 };
 
+export const reportVideo = (userID, entry) => {
+  return (dispatch) => {
+    let url;
+    if (entry.type === 'thankYou') {
+      url = `https://d1dpbg9jbgrqy5.cloudfront.net/thank_you/${entry.id}`;
+      dispatch({ type: DELETE_THANK_YOU, payload: entry.id });
+      dispatch({ type: ADD_REPORTED_THANK_YOU, payload: entry.id });
+    } else {
+      url = `https://d1dpbg9jbgrqy5.cloudfront.net/requests/${entry.id}`;
+      dispatch({ type: DELETE_REQUEST, payload: entry.id });
+      dispatch({ type: ADD_REPORTED_REQUEST, payload: entry.id });
+    }
+    fetch(url, {
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+      },
+      method: 'PATCH',
+      body: JSON.stringify({ userID, reportVideo: true })
+    })
+    .then(response => {
+      if (response.status === 200) {
+        alert('Video successfully reported');
+      } else {
+        alert('Something went wrong...');
+      }
+    })
+    .catch(err => alert(err));
+  };
+};
+
+export const sideMenuToggle = (isMenuOpen) => {
+  if (isMenuOpen) {
+    return {
+      type: TOGGLE_SIDE_MENU,
+      payload: false
+    };
+  }
+  return {
+    type: TOGGLE_SIDE_MENU,
+    payload: true
+  };
+};
+
 export const sortEntries = (key) => {
   return ({
     type: SHOW_ENTRIES,
@@ -140,17 +187,4 @@ export const toggleScope = (currentScope, userID = null) => {
       shown: 'All'
     }
   });
-};
-
-export const sideMenuToggle = (isMenuOpen) => {
-  if (isMenuOpen) {
-    return {
-      type: TOGGLE_SIDE_MENU,
-      payload: false
-    };
-  }
-  return {
-    type: TOGGLE_SIDE_MENU,
-    payload: true
-  };
 };
