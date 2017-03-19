@@ -131,6 +131,7 @@ class EntryScene extends Component {
           paused={this.state.paused}
         />
         <EntryDetails
+          userID={userID}
           showUserHistory={showUserHistory}
           entryData={entry}
           reportVideo={() => this.props.reportVideo(userID, entry)}

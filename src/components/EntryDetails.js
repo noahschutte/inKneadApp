@@ -9,6 +9,7 @@ import Vendor from './Vendor';
 
 
 const EntryDetails = ({
+  userID,
   entryData,
   navigateToUser,
   onButtonPress,
@@ -72,6 +73,7 @@ const EntryDetails = ({
                 ]
               )}
               text='Report Video'
+              disabled={!userID}
             />
           </MenuOptions>
         </Menu>
