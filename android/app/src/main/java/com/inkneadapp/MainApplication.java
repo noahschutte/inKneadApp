@@ -13,6 +13,7 @@ import com.facebook.soloader.SoLoader;
 import com.facebook.FacebookSdk;
 import com.facebook.appevents.AppEventsLogger;
 import com.facebook.CallbackManager;
+import com.microsoft.codepush.react.CodePush;
 
 import java.util.Arrays;
 import java.util.List;
@@ -43,7 +44,8 @@ public class MainApplication extends Application implements ReactApplication {
           new MainReactPackage(),
           new ReactVideoPackage(),
           new RCTCameraPackage(),
-          new FBSDKPackage(mCallbackManager)
+          new FBSDKPackage(mCallbackManager),
+          new CodePush("l4HlWVGawVzT_bdwOjNjqHFkIzkc41rSYuBjf", MainApplication.this, BuildConfig.DEBUG)
       );
     }
   };
