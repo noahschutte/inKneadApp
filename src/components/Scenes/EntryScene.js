@@ -133,7 +133,7 @@ class EntryScene extends Component {
         <EntryDetails
           showUserHistory={showUserHistory}
           entryData={entry}
-          reportVideo={() => this.props.reportVideo(userID, entry.id)}
+          reportVideo={() => this.props.reportVideo(userID, entry)}
           deleteEntry={this.props.deleteEntry}
           navigateToUser={this.navigateToUser}
           onButtonPress={onButtonPress}
