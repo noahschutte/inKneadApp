@@ -18,24 +18,7 @@ const EntryDetails = ({
   reportVideo
 }) => {
   const { pizzas, vendor, seconds, creatorId } = entryData;
-  let userHistoryButton;
   let bannerText;
-
-  if (showUserHistory) {
-    userHistoryButton = (
-      <Button
-         touchableOpacity
-         buttonStyle={styles.userHistoryButton}
-         onPress={() => navigateToUser(creatorId)}
-      >
-        <Text
-          style={styles.userHistoryText}
-        >
-          User History
-        </Text>
-      </Button>
-    );
-  }
 
   if (entryData.type === 'request') {
     if (entryData.donorId === null) {
@@ -73,7 +56,7 @@ const EntryDetails = ({
                 ]
               )}
               text='Report Video'
-              disabled={!userID}
+              disabled={!userID || userID === entryData.creatorId}
             />
           </MenuOptions>
         </Menu>
