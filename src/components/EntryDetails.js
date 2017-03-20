@@ -34,7 +34,6 @@ const EntryDetails = ({
     <View style={{ flex: 5 }}>
       <DetailSection contentStyle={{ justifyContent: 'space-between' }}>
         <TimeAgo secondsOld={seconds} />
-        {/* {userHistoryButton} */}
         <Menu onSelect={value => value()} style={styles.userHistoryButton}>
           <MenuTrigger text=' ... ' customStyles={{ triggerText: { fontSize: 16, fontWeight: 'bold' } }} />
           <MenuOptions>
