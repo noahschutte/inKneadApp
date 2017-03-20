@@ -17,11 +17,14 @@ class Entries extends Component {
   }
 
   entryNotBlocked = (entry) => {
-    const { reportedVideos } = this.props;
-    if (entry.type === 'thankYou') {
+    const { userID, reportedVideos } = this.props;
+    if (!userID) {
+      return true;
+    } else if (entry.type === 'thankYou') {
       return reportedVideos.thankYous.indexOf(entry.id) === -1;
+    } else {
+      return reportedVideos.requests.indexOf(entry.id) === -1;
     }
-    return reportedVideos.requests.indexOf(entry.id) === -1;
   }
 
   updateDataSource = (array = this.props.entryRows) => {
