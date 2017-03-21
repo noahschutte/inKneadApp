@@ -13,7 +13,10 @@ const INITIAL_STATE = {
   signupEmail: null,
   fb_userID: null,
   userVerified: false,
-  reportedVideos: {}
+  reportedVideos: {
+    thankYous: [],
+    requests: [],
+  }
 };
 
 export default (state = INITIAL_STATE, action) => {
