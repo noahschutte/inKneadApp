@@ -15,6 +15,58 @@ import {
   REDIRECT,
 } from './types';
 
+export const confirmDonationReceived = (successfulRequest) => {
+  return dispatch => {
+    const userID = successfulRequest.creator_id;
+    fetch(`https://d1dpbg9jbgrqy5.cloudfront.net/requests/${successfulRequest.id}`, {
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      method: 'PATCH',
+      body: JSON.stringify({
+        userID,
+        receivedDonation: true,
+      })
+    })
+    .then(response => {
+      if (response.status === 200) {
+        dispatch({ type: CREATE_THANK_YOU_REMINDER, payload: successfulRequest });
+        dispatch({ type: REMOVE_NOTIFICATION, payload: 3 });
+        Actions.EntryCreationScene({ createThankYou: true, entry: successfulRequest });
+      }
+    })
+    .catch(error => {
+      console.error(error);
+    });
+  };
+};
+
+export const createSession = (userInfo, redirect = { scene: 'MainScene', parameter: 'root' }) => {
+  return (dispatch) => {
+    fetch('https://d1dpbg9jbgrqy5.cloudfront.net/users', {
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+      },
+      method: 'POST',
+      body: JSON.stringify({ userInfo })
+    })
+    .then((response) => response.json())
+    .then(responseJson => {
+      dispatch({ type: CREATE_SESSION_SUCCESS, payload: responseJson.user });
+    })
+    .then(() => {
+      dispatch({ type: REDIRECT, payload: redirect });
+    })
+    .catch(error => console.log(error));
+  };
+};
+
+export const removeNotification = (notificationID) => {
+  return ({ type: REMOVE_NOTIFICATION, payload: notificationID });
+};
+
 export const retrieveNotifications = (userID) => {
   return (dispatch) => {
     fetch(`https://d1dpbg9jbgrqy5.cloudfront.net/users/${userID}`, {
@@ -79,58 +131,6 @@ export const retrieveNotifications = (userID) => {
       }
     })
     .catch(error => console.error(error));
-  };
-};
-
-export const removeNotification = (notificationID) => {
-  return ({ type: REMOVE_NOTIFICATION, payload: notificationID });
-};
-
-export const createSession = (userInfo, redirect = { scene: 'MainScene', parameter: 'root' }) => {
-  return (dispatch) => {
-    fetch('https://d1dpbg9jbgrqy5.cloudfront.net/users', {
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json'
-      },
-      method: 'POST',
-      body: JSON.stringify({ userInfo })
-    })
-    .then((response) => response.json())
-    .then(responseJson => {
-      dispatch({ type: CREATE_SESSION_SUCCESS, payload: responseJson.user });
-    })
-    .then(() => {
-      dispatch({ type: REDIRECT, payload: redirect });
-    })
-    .catch(error => console.log(error));
-  };
-};
-
-export const confirmDonationReceived = (successfulRequest) => {
-  return dispatch => {
-    const userID = successfulRequest.creator_id;
-    fetch(`https://d1dpbg9jbgrqy5.cloudfront.net/requests/${successfulRequest.id}`, {
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
-      method: 'PATCH',
-      body: JSON.stringify({
-        userID,
-        receivedDonation: true,
-      })
-    })
-    .then(response => {
-      if (response.status === 200) {
-        dispatch({ type: CREATE_THANK_YOU_REMINDER, payload: successfulRequest });
-        dispatch({ type: REMOVE_NOTIFICATION, payload: 3 });
-        Actions.EntryCreationScene({ createThankYou: true, entry: successfulRequest });
-      }
-    })
-    .catch(error => {
-      console.error(error);
-    });
   };
 };
 
