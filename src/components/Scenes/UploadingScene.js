@@ -6,21 +6,12 @@ import SpinningPizza from '../SpinningPizza';
 class UploadingScene extends Component {
   render() {
     console.log('this.props.uploading: ', this.props.uploading);
-    if (this.props.uploading === true) {
-      return (
-        <View style={styles.containerStyle}>
-          <View style={styles.animationContainer}>
-            <SpinningPizza />
-          </View>
-          <Text style={styles.textStyle}>Uploading your video now...</Text>
-        </View>
-      );
-    }
     return (
-      <View>
-        <Text>
-          Video successfully uploaded!
-        </Text>
+      <View style={styles.containerStyle}>
+        <View style={styles.animationContainer}>
+          <SpinningPizza />
+        </View>
+        <Text style={styles.textStyle}>Uploading your video now...</Text>
       </View>
     );
   }
