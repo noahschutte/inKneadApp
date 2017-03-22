@@ -1,19 +1,51 @@
 import { Actions } from 'react-native-router-flux';
 import {
-  CREATE_SESSION_SUCCESS,
-  NOTIFICATIONS_REFRESHING,
-  INCOMING_PIZZA,
-  CREATE_THANK_YOU_REMINDER,
-  AWAITING_THANK_YOUS,
-  USER_VERIFIED,
   ACTIVE_DONATION_REMINDER,
-  INCOMING_GRATITUDE,
+  AWAITING_THANK_YOUS,
+  BLOCK_USER,
+  CREATE_SESSION_SUCCESS,
+  CREATE_THANK_YOU_REMINDER,
   EMAIL_NOT_VERIFIED,
-  REMOVE_NOTIFICATION,
   HANDLE_USER_LOGOUT,
-  UPDATE_EMAIL,
+  INCOMING_GRATITUDE,
+  INCOMING_PIZZA,
+  NOTIFICATIONS_REFRESHING,
+  REMOVE_NOTIFICATION,
   REDIRECT,
+  UPDATE_EMAIL,
+  USER_VERIFIED,
 } from './types';
+
+export const blockUser = (userID, entry) => {
+  console.log('entry: ', entry);
+  return dispatch => {
+    fetch(`https://d1dpbg9jbgrqy5.cloudfront.net/requests/${entry.id}`, {
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      method: 'PATCH',
+      body: JSON.stringify({
+        blockUser: entry.creatorId,
+        userID,
+      })
+    })
+    .then(response => {
+      if (response.status === 200) {
+        dispatch({ type: BLOCK_USER, payload: entry.creatorId });
+        alert('User successfully blocked');
+        Actions.MainScene();
+      }
+      return response.json();
+    })
+    .then(responseJson => {
+      if (responseJson.errorMessage) {
+        alert(`Something went wrong... \n ${responseJson.errorMessage}`);
+      }
+    })
+    .catch(err => alert(err));
+  };
+};
 
 export const confirmDonationReceived = (successfulRequest) => {
   return dispatch => {

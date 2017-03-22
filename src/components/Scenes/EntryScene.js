@@ -3,7 +3,7 @@ import { Alert } from 'react-native';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
 import { MenuContext } from 'react-native-popup-menu';
-import { confirmDonation, confirmDelete, reportVideo } from '../../actions';
+import { confirmDonation, confirmDelete, reportVideo, blockUser } from '../../actions';
 import EntryVideo from '../EntryVideo';
 import EntryDetails from '../EntryDetails';
 
@@ -135,6 +135,7 @@ class EntryScene extends Component {
           showUserHistory={showUserHistory}
           entryData={entry}
           reportVideo={() => this.props.reportVideo(userID, entry)}
+          blockUser={() => this.props.blockUser(userID, entry)}
           deleteEntry={this.props.deleteEntry}
           navigateToUser={this.navigateToUser}
           onButtonPress={onButtonPress}
@@ -161,4 +162,4 @@ const styles = {
   },
 };
 
-export default connect(mapStateToProps, { confirmDonation, confirmDelete, reportVideo })(EntryScene);
+export default connect(mapStateToProps, { confirmDonation, confirmDelete, reportVideo, blockUser })(EntryScene);

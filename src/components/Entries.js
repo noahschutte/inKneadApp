@@ -17,14 +17,17 @@ class Entries extends Component {
   }
 
   entryNotBlocked = (entry) => {
-    const { userID, reportedVideos } = this.props;
+    console.log('entry here: ', entry);
+    const { userID, blockedVideos, blockedUsers } = this.props;
+    console.log('blockedUsers: ', blockedUsers);
     if (!userID) {
       return true;
+    } else if (blockedUsers.indexOf(entry.creatorId) !== -1) {
+      return false;
     } else if (entry.type === 'thankYou') {
-      return reportedVideos.thankYous.indexOf(entry.id) === -1;
-    } else {
-      return reportedVideos.requests.indexOf(entry.id) === -1;
+      return blockedVideos.thankYous.indexOf(entry.id) === -1;
     }
+    return blockedVideos.requests.indexOf(entry.id) === -1;
   }
 
   updateDataSource = (array = this.props.entryRows) => {
@@ -86,7 +89,7 @@ class Entries extends Component {
             (rowData) => (
               <Entry
                 userEntry={this.props.userID === rowData.creatorId}
-                anonID={this.props.anonID}
+                anonID={this.props.anonID}  // For determining EntryBadge wording, used to determine whether a user was sending or receiving a thank you video, donation, etc.
                 origin={this.props.origin}
                 selectedRequest={rowData}
               />
@@ -106,8 +109,8 @@ class Entries extends Component {
 }
 
 const mapStateToProps = ({ user }) => {
-  const { reportedVideos } = user;
-  return { reportedVideos };
+  const { blockedUsers, blockedVideos, userID } = user;
+  return { blockedUsers, blockedVideos, userID };
 };
 
 export default connect(mapStateToProps, {})(Entries);
