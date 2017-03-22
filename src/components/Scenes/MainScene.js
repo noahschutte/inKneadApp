@@ -101,7 +101,6 @@ class MainScene extends Component {
             onPress={this.props.sortEntries}
           />
           <Entries
-            userID={userID}
             origin='MainScene'
             entryRows={this.getEntryRows()}
             getEntries={() => this.props.getEntries(userID)}

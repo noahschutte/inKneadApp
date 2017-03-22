@@ -42,9 +42,10 @@ export const INCOMING_GRATITUDE = 'view_received_thank_you';
 export const REMOVE_NOTIFICATION = 'remove_notification';
 
 // User constants
-export const CREATE_SESSION_SUCCESS = 'create_session_success';
-export const USER_VERIFIED = 'user_verified';
-export const UPDATE_EMAIL = 'update_email';
 export const ADD_REPORTED_REQUEST = 'add_reported_request';
 export const ADD_REPORTED_THANK_YOU = 'add_reported_thank_you';
+export const BLOCK_USER = 'block_user';
+export const CREATE_SESSION_SUCCESS = 'create_session_success';
 export const HANDLE_USER_LOGOUT = 'handle_user_logout';
+export const UPDATE_EMAIL = 'update_email';
+export const USER_VERIFIED = 'user_verified';

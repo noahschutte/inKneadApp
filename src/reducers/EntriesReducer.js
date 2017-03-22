@@ -1,49 +1,53 @@
 import {
+  DELETE_REQUEST,
+  DELETE_THANK_YOU,
   GET_ENTRIES,
   GET_ENTRIES_SUCCESS,
   GET_USER_ENTRIES,
+  HANDLE_USER_LOGOUT,
+  MODIFY_ENTRY,
   SHOW_ENTRIES,
   TOGGLE_SCOPE,
   TOGGLE_SIDE_MENU,
-  HANDLE_USER_LOGOUT,
-  DELETE_REQUEST,
-  DELETE_THANK_YOU,
-  MODIFY_ENTRY,
-  UPDATE_USER_HISTORY_ENTRIES,
   UPDATE_TOTAL_DONATED_PIZZAS,
+  UPDATE_USER_HISTORY_ENTRIES,
 } from '../actions/types';
 
 const INITIAL_STATE = {
+  blockedVideos: {
+    requests: [],
+    thankYous: [],
+  },
+  loading: true,
+  requests: [],
   scope: 'global',
   shown: 'All',
   sideMenuOpen: false,
-  loading: true,
-  requests: [],
   thankYous: [],
+  totalDonatedPizzas: 0,
   userCreatedRequests: [],
   userCreatedThankYous: [],
   userDonatedRequests: [],
   userDonatedThankYous: [],
   userHistoryEntries: [],
-  totalDonatedPizzas: 0,
 };
 
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case UPDATE_TOTAL_DONATED_PIZZAS:
+    case DELETE_REQUEST: {
+      const requests = [...state.requests.filter(request => request.id !== action.payload)];
       return {
         ...state,
-        totalDonatedPizzas: action.payload,
+        requests,
       };
-    case UPDATE_USER_HISTORY_ENTRIES:
+    }
+    case DELETE_THANK_YOU: {
+      const thankYous = [...state.thankYous.filter(request => request.id !== action.payload)];
       return {
         ...state,
-        userHistoryEntries: [
-          ...action.payload.anonRequests,
-          ...action.payload.anonThankYous,
-        ],
-        loading: false,
+        thankYous,
       };
+    }
     case GET_ENTRIES:
       return {
         ...state,
@@ -69,34 +73,26 @@ export default (state = INITIAL_STATE, action) => {
         userDonatedThankYous,
       };
     }
+    case HANDLE_USER_LOGOUT:
+      return {
+        ...state,
+        scope: 'global',
+        shown: 'All',
+      };
+    case MODIFY_ENTRY: {
+        const newEntry = action.payload;
+        const requests = [...state.requests.filter(request => request.id !== newEntry.id)];
+        requests.push(newEntry);
+        return {
+          ...state,
+          requests,
+        };
+    }
     case SHOW_ENTRIES:
       return {
         ...state,
         shown: action.payload,
       };
-    case DELETE_REQUEST: {
-      const requests = [...state.requests.filter(request => request.id !== action.payload)];
-      return {
-        ...state,
-        requests,
-      };
-    }
-    case DELETE_THANK_YOU: {
-      const thankYous = [...state.thankYous.filter(request => request.id !== action.payload)];
-      return {
-        ...state,
-        thankYous,
-      };
-    }
-    case MODIFY_ENTRY: {
-      const newEntry = action.payload;
-      const requests = [...state.requests.filter(request => request.id !== newEntry.id)];
-      requests.push(newEntry);
-      return {
-        ...state,
-        requests,
-      };
-    }
     case TOGGLE_SCOPE:
       return {
         ...state,
@@ -108,11 +104,19 @@ export default (state = INITIAL_STATE, action) => {
         ...state,
          sideMenuOpen: action.payload
       };
-    case HANDLE_USER_LOGOUT:
+    case UPDATE_TOTAL_DONATED_PIZZAS:
       return {
         ...state,
-        scope: 'global',
-        shown: 'All',
+        totalDonatedPizzas: action.payload,
+      };
+    case UPDATE_USER_HISTORY_ENTRIES:
+      return {
+        ...state,
+        userHistoryEntries: [
+          ...action.payload.anonRequests,
+          ...action.payload.anonThankYous,
+        ],
+        loading: false,
       };
     default:
       return state;

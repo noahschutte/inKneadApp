@@ -15,7 +15,8 @@ const EntryDetails = ({
   onButtonPress,
   buttonText,
   showUserHistory,
-  reportVideo
+  reportVideo,
+  blockUser,
 }) => {
   const { pizzas, vendor, seconds, creatorId } = entryData;
   let bannerText;
@@ -55,6 +56,21 @@ const EntryDetails = ({
                 ]
               )}
               text='Report Video'
+              disabled={!userID || userID === entryData.creatorId}
+            />
+            <MenuOption
+              value={() => Alert.alert(
+                'Block user?',
+                'Doing so will hide all content from this user.',
+                [
+                  { text: 'Nevermind' },
+                  {
+                    text: 'Block',
+                    onPress: blockUser
+                  }
+                ]
+              )}
+              text='Block User'
               disabled={!userID || userID === entryData.creatorId}
             />
           </MenuOptions>
