@@ -3,8 +3,8 @@ import { View, Text } from 'react-native';
 import { connect } from 'react-redux';
 import SpinningPizza from '../SpinningPizza';
 
-const UploadingScene = () => {
-  if (this.props.uploading === true) {
+const UploadingScene = ({ uploading }) => {
+  if (uploading === true) {
     return (
       <View style={styles.containerStyle}>
         <View style={styles.animationContainer}>
