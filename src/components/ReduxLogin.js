@@ -8,7 +8,11 @@ import {
 } from 'react-native-fbsdk';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
-import { createSession, redirectTo, userLogout } from '../actions';
+import {
+  createSession,
+  redirectTo,
+  userLogout
+} from '../actions';
 
 class ReduxLogin extends Component {
   handleLogoutFinished = (error, result) => {
