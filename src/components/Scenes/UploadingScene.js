@@ -5,6 +5,7 @@ import SpinningPizza from '../SpinningPizza';
 
 class UploadingScene extends Component {
   render() {
+    console.log('this.props.uploading: ', this.props.uploading);
     if (this.props.uploading === true) {
       return (
         <View style={styles.containerStyle}>

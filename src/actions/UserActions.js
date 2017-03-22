@@ -33,6 +33,7 @@ export const blockUser = (userID, entry) => {
       if (response.status === 200) {
         dispatch({ type: BLOCK_USER, payload: entry.creatorId });
         alert('User successfully blocked');
+        Actions.root();
         Actions.MainScene();
       } else if (response.status === 400) {
         const json = response.json();

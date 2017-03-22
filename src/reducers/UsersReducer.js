@@ -55,7 +55,6 @@ export default (state = INITIAL_STATE, action) => {
       };
     case CREATE_SESSION_SUCCESS: {
       const user = action.payload;
-      console.log('user: ', user);
       return {
         ...state,
         userID: user.id,

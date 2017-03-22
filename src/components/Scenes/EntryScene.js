@@ -88,14 +88,19 @@ class EntryScene extends Component {
 
   shouldUserBeHere = () => {
     const { requests, thankYous } = this.props.blockedVideos;
-    const { entry } = this.props;
+    const { entry, blockedUsers } = this.props;
     for (const blockedRequest of requests) {
-      if (blockedRequest.id === entry.id && entry.type === 'request') {
+      if (blockedRequest === entry.id && entry.type === 'request') {
         return false;
       }
     }
     for (const blockedThankYou of thankYous) {
-      if (blockedThankYou.id === entry.id && entry.type === 'thankYou') {
+      if (blockedThankYou === entry.id && entry.type === 'thankYou') {
+        return false;
+      }
+    }
+    for (const blockedUser of blockedUsers) {
+      if (blockedUser === entry.creatorId) {
         return false;
       }
     }
@@ -163,13 +168,13 @@ class EntryScene extends Component {
 }
 
 const mapStateToProps = ({ user, notifications }) => {
-  const { userID, blockedVideos } = user;
+  const { userID, blockedUsers, blockedVideos } = user;
   const activeDonationNotifications = notifications.userNotifications.filter(notification => notification.id === 1);
   const redirects = [];
   for (const notification of activeDonationNotifications) {
     redirects.push(notification.redirect);
   }
-  return { blockedVideos, userID, redirects };
+  return { blockedUsers, blockedVideos, userID, redirects };
 };
 
 const styles = {

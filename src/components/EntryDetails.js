@@ -57,7 +57,7 @@ const EntryDetails = ({
                 ]
               )}
               text='Report Video'
-              disabled={!userID || userID === entryData.creatorId || shouldUserBeHere}
+              disabled={!userID || userID === entryData.creatorId || !shouldUserBeHere}
             />
             <MenuOption
               value={() => Alert.alert(
@@ -72,7 +72,7 @@ const EntryDetails = ({
                 ]
               )}
               text='Block User'
-              disabled={!userID || userID === entryData.creatorId || shouldUserBeHere}
+              disabled={!userID || userID === entryData.creatorId || !shouldUserBeHere}
             />
           </MenuOptions>
         </Menu>
