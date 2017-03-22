@@ -16,9 +16,9 @@ import Entries from '../Entries';
 
 class MainScene extends Component {
 
-  componentDidMount() {
-    if (this.props.userID) {
-      this.props.retrieveNotifications(this.props.userID);
+  componentWillReceiveProps(nextProps) {
+    if (!this.props.userID && nextProps.userID) {
+      this.props.retrieveNotifications(nextProps.userID);
     }
   }
 
@@ -81,13 +81,14 @@ class MainScene extends Component {
     const { shown, loading, totalDonatedPizzas } = entries;
     const menu = (
       <ToggleMenu
-        doesHaveNotifications={notifications.userNotifications.length > 0}
+        doesHaveNotifications={notifications.userNotifications.length > 0 && userID}
         userID={userID}
         toggle={this.props.toggleSideMenu}
         totalDonatedPizzas={totalDonatedPizzas}
         retrieveNotifications={this.props.retrieveNotifications.bind(null, userID)}
       />
     );
+    console.log('notifications.userNotifications: ', notifications.userNotifications);
     return (
       <SideMenu
         onChange={this.onChange}
