@@ -86,6 +86,27 @@ class EntryScene extends Component {
     Actions.UserHistoryScene({ userID: this.props.entry.creatorId });
   }
 
+  shouldUserBeHere = () => {
+    const { requests, thankYous } = this.props.blockedVideos;
+    const { entry, blockedUsers } = this.props;
+    for (const blockedRequest of requests) {
+      if (blockedRequest === entry.id && entry.type === 'request') {
+        return false;
+      }
+    }
+    for (const blockedThankYou of thankYous) {
+      if (blockedThankYou === entry.id && entry.type === 'thankYou') {
+        return false;
+      }
+    }
+    for (const blockedUser of blockedUsers) {
+      if (blockedUser === entry.creatorId) {
+        return false;
+      }
+    }
+    return true;
+  }
+
   togglePlay = (toggle) => {
     this.setState({ paused: toggle });
   }
@@ -121,7 +142,6 @@ class EntryScene extends Component {
       onButtonPress = this.onThankYouPress;
       buttonText = this.state.thanksText;
     }
-
     return (
       <MenuContext style={styles.container}>
         <EntryVideo
@@ -131,6 +151,7 @@ class EntryScene extends Component {
           paused={this.state.paused}
         />
         <EntryDetails
+          shouldUserBeHere={this.shouldUserBeHere()}
           userID={userID}
           showUserHistory={showUserHistory}
           entryData={entry}
@@ -147,13 +168,13 @@ class EntryScene extends Component {
 }
 
 const mapStateToProps = ({ user, notifications }) => {
-  const { userID } = user;
+  const { userID, blockedUsers, blockedVideos } = user;
   const activeDonationNotifications = notifications.userNotifications.filter(notification => notification.id === 1);
   const redirects = [];
   for (const notification of activeDonationNotifications) {
     redirects.push(notification.redirect);
   }
-  return { userID, redirects };
+  return { blockedUsers, blockedVideos, userID, redirects };
 };
 
 const styles = {

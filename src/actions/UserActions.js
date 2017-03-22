@@ -17,7 +17,6 @@ import {
 } from './types';
 
 export const blockUser = (userID, entry) => {
-  console.log('entry: ', entry);
   return dispatch => {
     fetch(`https://d1dpbg9jbgrqy5.cloudfront.net/requests/${entry.id}`, {
       headers: {
@@ -34,13 +33,13 @@ export const blockUser = (userID, entry) => {
       if (response.status === 200) {
         dispatch({ type: BLOCK_USER, payload: entry.creatorId });
         alert('User successfully blocked');
+        Actions.root();
         Actions.MainScene();
-      }
-      return response.json();
-    })
-    .then(responseJson => {
-      if (responseJson.errorMessage) {
-        alert(`Something went wrong... \n ${responseJson.errorMessage}`);
+      } else if (response.status === 400) {
+        const json = response.json();
+        alert(`Something went wrong... \n ${json.errorMessage}`);
+      } else {
+        alert('Something went wrong...');
       }
     })
     .catch(err => alert(err));

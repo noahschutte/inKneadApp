@@ -1,6 +1,7 @@
 import {
   UPDATE_SELECTED_PIZZAS,
   UPDATE_SELECTED_VENDOR,
+  UPLOAD_BEGIN,
   UPLOAD_PROGRESS,
   UPLOAD_COMPLETE,
   HANDLE_ERRORS,
@@ -17,6 +18,13 @@ export const updateSelectedVendor = (selectedVendor) => {
   return {
     type: UPDATE_SELECTED_VENDOR,
     payload: selectedVendor,
+  };
+};
+
+export const uploadBegin = () => {
+  return {
+    type: UPLOAD_BEGIN,
+    payload: true,
   };
 };
 

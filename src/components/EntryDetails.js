@@ -17,6 +17,7 @@ const EntryDetails = ({
   showUserHistory,
   reportVideo,
   blockUser,
+  shouldUserBeHere,
 }) => {
   const { pizzas, vendor, seconds, creatorId } = entryData;
   let bannerText;
@@ -56,7 +57,7 @@ const EntryDetails = ({
                 ]
               )}
               text='Report Video'
-              disabled={!userID || userID === entryData.creatorId}
+              disabled={!userID || userID === entryData.creatorId || !shouldUserBeHere}
             />
             <MenuOption
               value={() => Alert.alert(
@@ -71,7 +72,7 @@ const EntryDetails = ({
                 ]
               )}
               text='Block User'
-              disabled={!userID || userID === entryData.creatorId}
+              disabled={!userID || userID === entryData.creatorId || !shouldUserBeHere}
             />
           </MenuOptions>
         </Menu>

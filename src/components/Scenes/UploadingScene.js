@@ -1,17 +1,21 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { View, Text } from 'react-native';
+import { connect } from 'react-redux';
 import SpinningPizza from '../SpinningPizza';
 
-const UploadingScene = () => {
-  return (
-    <View style={styles.containerStyle}>
-      <View style={styles.animationContainer}>
-        <SpinningPizza />
+class UploadingScene extends Component {
+  render() {
+    console.log('this.props.uploading: ', this.props.uploading);
+    return (
+      <View style={styles.containerStyle}>
+        <View style={styles.animationContainer}>
+          <SpinningPizza />
+        </View>
+        <Text style={styles.textStyle}>Uploading your video now...</Text>
       </View>
-      <Text style={styles.textStyle}>Uploading your video now...</Text>
-    </View>
-  );
-};
+    );
+  }
+}
 
 const styles = {
   containerStyle: {
@@ -27,4 +31,9 @@ const styles = {
   }
 };
 
-export default UploadingScene;
+const mapStateToProps = ({ newEntry }) => {
+  const { uploading } = newEntry;
+  return { uploading };
+};
+
+export default connect(mapStateToProps, {})(UploadingScene);
