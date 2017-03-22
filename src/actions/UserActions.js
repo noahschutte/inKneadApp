@@ -17,7 +17,6 @@ import {
 } from './types';
 
 export const blockUser = (userID, entry) => {
-  console.log('entry: ', entry);
   return dispatch => {
     fetch(`https://d1dpbg9jbgrqy5.cloudfront.net/requests/${entry.id}`, {
       headers: {

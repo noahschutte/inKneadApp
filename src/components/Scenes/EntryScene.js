@@ -91,14 +91,15 @@ class EntryScene extends Component {
     const { entry } = this.props;
     for (const blockedRequest of requests) {
       if (blockedRequest.id === entry.id && entry.type === 'request') {
-        Actions.MainScene();
+        return false;
       }
     }
     for (const blockedThankYou of thankYous) {
       if (blockedThankYou.id === entry.id && entry.type === 'thankYou') {
-        Actions.MainScene();
+        return false;
       }
     }
+    return true;
   }
 
   togglePlay = (toggle) => {
@@ -136,7 +137,6 @@ class EntryScene extends Component {
       onButtonPress = this.onThankYouPress;
       buttonText = this.state.thanksText;
     }
-    this.shouldUserBeHere();
     return (
       <MenuContext style={styles.container}>
         <EntryVideo
@@ -146,6 +146,7 @@ class EntryScene extends Component {
           paused={this.state.paused}
         />
         <EntryDetails
+          shouldUserBeHere={this.shouldUserBeHere()}
           userID={userID}
           showUserHistory={showUserHistory}
           entryData={entry}
