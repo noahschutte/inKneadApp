@@ -48,7 +48,7 @@ const RouterComponent = () => {
           component={Scenes.EmailVerifyScene}
         />
         <Scene
-          hideNavBar
+          navBarProps={NavProps.uploadingScene}
           sceneStyle={sceneStyle}
           key="UploadingScene"
           component={Scenes.UploadingScene}

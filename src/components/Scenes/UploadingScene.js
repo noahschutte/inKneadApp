@@ -1,27 +1,29 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { View, Text } from 'react-native';
 import { connect } from 'react-redux';
 import SpinningPizza from '../SpinningPizza';
 
-const UploadingScene = ({ uploading }) => {
-  if (uploading === true) {
-    return (
-      <View style={styles.containerStyle}>
-        <View style={styles.animationContainer}>
-          <SpinningPizza />
+class UploadingScene extends Component {
+  render() {
+    if (this.props.uploading === true) {
+      return (
+        <View style={styles.containerStyle}>
+          <View style={styles.animationContainer}>
+            <SpinningPizza />
+          </View>
+          <Text style={styles.textStyle}>Uploading your video now...</Text>
         </View>
-        <Text style={styles.textStyle}>Uploading your video now...</Text>
+      );
+    }
+    return (
+      <View>
+        <Text>
+          Video successfully uploaded!
+        </Text>
       </View>
     );
   }
-  return (
-    <View>
-      <Text>
-        Video successfully uploaded!
-      </Text>
-    </View>
-  );
-};
+}
 
 const styles = {
   containerStyle: {

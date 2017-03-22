@@ -38,3 +38,10 @@ export const notificationsScene = {
   leftButton: 'backButton',
   rightButton: 'retrieveNotifications',
 };
+
+export const uploadingScene = {
+  leftButton: 'backButton',
+  redirect: {
+    scene: 'MainScene',
+  },
+};
