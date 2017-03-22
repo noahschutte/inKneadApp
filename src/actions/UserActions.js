@@ -35,12 +35,11 @@ export const blockUser = (userID, entry) => {
         dispatch({ type: BLOCK_USER, payload: entry.creatorId });
         alert('User successfully blocked');
         Actions.MainScene();
-      }
-      return response.json();
-    })
-    .then(responseJson => {
-      if (responseJson.errorMessage) {
-        alert(`Something went wrong... \n ${responseJson.errorMessage}`);
+      } else if (response.status === 400) {
+        const json = response.json();
+        alert(`Something went wrong... \n ${json.errorMessage}`);
+      } else {
+        alert('Something went wrong...');
       }
     })
     .catch(err => alert(err));

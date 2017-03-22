@@ -1,14 +1,24 @@
 import React from 'react';
 import { View, Text } from 'react-native';
+import { connect } from 'react-redux';
 import SpinningPizza from '../SpinningPizza';
 
 const UploadingScene = () => {
-  return (
-    <View style={styles.containerStyle}>
-      <View style={styles.animationContainer}>
-        <SpinningPizza />
+  if (this.props.uploading === true) {
+    return (
+      <View style={styles.containerStyle}>
+        <View style={styles.animationContainer}>
+          <SpinningPizza />
+        </View>
+        <Text style={styles.textStyle}>Uploading your video now...</Text>
       </View>
-      <Text style={styles.textStyle}>Uploading your video now...</Text>
+    );
+  }
+  return (
+    <View>
+      <Text>
+        Video successfully uploaded!
+      </Text>
     </View>
   );
 };
@@ -27,4 +37,9 @@ const styles = {
   }
 };
 
-export default UploadingScene;
+const mapStateToProps = ({ newEntry }) => {
+  const { uploading } = newEntry;
+  return { uploading };
+};
+
+export default connect(mapStateToProps, {})(UploadingScene);

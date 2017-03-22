@@ -17,9 +17,7 @@ class Entries extends Component {
   }
 
   entryNotBlocked = (entry) => {
-    console.log('entry here: ', entry);
     const { userID, blockedVideos, blockedUsers } = this.props;
-    console.log('blockedUsers: ', blockedUsers);
     if (!userID) {
       return true;
     } else if (blockedUsers.indexOf(entry.creatorId) !== -1) {

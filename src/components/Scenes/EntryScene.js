@@ -86,6 +86,21 @@ class EntryScene extends Component {
     Actions.UserHistoryScene({ userID: this.props.entry.creatorId });
   }
 
+  shouldUserBeHere = () => {
+    const { requests, thankYous } = this.props.blockedVideos;
+    const { entry } = this.props;
+    for (const blockedRequest of requests) {
+      if (blockedRequest.id === entry.id && entry.type === 'request') {
+        Actions.MainScene();
+      }
+    }
+    for (const blockedThankYou of thankYous) {
+      if (blockedThankYou.id === entry.id && entry.type === 'thankYou') {
+        Actions.MainScene();
+      }
+    }
+  }
+
   togglePlay = (toggle) => {
     this.setState({ paused: toggle });
   }
@@ -121,7 +136,7 @@ class EntryScene extends Component {
       onButtonPress = this.onThankYouPress;
       buttonText = this.state.thanksText;
     }
-
+    this.shouldUserBeHere();
     return (
       <MenuContext style={styles.container}>
         <EntryVideo
@@ -147,13 +162,13 @@ class EntryScene extends Component {
 }
 
 const mapStateToProps = ({ user, notifications }) => {
-  const { userID } = user;
+  const { userID, blockedVideos } = user;
   const activeDonationNotifications = notifications.userNotifications.filter(notification => notification.id === 1);
   const redirects = [];
   for (const notification of activeDonationNotifications) {
     redirects.push(notification.redirect);
   }
-  return { userID, redirects };
+  return { blockedVideos, userID, redirects };
 };
 
 const styles = {

@@ -1,6 +1,7 @@
 import {
   UPDATE_SELECTED_PIZZAS,
   UPDATE_SELECTED_VENDOR,
+  UPLOAD_BEGIN,
   UPLOAD_PROGRESS,
   UPLOAD_COMPLETE,
   HANDLE_ERRORS,
@@ -27,13 +28,25 @@ export default (state = INITIAL_STATE, action) => {
         ...state,
         vendor: action.payload
       };
+    case UPLOAD_BEGIN:
+      return {
+        ...state,
+        uploading: action.payload
+      };
     case UPLOAD_PROGRESS:
       return {
         ...state,
         uploadPercentage: action.payload
       };
     case UPLOAD_COMPLETE:
-      return INITIAL_STATE;
+      return {
+        pizzas: 0,
+        vendor: '',
+        videoKey: '',
+        uploading: 'complete',
+        uploadPercentage: 0,
+        errorMessages: [],
+      };
     case HANDLE_ERRORS:
       return {
         ...state,
