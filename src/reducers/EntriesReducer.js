@@ -14,10 +14,6 @@ import {
 } from '../actions/types';
 
 const INITIAL_STATE = {
-  reportedVideos: {
-    requests: [],
-    thankYous: [],
-  },
   loading: true,
   requests: [],
   scope: 'global',

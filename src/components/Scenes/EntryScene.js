@@ -87,7 +87,7 @@ class EntryScene extends Component {
   }
 
   shouldUserBeHere = () => {
-    const { requests, thankYous } = this.props.reportedVideos;
+    const { requests, thankYous } = this.props.blockedVideos;
     const { entry, blockedUsers } = this.props;
     for (const blockedRequest of requests) {
       if (blockedRequest === entry.id && entry.type === 'request') {
@@ -168,13 +168,13 @@ class EntryScene extends Component {
 }
 
 const mapStateToProps = ({ user, notifications }) => {
-  const { userID, blockedUsers, reportedVideos } = user;
+  const { userID, blockedUsers, blockedVideos } = user;
   const activeDonationNotifications = notifications.userNotifications.filter(notification => notification.id === 1);
   const redirects = [];
   for (const notification of activeDonationNotifications) {
     redirects.push(notification.redirect);
   }
-  return { blockedUsers, reportedVideos, userID, redirects };
+  return { blockedUsers, blockedVideos, userID, redirects };
 };
 
 const styles = {
