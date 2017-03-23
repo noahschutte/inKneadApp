@@ -5,6 +5,17 @@ const TimeAgo = ({ secondsOld }) => {
   let time;
   let ago;
   /* eslint no-multi-spaces: off */
+  if (secondsOld === 1) {
+    ago = 'seconds';
+  } else if (secondsOld === 60) {
+    ago = 'minutes';
+  } else if (secondsOld === 3600) {
+    ago = 'hours';
+  } else if (secondsOld === 86400) {
+    ago = 'days';
+  } else if (secondsOld === 604800) {
+    ago = 'weeks';
+  }
   if (secondsOld === 1     ||
       secondsOld === 60    ||
       secondsOld === 3600  ||
