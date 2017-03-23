@@ -1,5 +1,6 @@
 import { Actions } from 'react-native-router-flux';
 import {
+  ACTIVE_DONATION_REMINDER,
   ADD_REPORTED_REQUEST,
   ADD_REPORTED_THANK_YOU,
   DELETE_REQUEST,
@@ -60,6 +61,13 @@ export const confirmDonation = (donatorId, entry) => {
               entry: responseJson.request,
             }
           }
+        });
+        dispatch({
+          type: ACTIVE_DONATION_REMINDER,
+          payload: {
+            entry,
+            recipientEmail: anonEmail,
+          },
         });
       }
     })
