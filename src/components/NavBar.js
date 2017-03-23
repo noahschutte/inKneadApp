@@ -18,6 +18,7 @@ import {
   newRequestButton
 } from '../assets';
 import Button from './Button2';
+import NotificationAlert from './NotificationAlert';
 
 class NavBar extends Component {
 
@@ -92,6 +93,16 @@ class NavBar extends Component {
             source={menuButton}
           />
         );
+        if (this.props.doesHaveNotifications) {
+          result = (
+            <Image
+              style={styles.leftButtonStyle}
+              source={menuButton}
+            >
+              <NotificationAlert alertStyle={styles.alertStyle} />
+            </Image>
+          );
+        }
         onPress = () => this.props.toggleSideMenu(sideMenuOpen);
         break;
       default:
@@ -197,14 +208,24 @@ const styles = {
     resizeMode: 'contain',
     height: 30,
     width: null,
+  },
+  alertStyle: {
+    backgroundColor: '#43cece',
+    width: 20,
+    height: 20,
+    borderRadius: 20 / 2,
+    position: 'relative',
+    top: 11,
+    left: 11,
   }
 };
 
-const mapStateToProps = ({ entries, user, nav }) => {
+const mapStateToProps = ({ entries, user, nav, notifications }) => {
   const { scope } = entries;
   const { userID } = user;
   const { sideMenuOpen } = nav;
-  return { scope, userID, sideMenuOpen };
+  const doesHaveNotifications = (notifications.userNotifications.length > 0 && userID);
+  return { scope, userID, sideMenuOpen, doesHaveNotifications };
 };
 
 export default connect(mapStateToProps, { toggleScope, redirectTo, toggleSideMenu, retrieveNotifications })(NavBar);

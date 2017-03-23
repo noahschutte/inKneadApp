@@ -16,6 +16,12 @@ import Entries from '../Entries';
 
 class MainScene extends Component {
 
+  componentDidMount() {
+    if (this.props.userID) {
+      this.props.retrieveNotifications(this.props.userID);
+    }
+  }
+
   componentWillReceiveProps(nextProps) {
     if (!this.props.userID && nextProps.userID) {
       this.props.retrieveNotifications(nextProps.userID);
@@ -80,11 +86,11 @@ class MainScene extends Component {
 
 
   render() {
-    const { userID, entries, sideMenuOpen, notifications } = this.props;
+    const { userID, entries, sideMenuOpen, doesHaveNotifications } = this.props;
     const { shown, loading, totalDonatedPizzas } = entries;
     const menu = (
       <ToggleMenu
-        doesHaveNotifications={notifications.userNotifications.length > 0 && userID}
+        doesHaveNotifications={doesHaveNotifications}
         userID={userID}
         toggle={this.props.toggleSideMenu}
         totalDonatedPizzas={totalDonatedPizzas}
@@ -118,7 +124,8 @@ class MainScene extends Component {
 const mapStateToProps = ({ entries, user, nav, notifications }) => {
   const { userID, logOut } = user;
   const { sideMenuOpen } = nav;
-  return { entries, userID, notifications, logOut, sideMenuOpen };
+  const doesHaveNotifications = (notifications.userNotifications.length > 0 && userID);
+  return { entries, userID, doesHaveNotifications, logOut, sideMenuOpen };
 };
 
 export default connect(mapStateToProps, {
