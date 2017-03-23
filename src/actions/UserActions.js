@@ -130,7 +130,10 @@ export const retrieveNotifications = (userID) => {
         for (const recentDonation of recentDonations) {
           dispatch({
             type: ACTIVE_DONATION_REMINDER,
-            payload: recentDonation,
+            payload: {
+              entry: recentDonation,
+              recipientEmail: recentDonation.anonEmail,
+            },
           });
         }
       }

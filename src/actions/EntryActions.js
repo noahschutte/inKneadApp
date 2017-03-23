@@ -1,20 +1,38 @@
 import { Actions } from 'react-native-router-flux';
 import {
+  ACTIVE_DONATION_REMINDER,
+  ADD_REPORTED_REQUEST,
+  ADD_REPORTED_THANK_YOU,
+  DELETE_REQUEST,
+  DELETE_THANK_YOU,
   GET_ENTRIES,
   GET_ENTRIES_SUCCESS,
   GET_USER_ENTRIES,
-  TOGGLE_SCOPE,
-  SHOW_ENTRIES,
-  TOGGLE_SIDE_MENU,
+  MODIFY_ENTRY,
   REDIRECT,
+  SHOW_ENTRIES,
+  TOGGLE_SCOPE,
+  TOGGLE_SIDE_MENU,
   UPDATE_USER_HISTORY_ENTRIES,
   UPDATE_TOTAL_DONATED_PIZZAS,
-  DELETE_REQUEST,
-  DELETE_THANK_YOU,
-  MODIFY_ENTRY,
-  ADD_REPORTED_REQUEST,
-  ADD_REPORTED_THANK_YOU,
 } from './types';
+
+export const confirmDelete = (entryId) => {
+  return (dispatch) => {
+    fetch(`https://d1dpbg9jbgrqy5.cloudfront.net/requests/${entryId}`, {
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+      },
+      method: 'DELETE',
+    })
+    .then(() => {
+      dispatch({ type: DELETE_REQUEST, payload: entryId });
+      Actions.MainScene({ type: 'reset' });
+    })
+    .catch(err => alert(err));
+  };
+};
 
 // confirmDonation is invoked when a user commits to donating to a request
 export const confirmDonation = (donatorId, entry) => {
@@ -44,26 +62,16 @@ export const confirmDonation = (donatorId, entry) => {
             }
           }
         });
+        dispatch({
+          type: ACTIVE_DONATION_REMINDER,
+          payload: {
+            entry,
+            recipientEmail: anonEmail,
+          },
+        });
       }
     })
     .catch(error => console.error(error));
-  };
-};
-
-export const confirmDelete = (entryId) => {
-  return (dispatch) => {
-    fetch(`https://d1dpbg9jbgrqy5.cloudfront.net/requests/${entryId}`, {
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json'
-      },
-      method: 'DELETE',
-    })
-    .then(() => {
-      dispatch({ type: DELETE_REQUEST, payload: entryId });
-      Actions.MainScene({ type: 'reset' });
-    })
-    .catch(err => alert(err));
   };
 };
 

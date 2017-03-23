@@ -79,8 +79,8 @@ export default (state = INITIAL_STATE, action) => {
             redirect: {
               scene: 'InstructionsScene',
               parameter: {
-                recipientEmail: action.payload.anonEmail,
-                entry: action.payload,
+                recipientEmail: action.payload.recipientEmail,
+                entry: action.payload.entry,
               },
             },
           },

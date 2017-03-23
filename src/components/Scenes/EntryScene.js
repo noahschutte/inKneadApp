@@ -142,6 +142,7 @@ class EntryScene extends Component {
       onButtonPress = this.onThankYouPress;
       buttonText = this.state.thanksText;
     }
+    console.log('redirects: ', this.props.redirects);
     return (
       <MenuContext style={styles.container}>
         <EntryVideo
@@ -170,6 +171,8 @@ class EntryScene extends Component {
 const mapStateToProps = ({ user, notifications }) => {
   const { userID, blockedUsers, blockedVideos } = user;
   const activeDonationNotifications = notifications.userNotifications.filter(notification => notification.id === 1);
+  console.log(activeDonationNotifications);
+  console.log('notifications.userNotifications: ', notifications.userNotifications);
   const redirects = [];
   for (const notification of activeDonationNotifications) {
     redirects.push(notification.redirect);
