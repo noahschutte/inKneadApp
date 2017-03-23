@@ -1,9 +1,9 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 
-const NotificationAlert = () => {
+const NotificationAlert = ({ alertStyle }) => {
   return (
-    <View style={styles.notificationAlertStyle}>
+    <View style={[styles.notificationAlertStyle, alertStyle]}>
       <Text style={styles.textStyle}>!</Text>
     </View>
   );
