@@ -10,6 +10,7 @@ class EmailVerifyScene extends Component {
 
   state = {
     newEmailText: '',
+    validEmail: false,
   };
 
   onPress = () => {
@@ -23,6 +24,8 @@ class EmailVerifyScene extends Component {
 
   updateEmailText = (newEmailText) => {
     this.setState({ newEmailText });
+    const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    this.setState({ validEmail: emailRegex.test(newEmailText) });
   }
 
   render() {
@@ -70,8 +73,8 @@ class EmailVerifyScene extends Component {
             </Button>
             <Button
               touchableOpacity
-              onPress={this.onPress}
-              buttonStyle={{ backgroundColor: '#ce0000' }}
+              onPress={this.state.validEmail ? this.onPress : () => alert('Please enter a valid email')}
+              buttonStyle={this.state.validEmail ? styles.submitStyle : styles.inactiveStyle}
             >
               <Text style={styles.buttonStyle}>Update</Text>
             </Button>
@@ -104,6 +107,13 @@ const styles = {
     fontWeight: 'bold',
     color: 'white',
     margin: 10,
+  },
+  submitStyle: {
+    backgroundColor: '#ce0000'
+  },
+  inactiveStyle: {
+    backgroundColor: '#cecece',
+    borderColor: '#cecece',
   }
 };
 
