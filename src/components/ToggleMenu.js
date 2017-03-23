@@ -3,22 +3,13 @@ import { View, Text, Image } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import { defaultProfileImage } from '../assets';
 import SideMenuButton from './SideMenuButton';
+import NotificationAlert from './NotificationAlert';
 
 const ToggleMenu = (props) => {
   const onPress = (action) => {
     action();
     props.toggle(true);
   };
-
-  let notificationAlert;
-  if (props.doesHaveNotifications) {
-    notificationAlert = (
-      <View style={styles.notificationAlertStyle}>
-        <Text style={styles.textStyle}>!</Text>
-      </View>
-    );
-  }
-
   const notificationsScene = () => {
     props.retrieveNotifications();
     Actions.NotificationsScene();
@@ -44,7 +35,7 @@ const ToggleMenu = (props) => {
       >
         <View style={styles.notificationStyle}>
           <Text style={styles.textStyle}>Notifications </Text>
-          {notificationAlert}
+          <NotificationAlert />
         </View>
       </SideMenuButton>
 
@@ -90,14 +81,6 @@ const styles = {
   notificationStyle: {
     flexDirection: 'row',
     justifyContent: 'center',
-  },
-  notificationAlertStyle: {
-    width: 25,
-    borderRadius: 25 / 2,
-    backgroundColor: 'red',
-    borderWidth: 1,
-    borderColor: 'red',
-    overflow: 'hidden',
   },
 };
 
