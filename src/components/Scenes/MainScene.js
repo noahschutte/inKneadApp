@@ -16,6 +16,12 @@ import Entries from '../Entries';
 
 class MainScene extends Component {
 
+  componentDidMount() {
+    if (this.props.userID) {
+      this.props.retrieveNotifications(this.props.userID);
+    }
+  }
+
   componentWillReceiveProps(nextProps) {
     if (!this.props.userID && nextProps.userID) {
       this.props.retrieveNotifications(nextProps.userID);
