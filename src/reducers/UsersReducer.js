@@ -15,7 +15,7 @@ const INITIAL_STATE = {
   fb_userID: null,
   userVerified: false,
   blockedUsers: [],
-  blockedVideos: {
+  reportedVideos: {
     thankYous: [],
     requests: [],
   }
@@ -62,7 +62,7 @@ export default (state = INITIAL_STATE, action) => {
         signupEmail: user.signup_email,
         fb_userID: user.fb_userID,
         blockedUsers: user.blocked,
-        blockedVideos: {
+        reportedVideos: {
           thankYous: user.reported_thank_yous,
           requests: user.reported_requests,
         }
