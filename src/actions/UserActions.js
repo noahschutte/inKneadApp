@@ -34,7 +34,7 @@ export const blockUser = (userID, entry) => {
         dispatch({ type: BLOCK_USER, payload: entry.creatorId });
         alert('User successfully blocked');
         Actions.root();
-        Actions.MainScene();
+        Actions.MainScene({ refreshEntries: true });
       } else if (response.status === 400) {
         const json = response.json();
         alert(`Something went wrong... \n ${json.errorMessage}`);

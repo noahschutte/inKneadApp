@@ -129,7 +129,7 @@ export const reportVideo = (userID, entry) => {
     })
     .then(response => {
       if (response.status === 200) {
-        Actions.MainScene();
+        Actions.MainScene({ refreshEntries: true });
         alert('Video successfully reported');
       } else {
         alert('Something went wrong...');
