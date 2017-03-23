@@ -17,15 +17,15 @@ class Entries extends Component {
   }
 
   entryNotBlocked = (entry) => {
-    const { userID, blockedVideos, blockedUsers } = this.props;
+    const { userID, reportedVideos, blockedUsers } = this.props;
     if (!userID) {
       return true;
     } else if (blockedUsers.indexOf(entry.creatorId) !== -1) {
       return false;
     } else if (entry.type === 'thankYou') {
-      return blockedVideos.thankYous.indexOf(entry.id) === -1;
+      return reportedVideos.thankYous.indexOf(entry.id) === -1;
     }
-    return blockedVideos.requests.indexOf(entry.id) === -1;
+    return reportedVideos.requests.indexOf(entry.id) === -1;
   }
 
   updateDataSource = (array = this.props.entryRows) => {
@@ -107,8 +107,8 @@ class Entries extends Component {
 }
 
 const mapStateToProps = ({ user }) => {
-  const { blockedUsers, blockedVideos, userID } = user;
-  return { blockedUsers, blockedVideos, userID };
+  const { blockedUsers, reportedVideos, userID } = user;
+  return { blockedUsers, reportedVideos, userID };
 };
 
 export default connect(mapStateToProps, {})(Entries);
