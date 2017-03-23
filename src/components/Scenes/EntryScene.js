@@ -87,7 +87,7 @@ class EntryScene extends Component {
   }
 
   shouldUserBeHere = () => {
-    const { requests, thankYous } = this.props.blockedVideos;
+    const { requests, thankYous } = this.props.reportedVideos;
     const { entry, blockedUsers } = this.props;
     for (const blockedRequest of requests) {
       if (blockedRequest === entry.id && entry.type === 'request') {
@@ -116,7 +116,7 @@ class EntryScene extends Component {
 
     // showUserHistory: a boolean that determines whether to show a  link to the history
     // of this entry's creator, depending on how you reached this particular entry.
-    const showUserHistory = (this.props.origin === 'MainScene');
+    const showUserHistory = (this.props.origin !== 'UserHistoryScene');
 
     // ownEntry: a boolean that determines whether the user viewing this entry
     // is the user that created the entry.
@@ -168,13 +168,13 @@ class EntryScene extends Component {
 }
 
 const mapStateToProps = ({ user, notifications }) => {
-  const { userID, blockedUsers, blockedVideos } = user;
+  const { userID, blockedUsers, reportedVideos } = user;
   const activeDonationNotifications = notifications.userNotifications.filter(notification => notification.id === 1);
   const redirects = [];
   for (const notification of activeDonationNotifications) {
     redirects.push(notification.redirect);
   }
-  return { blockedUsers, blockedVideos, userID, redirects };
+  return { blockedUsers, reportedVideos, userID, redirects };
 };
 
 const styles = {
