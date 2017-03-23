@@ -20,6 +20,9 @@ class MainScene extends Component {
     if (!this.props.userID && nextProps.userID) {
       this.props.retrieveNotifications(nextProps.userID);
     }
+    if (!this.props.refreshEntries && nextProps.refreshEntries) {
+      this.props.getEntries(nextProps.userID);
+    }
   }
 
   onChange = (isOpen) => {

@@ -20,7 +20,8 @@ class ReduxLogin extends Component {
       alert(`Logout failed with error: ${result.error}`);
     } else {
       this.props.userLogout();
-      Actions.refresh({ key: 'MainScene' });
+      Actions.root();
+      Actions.refresh({ key: 'MainScene', refreshEntries: true });
     }
   }
   handleLoginFinished = (error, result) => {
