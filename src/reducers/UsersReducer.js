@@ -15,7 +15,7 @@ const INITIAL_STATE = {
   fb_userID: null,
   userVerified: false,
   blockedUsers: [],
-  reportedVideos: {
+  blockedVideos: {
     thankYous: [],
     requests: [],
   }
@@ -26,10 +26,10 @@ export default (state = INITIAL_STATE, action) => {
     case ADD_REPORTED_REQUEST:
       return {
         ...state,
-        reportedVideos: {
-          thankYous: state.reportedVideos.thankYous,
+        blockedVideos: {
+          thankYous: state.blockedVideos.thankYous,
           requests: [
-            ...state.reportedVideos.requests,
+            ...state.blockedVideos.requests,
             action.payload
           ]
         }
@@ -37,10 +37,10 @@ export default (state = INITIAL_STATE, action) => {
     case ADD_REPORTED_THANK_YOU:
       return {
         ...state,
-        reportedVideos: {
-          requests: state.reportedVideos.requests,
+        blockedVideos: {
+          requests: state.blockedVideos.requests,
           thankYous: [
-            ...state.reportedVideos.thankYous,
+            ...state.blockedVideos.thankYous,
             action.payload
           ]
         }
@@ -62,7 +62,7 @@ export default (state = INITIAL_STATE, action) => {
         signupEmail: user.signup_email,
         fb_userID: user.fb_userID,
         blockedUsers: user.blocked,
-        reportedVideos: {
+        blockedVideos: {
           thankYous: user.reported_thank_yous,
           requests: user.reported_requests,
         }
