@@ -24,6 +24,7 @@ class EmailVerifyScene extends Component {
 
   updateEmailText = (newEmailText) => {
     this.setState({ newEmailText });
+    /* eslint no-useless-escape: off */
     const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     this.setState({ validEmail: emailRegex.test(newEmailText) });
   }
