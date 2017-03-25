@@ -45,7 +45,7 @@ class EmailVerifyScene extends Component {
     );
     if (Platform.OS !== 'android') {
       textInput = (
-        <View style={{ height: 25 }}>
+        <View style={styles.iOSTextInputWrapper}>
           {textInput}
         </View>
       );
@@ -98,8 +98,12 @@ const styles = {
   },
   iOSTextInput: {
     flex: 1,
-    width: 150,
+    width: 300,
     textAlign: 'center',
+  },
+  iOSTextInputWrapper: {
+    height: 25,
+    borderBottomWidth: 1,
   },
   buttonSectionStyle: {
     flex: 4,
