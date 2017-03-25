@@ -35,7 +35,7 @@ const ToggleMenu = (props) => {
       >
         <View style={styles.notificationStyle}>
           <Text style={styles.textStyle}>Notifications </Text>
-          <NotificationAlert />
+          {props.doesHaveNotifications ? <NotificationAlert /> : null}
         </View>
       </SideMenuButton>
 
