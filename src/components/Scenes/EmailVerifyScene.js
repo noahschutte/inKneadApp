@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, TextInput, Platform } from 'react-native';
+import { View, Text, TextInput, Platform, Dimensions } from 'react-native';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
 import { updateEmail } from '../../actions';
@@ -43,15 +43,19 @@ class EmailVerifyScene extends Component {
         style={Platform.OS === 'android' ? styles.androidTextInput : styles.iOSTextInput}
       />
     );
+    let iOSContainer;
     if (Platform.OS !== 'android') {
       textInput = (
         <View style={styles.iOSTextInputWrapper}>
           {textInput}
         </View>
       );
+      iOSContainer = {
+        marginBottom: Dimensions.get('window').height / 3,
+      };
     }
     return (
-      <View style={{ flex: 1 }}>
+      <View style={[{ flex: 1 }, iOSContainer]}>
 
         <DetailSection style={{ flex: 3, marginTop: 15 }} bannerText='Current Email'>
           <Text>{currentEmail}</Text>
