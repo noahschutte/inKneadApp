@@ -14,6 +14,10 @@ class EntryScene extends Component {
   };
 
   onDonatePress = () => {
+    if (!this.shouldUserBeHere()) {
+      Actions.MainScene();
+      return;
+    }
     this.setState({ paused: true });
     const { userID, entry } = this.props;
     // Direct user to log in if not logged in already
