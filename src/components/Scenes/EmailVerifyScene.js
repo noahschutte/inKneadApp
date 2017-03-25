@@ -24,6 +24,7 @@ class EmailVerifyScene extends Component {
 
   updateEmailText = (newEmailText) => {
     this.setState({ newEmailText });
+    /* eslint no-useless-escape: off */
     const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     this.setState({ validEmail: emailRegex.test(newEmailText) });
   }
@@ -44,7 +45,7 @@ class EmailVerifyScene extends Component {
     );
     if (Platform.OS !== 'android') {
       textInput = (
-        <View style={{ height: 25 }}>
+        <View style={styles.iOSTextInputWrapper}>
           {textInput}
         </View>
       );
@@ -97,8 +98,12 @@ const styles = {
   },
   iOSTextInput: {
     flex: 1,
-    width: 150,
+    width: 300,
     textAlign: 'center',
+  },
+  iOSTextInputWrapper: {
+    height: 25,
+    borderBottomWidth: 1,
   },
   buttonSectionStyle: {
     flex: 4,
