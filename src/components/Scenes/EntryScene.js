@@ -27,7 +27,7 @@ class EntryScene extends Component {
     } else {
       Alert.alert(
         `Are you sure you want to donate ${entry.pizzas} pizza(s)?`,
-        'You will have 30 minutes to send an online gift card',
+        'You will have 30 minutes to send an online gift card. We do not take any payments on our application. The gift card will be purchased directly from a pizza vendor\'s website. You can make that purchase from your phone or on a computer.',
         [
           {
             text: 'Cancel',
