@@ -26,9 +26,15 @@ export const confirmDelete = (entryId) => {
       },
       method: 'DELETE',
     })
-    .then(() => {
-      dispatch({ type: DELETE_REQUEST, payload: entryId });
+    .then(response => {
+      if (response.status === 200) {
+        dispatch({ type: DELETE_REQUEST, payload: entryId });
+      }
+      return response.json();
+    })
+    .then((responseJson) => {
       Actions.MainScene({ type: 'reset' });
+      alert(responseJson.errorMessage);
     })
     .catch(err => alert(err));
   };
