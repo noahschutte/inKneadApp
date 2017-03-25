@@ -203,12 +203,12 @@ export const updateEmail = (updatedEmail, userID, redirect = null) => {
 export const userLogout = () => {
   const redirectToMainScene = new Promise((resolve) => {
     Actions.root({ type: 'reset' });
-    Actions.MainScene({ refreshEntries: true });
     resolve([]);
   });
   return dispatch => {
     redirectToMainScene.then((payload) => {
       dispatch({ type: HANDLE_USER_LOGOUT, payload });
+      Actions.refresh({ key: 'MainScene', refreshEntries: true });
     })
     .catch(err => console.log(err));
   };
