@@ -226,11 +226,11 @@ class EntryCreationScene extends Component {
     }
     if (errorMessages.length === 0) {
       Alert.alert(
-        'Please review our terms of use',
-        '1. Don\'t be a dick!',
+        'Do you agree to the terms and conditions of the End User License Agreement?',
+        'Read the agreement here:\nwww.inknead.pizza/eula',
         [
           { text: 'Cancel' },
-          { text: 'Accept',
+          { text: 'I Agree',
             onPress: this.dispatchRequest
           },
         ],
@@ -255,11 +255,11 @@ class EntryCreationScene extends Component {
     }
     if (errorMessages.length === 0) {
       Alert.alert(
-        'Please review our terms of use',
-        '1. Don\'t be a dick!',
+        'Do you agree to the terms and conditions of the End User License Agreement?',
+        'Read the agreement here:\nwww.inknead.pizza/eula',
         [
           { text: 'Cancel' },
-          { text: 'Accept',
+          { text: 'I Agree',
             onPress: this.dispatchThankYou
           },
         ],
