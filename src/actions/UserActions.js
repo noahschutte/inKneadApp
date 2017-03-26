@@ -88,40 +88,45 @@ export const createSession = (userInfo, redirect = { scene: 'MainScene', paramet
     .then(responseJson => {
       dispatch({ type: CREATE_SESSION_SUCCESS, payload: responseJson.user });
       if (!responseJson.user.eula_accepted) {
-        const acceptEula = new Promise((resolve, reject) => {
+        const acceptEula = new Promise((resolve) => {
           Alert.alert(
             'Do you agree to the terms and conditions of the End User License Agreement?',
             'Read the agreement here:\nwww.inknead.pizza/eula',
             [
               {
                 text: 'Cancel',
-                onPress: () => reject(), //logout
+                onPress: () => resolve('logout'), //logout
               },
               {
                 text: 'I Agree',
-                onPress: () => resolve(),
+                onPress: () => resolve('accept'),
               },
             ],
           );
         });
-        acceptEula.then(() => {
-          alert('accepted!');
-          fetch(`https://d1dpbg9jbgrqy5.cloudfront.net/users/${responseJson.user.id}`, {
-            headers: {
-              Accept: 'application/json',
-              'Content-Type': 'application/json',
-            },
-            method: 'PATCH',
-            body: JSON.stringify({ acceptEULA: true })
-          })
-          .then(() => {
+        acceptEula.then((result) => {
+          if (result === 'accept') {
             dispatch({ type: REDIRECT, payload: redirect });
-          })
-          .catch((err) => alert(err));
+            fetch(`https://d1dpbg9jbgrqy5.cloudfront.net/users/${responseJson.user.id}`, {
+              headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+              },
+              method: 'PATCH',
+              body: JSON.stringify({ acceptEULA: true })
+            })
+            .catch((err) => alert(err));
+          } else if (result === 'logout') {
+            const handleUserLogout = new Promise(resolve => {
+              dispatch({ type: HANDLE_USER_LOGOUT });
+              resolve();
+            });
+            handleUserLogout.then(() => {
+              dispatch({ type: REDIRECT, payload: redirect });
+            });
+          }
         })
         .catch(() => {
-          alert('rejected!');
-          dispatch({ type: HANDLE_USER_LOGOUT });
         });
       } else {
         dispatch({ type: REDIRECT, payload: redirect });
