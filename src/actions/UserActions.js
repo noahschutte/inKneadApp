@@ -88,24 +88,37 @@ export const createSession = (userInfo, redirect = { scene: 'MainScene', paramet
     .then(responseJson => {
       dispatch({ type: CREATE_SESSION_SUCCESS, payload: responseJson.user });
       if (!responseJson.user.eula_accepted) {
-        Alert.alert(
-          'Do you agree to the terms and conditions of the End User License Agreement?',
-          'Read the agreement here:\nwww.inknead.pizza/eula',
-          [
-            {
-              text: 'Cancel',
-              onPress: () => alert('logging out (not really)'), //logout
-            },
-            { text: 'I Agree',
-              onPress: () => alert('noice'),
-            },
-          ],
-        );
+        const acceptEula = new Promise((resolve, reject) => {
+          Alert.alert(
+            'Do you agree to the terms and conditions of the End User License Agreement?',
+            'Read the agreement here:\nwww.inknead.pizza/eula',
+            [
+              {
+                text: 'Cancel',
+                onPress: () => reject(), //logout
+              },
+              {
+                text: 'I Agree',
+                onPress: () => resolve(),
+              },
+            ],
+          );
+        });
+        acceptEula.then(() => {
+          alert('accepted!');
+          dispatch({ type: REDIRECT, payload: redirect });
+        })
+        .catch(() => {
+          alert('rejected!');
+          dispatch({ type: HANDLE_USER_LOGOUT });
+        });
+      } else {
+        dispatch({ type: REDIRECT, payload: redirect });
       }
     })
-    .then(() => {
-      dispatch({ type: REDIRECT, payload: redirect });
-    })
+    // .then(() => {
+    //   dispatch({ type: REDIRECT, payload: redirect });
+    // })
     .catch(error => console.log(error));
   };
 };
