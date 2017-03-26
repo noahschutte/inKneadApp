@@ -28,6 +28,7 @@ class ReduxLogin extends Component {
     } else if (result.isCancelled) {
       alert('Login was cancelled');
     } else {
+      return;
       AccessToken.getCurrentAccessToken().then(
         data => {
           if (data) {

@@ -1,4 +1,5 @@
 import { Actions } from 'react-native-router-flux';
+import { Alert } from 'react-native';
 import {
   ACTIVE_DONATION_REMINDER,
   AWAITING_THANK_YOUS,
@@ -86,6 +87,21 @@ export const createSession = (userInfo, redirect = { scene: 'MainScene', paramet
     .then((response) => response.json())
     .then(responseJson => {
       dispatch({ type: CREATE_SESSION_SUCCESS, payload: responseJson.user });
+      if (!responseJson.user.eula_accepted) {
+        Alert.alert(
+          'Do you agree to the terms and conditions of the End User License Agreement?',
+          'Read the agreement here:\nwww.inknead.pizza/eula',
+          [
+            {
+              text: 'Cancel',
+              onPress: () => alert('logging out (not really)'), //logout
+            },
+            { text: 'I Agree',
+              onPress: () => alert('noice'),
+            },
+          ],
+        );
+      }
     })
     .then(() => {
       dispatch({ type: REDIRECT, payload: redirect });
