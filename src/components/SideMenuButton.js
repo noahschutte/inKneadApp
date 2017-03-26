@@ -13,6 +13,9 @@ const SideMenuButton = (props) => {
 const styles = {
   container: {
     alignSelf: 'stretch',
+    flex: 1,
+    justifyContent: 'center',
+    marginTop: 10,
   },
 };
 
