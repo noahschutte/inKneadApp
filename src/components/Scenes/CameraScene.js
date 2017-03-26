@@ -143,7 +143,7 @@ class CameraScene extends Component {
           style={styles.typeButton}
           onPress={this.switchType}
         >
-          <Image source={this.typeIcon} />
+          <Image style={{ height: 30, width: 25 }} source={this.typeIcon} />
         </TouchableOpacity>
       );
     }
@@ -168,7 +168,7 @@ class CameraScene extends Component {
             style={styles.typeButton}
             onPress={Actions.pop}
           >
-            <Image source={leftCaretImage} />
+            <Image style={{ resizeMode: 'contain', height: 35, width: 25 }} source={leftCaretImage} />
           </TouchableOpacity>
           {typeDisplay}
         </View>
@@ -206,10 +206,13 @@ const styles = {
   },
   bottomOverlay: {
     bottom: 0,
-    // backgroundColor: 'rgba(0,0,0,0.4)',
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  typeButton: {
+    width: 50,
+    height: 50,
   },
   captureButton: {
     padding: 15,
