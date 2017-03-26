@@ -106,7 +106,18 @@ export const createSession = (userInfo, redirect = { scene: 'MainScene', paramet
         });
         acceptEula.then(() => {
           alert('accepted!');
-          dispatch({ type: REDIRECT, payload: redirect });
+          fetch(`https://d1dpbg9jbgrqy5.cloudfront.net/users/${responseJson.user.id}`, {
+            headers: {
+              Accept: 'application/json',
+              'Content-Type': 'application/json',
+            },
+            method: 'PATCH',
+            body: JSON.stringify({ acceptEULA: true })
+          })
+          .then(() => {
+            dispatch({ type: REDIRECT, payload: redirect });
+          })
+          .catch((err) => alert(err));
         })
         .catch(() => {
           alert('rejected!');
