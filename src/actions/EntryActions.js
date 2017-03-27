@@ -55,19 +55,16 @@ export const confirmDonation = (donatorId, entry) => {
     .then(response => response.json())
     .then(responseJson => {
       if (responseJson.errorMessage) {
-        if (responseJson.errorMessage === 'This request no longer exists.') {
-          Alert.alert(
-            'Alert',
-            responseJson.errorMessage,
-            [
-              {
-                text: 'OK',
-                onPress: () => Actions.MainScene({ refreshEntries: true }),
-              }
-            ]
-          );
-        }
-        alert(responseJson.errorMessage);
+        Alert.alert(
+          'Alert',
+          responseJson.errorMessage,
+          [
+            {
+              text: 'OK',
+              onPress: () => Actions.MainScene({ refreshEntries: true }),
+            }
+          ]
+        );
       } else {
         const { anonEmail } = responseJson.request;
         dispatch({ type: MODIFY_ENTRY, payload: responseJson.request });
