@@ -128,6 +128,7 @@ export const createSession = (userInfo, redirect = { scene: 'MainScene', paramet
               method: 'PATCH',
               body: JSON.stringify({ acceptEULA: true })
             })
+            .then(() => dispatch({ type: ACCEPT_EULA, payload: true }))
             .catch((err) => alert(err));
           } else if (result === 'logout') {
             const handleUserLogout = new Promise(resolve => {
