@@ -1,4 +1,5 @@
 import {
+  CLEAR_UPLOAD_PROGRESS,
   UPDATE_SELECTED_PIZZAS,
   UPDATE_SELECTED_VENDOR,
   UPLOAD_BEGIN,
@@ -18,6 +19,11 @@ const INITIAL_STATE = {
 
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
+    case CLEAR_UPLOAD_PROGRESS:
+      return {
+        ...state,
+        uploading: action.payload,
+      };
     case UPDATE_SELECTED_PIZZAS:
       return {
         ...state,

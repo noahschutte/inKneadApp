@@ -1,4 +1,5 @@
 import { Actions } from 'react-native-router-flux';
+import { Alert } from 'react-native';
 import {
   ACTIVE_DONATION_REMINDER,
   ADD_REPORTED_REQUEST,
@@ -54,7 +55,16 @@ export const confirmDonation = (donatorId, entry) => {
     .then(response => response.json())
     .then(responseJson => {
       if (responseJson.errorMessage) {
-        alert(responseJson.errorMessage);
+        Alert.alert(
+          'Alert',
+          responseJson.errorMessage,
+          [
+            {
+              text: 'OK',
+              onPress: () => Actions.MainScene({ refreshEntries: true }),
+            }
+          ]
+        );
       } else {
         const { anonEmail } = responseJson.request;
         dispatch({ type: MODIFY_ENTRY, payload: responseJson.request });
