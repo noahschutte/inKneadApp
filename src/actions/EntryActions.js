@@ -1,4 +1,5 @@
 import { Actions } from 'react-native-router-flux';
+import { Alert } from 'react-native';
 import {
   ACTIVE_DONATION_REMINDER,
   ADD_REPORTED_REQUEST,
@@ -54,6 +55,18 @@ export const confirmDonation = (donatorId, entry) => {
     .then(response => response.json())
     .then(responseJson => {
       if (responseJson.errorMessage) {
+        if (responseJson.errorMessage === 'This request no longer exists.') {
+          Alert.alert(
+            'Alert',
+            responseJson.errorMessage,
+            [
+              {
+                text: 'OK',
+                onPress: () => Actions.MainScene({ refreshEntries: true }),
+              }
+            ]
+          );
+        }
         alert(responseJson.errorMessage);
       } else {
         const { anonEmail } = responseJson.request;
