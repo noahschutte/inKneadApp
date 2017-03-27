@@ -20,7 +20,7 @@ class UploadingScene extends Component {
         <View style={styles.containerStyle}>
           <View>
             <Text style={{ textAlign: 'center' }}>Upload Complete!</Text>
-            <Text style={{ textAlign: 'center' }}>Give the video some time to be processed</Text>
+            <Text style={{ textAlign: 'center' }}>Please give the video some time to be processed</Text>
           </View>
           <View style={{ margin: 15, padding: 15 }}>
             <Button textStyle={{ marginHorizontal: 10 }} touchableOpacity onPress={this.props.clearUploadProgress}>Okay!</Button>
