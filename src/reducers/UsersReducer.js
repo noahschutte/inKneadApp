@@ -1,4 +1,5 @@
 import {
+  ACCEPT_EULA,
   ADD_REPORTED_REQUEST,
   ADD_REPORTED_THANK_YOU,
   BLOCK_USER,
@@ -10,10 +11,11 @@ import {
 
 const INITIAL_STATE = {
   userID: null,
+  eulaAccepted: false,
   currentEmail: null,
   signupEmail: null,
   fb_userID: null,
-  userVerified: false,
+  userVerified: (this.eulaAccepted && this.signupEmail),
   blockedUsers: [],
   blockedVideos: {
     thankYous: [],
@@ -23,6 +25,11 @@ const INITIAL_STATE = {
 
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
+    case ACCEPT_EULA:
+      return {
+        ...state,
+        eulaAccepted: true,
+      };
     case ADD_REPORTED_REQUEST:
       return {
         ...state,
@@ -58,6 +65,7 @@ export default (state = INITIAL_STATE, action) => {
       return {
         ...state,
         userID: user.id,
+        eulaAccepted: user.eula_accepted,
         currentEmail: user.current_email,
         signupEmail: user.signup_email,
         fb_userID: user.fb_userID,

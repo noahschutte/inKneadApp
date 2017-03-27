@@ -1,12 +1,14 @@
 import { Actions } from 'react-native-router-flux';
 import { Alert } from 'react-native';
 import {
+  ACCEPT_EULA,
   ACTIVE_DONATION_REMINDER,
   AWAITING_THANK_YOUS,
   BLOCK_USER,
   CREATE_SESSION_SUCCESS,
   CREATE_THANK_YOU_REMINDER,
   EMAIL_NOT_VERIFIED,
+  EULA_NOT_ACCEPTED,
   HANDLE_USER_LOGOUT,
   INCOMING_GRATITUDE,
   INCOMING_PIZZA,
@@ -16,6 +18,22 @@ import {
   UPDATE_EMAIL,
   USER_VERIFIED,
 } from './types';
+
+export const acceptEULA = (userID) => {
+  console.log('here L23');
+  return dispatch => {
+    fetch(`https://d1dpbg9jbgrqy5.cloudfront.net/users/${userID}`, {
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      method: 'PATCH',
+      body: JSON.stringify({ acceptEULA: true })
+    })
+    .then(() => dispatch({ type: ACCEPT_EULA }))
+    .catch((err) => alert(err));
+  };
+};
 
 export const blockUser = (userID, entry) => {
   return dispatch => {
@@ -90,13 +108,9 @@ export const createSession = (userInfo, redirect = { scene: 'MainScene', paramet
       if (!responseJson.user.eula_accepted) {
         const acceptEula = new Promise((resolve) => {
           Alert.alert(
-            'Do you agree to the terms and conditions of the End User License Agreement?',
-            'Read the agreement here:\nwww.inknead.pizza/eula',
+            'End User License Agreement',
+            'By using in knead you agree to our EULA \n\nRead the agreement here:\nwww.inknead.pizza/eula',
             [
-              {
-                text: 'Cancel',
-                onPress: () => resolve('logout'), //logout
-              },
               {
                 text: 'I Agree',
                 onPress: () => resolve('accept'),
@@ -157,6 +171,7 @@ export const retrieveNotifications = (userID) => {
       dispatch({ type: NOTIFICATIONS_REFRESHING });
       //  Expect:
       const {
+        eulaAccepted,
         currentEmail, // The user's current email. Returns null if email has not yet been verified
         signupEmail, // The user's signup email. Used for email verify workflow.
         recentSuccessfulRequests, // An array containing a user's request that has been donated to, but not yet received
@@ -166,10 +181,15 @@ export const retrieveNotifications = (userID) => {
         receivedThankYous, // An array of thankYous which the user (donor) has yet to view
       } = responseJson;
 
-      if (currentEmail) {
+      if (currentEmail && eulaAccepted) {
         dispatch({ type: USER_VERIFIED });
       } else {
-        dispatch({ type: EMAIL_NOT_VERIFIED, payload: signupEmail });
+        if (!currentEmail) {
+          dispatch({ type: EMAIL_NOT_VERIFIED, payload: signupEmail });
+        }
+        if (!eulaAccepted) {
+          dispatch({ type: EULA_NOT_ACCEPTED });
+        }
       }
       if (recentDonations.length > 0) {
         for (const recentDonation of recentDonations) {

@@ -6,6 +6,7 @@ import {
   ACTIVE_DONATION_REMINDER,
   INCOMING_PIZZA,
   CREATE_THANK_YOU_REMINDER,
+  EULA_NOT_ACCEPTED,
   AWAITING_THANK_YOUS,
   INCOMING_GRATITUDE,
   REMOVE_NOTIFICATION,
@@ -211,6 +212,26 @@ export default (state = INITIAL_STATE, action) => {
         userNotifications
       };
     }
+    case EULA_NOT_ACCEPTED:
+      return {
+        ...state,
+        userNotifications: [
+          ...state.userNotifications,
+          {
+            id: 6,
+            text: 'Please accept our EULA',
+            expandable: {
+              buttons: [
+                {
+                  type: 'confirm',
+                  text: 'Accept',
+                  action: 'acceptEula',
+                }
+              ]
+            }
+          }
+        ]
+      };
     case REFRESH_COMPLETE:
       Actions.refresh({ key: 'NotificationsScene' });
       return {

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { View, Text } from 'react-native';
 import { connect } from 'react-redux';
 import {
+  acceptEULA,
   redirectTo,
   confirmDonationReceived,
   removeNotification,
@@ -29,6 +30,11 @@ class NotificationsScene extends Component {
       case 'verifyEmail':
         return () => {
           this.props.updateEmail(signupEmail, userID, { scene: 'NotificationsScene' });
+          this.props.removeNotification(notificationID);
+        };
+      case 'acceptEula':
+        return () => {
+          this.props.acceptEULA(userID);
           this.props.removeNotification(notificationID);
         };
       case 'nothing':
@@ -142,6 +148,7 @@ const mapStateToProps = (state) => {
   return { notifications, signupEmail, userID };
 };
 export default connect(mapStateToProps, {
+  acceptEULA,
   redirectTo,
   confirmDonationReceived,
   removeNotification,
