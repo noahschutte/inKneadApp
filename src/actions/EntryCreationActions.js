@@ -1,4 +1,6 @@
+import { Actions } from 'react-native-router-flux';
 import {
+  CLEAR_UPLOAD_PROGRESS,
   UPDATE_SELECTED_PIZZAS,
   UPDATE_SELECTED_VENDOR,
   UPLOAD_BEGIN,
@@ -6,6 +8,14 @@ import {
   UPLOAD_COMPLETE,
   HANDLE_ERRORS,
 } from './types';
+
+export const clearUploadProgress = () => {
+  Actions.MainScene({ type: 'reset' });
+  return {
+    type: CLEAR_UPLOAD_PROGRESS,
+    payload: false,
+  };
+};
 
 export const updateSelectedPizzas = (numberOfPizzas) => {
   return {

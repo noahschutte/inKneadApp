@@ -20,7 +20,6 @@ import {
 } from './types';
 
 export const acceptEULA = (userID) => {
-  console.log('here L23');
   return dispatch => {
     fetch(`https://d1dpbg9jbgrqy5.cloudfront.net/users/${userID}`, {
       headers: {

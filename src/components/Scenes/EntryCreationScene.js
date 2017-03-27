@@ -10,6 +10,7 @@ import {
   handleVideoData,
   resetCameraState,
   updateEmail,
+  acceptEULA,
 } from '../../actions';
 import { camcorderImage } from '../../assets';
 import EntryVideo from '../EntryVideo';
@@ -34,7 +35,7 @@ class EntryCreationScene extends Component {
   }
 
   verifiedUser = () => {
-    const { userVerified, signupEmail, userID } = this.props;
+    const { userVerified, signupEmail, userID, currentEmail, eulaAccepted } = this.props;
     const verifyAndSubmit = () => {
       this.props.updateEmail(signupEmail, userID, {
         scene: 'EntryCreationScene',
@@ -42,24 +43,38 @@ class EntryCreationScene extends Component {
       this.handleRequestSubmission();
     };
     if (!userVerified) {
-      Alert.alert(
-        'No verified email address!',
-        `You must have a verified email to request pizza! \n\nIs ${signupEmail} your active email?`,
-        [
-          {
-            text: 'No, Update',
-            onPress: Actions.EmailVerifyScene.bind(this, {
-              redirect: {
-                scene: 'EntryCreationScene'
-              },
-            }),
-          },
-          {
-            text: 'Yes, Verify!',
-            onPress: verifyAndSubmit,
-          },
-        ]
-      );
+      if (!currentEmail) {
+        Alert.alert(
+          'No verified email address!',
+          `You must have a verified email to request pizza! \n\nIs ${signupEmail} your active email?`,
+          [
+            {
+              text: 'No, Update',
+              onPress: Actions.EmailVerifyScene.bind(this, {
+                redirect: {
+                  scene: 'EntryCreationScene'
+                },
+              }),
+            },
+            {
+              text: 'Yes, Verify!',
+              onPress: verifyAndSubmit,
+            },
+          ]
+        );
+      }
+      if (!eulaAccepted) {
+        Alert.alert(
+          'Do you agree to the terms and conditions of the End User License Agreement?',
+          'Read the agreement here:\nwww.inknead.pizza/eula',
+          [
+            { text: 'Cancel' },
+            { text: 'I Agree',
+              onPress: () => this.props.acceptEULA(userID)
+            },
+          ],
+        );
+      }
       return false;
     }
     return true;
@@ -112,7 +127,7 @@ class EntryCreationScene extends Component {
         xhr.addEventListener('load', this.props.uploadComplete, false);
         xhr.addEventListener('error', (evt) => console.log('Error:', evt), false);
         xhr.addEventListener('abort', (evt) => console.log(evt), false);
-        Actions.UploadingScene();
+        Actions.UploadingScene({ uploading: true });
         xhr.open('PUT', url);
         // Explicitly set request header for android compatibility
         xhr.setRequestHeader('Content-Type', 'application/json');
@@ -121,7 +136,7 @@ class EntryCreationScene extends Component {
             if (xhr.status === 200) {
               console.log('success');
               this.props.handleVideoData(null);
-              Actions.MainScene({ type: 'reset' });
+              Actions.UploadingScene({ uploading: 'complete' });
             } else {
               console.log('failure');
               fetch('https://d1dpbg9jbgrqy5.cloudfront.net/requests/1', {
@@ -225,16 +240,7 @@ class EntryCreationScene extends Component {
       errorMessages.push('Please choose a preferred pizza place');
     }
     if (errorMessages.length === 0) {
-      Alert.alert(
-        'Do you agree to the terms and conditions of the End User License Agreement?',
-        'Read the agreement here:\nwww.inknead.pizza/eula',
-        [
-          { text: 'Cancel' },
-          { text: 'I Agree',
-            onPress: this.dispatchRequest
-          },
-        ],
-      );
+      this.dispatchRequest();
     } else {
       Alert.alert(
         'Problem!',
@@ -360,7 +366,7 @@ const styles = {
 const mapStateToProps = ({ newEntry, camera, user }) => {
   const { pizzas, vendor, videoKey } = newEntry;
   const { videoData } = camera;
-  const { userVerified, fb_userID, userID, signupEmail } = user;
+  const { userVerified, fb_userID, userID, signupEmail, currentEmail, eulaAccepted } = user;
 
   return {
     pizzas,
@@ -370,11 +376,14 @@ const mapStateToProps = ({ newEntry, camera, user }) => {
     userVerified,
     fb_userID,
     userID,
-    signupEmail
+    signupEmail,
+    currentEmail,
+    eulaAccepted,
   };
 };
 
 export default connect(mapStateToProps, {
+  acceptEULA,
   updateSelectedPizzas,
   updateSelectedVendor,
   uploadComplete,

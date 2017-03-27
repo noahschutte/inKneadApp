@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { View, Text } from 'react-native';
 import { connect } from 'react-redux';
+import { clearUploadProgress } from '../../actions';
+import Button from '../Button2';
 import SpinningPizza from '../SpinningPizza';
 
 class UploadingScene extends Component {
   render() {
-    console.log('this.props.uploading: ', this.props.uploading);
-    return (
+    let content = (
       <View style={styles.containerStyle}>
         <View style={styles.animationContainer}>
           <SpinningPizza />
@@ -14,6 +15,20 @@ class UploadingScene extends Component {
         <Text style={styles.textStyle}>Uploading your video now...</Text>
       </View>
     );
+    if (this.props.uploading === 'complete') {
+      content = (
+        <View style={styles.containerStyle}>
+          <View>
+            <Text style={{ textAlign: 'center' }}>Upload Complete!</Text>
+            <Text style={{ textAlign: 'center' }}>Give the video some time to be processed</Text>
+          </View>
+          <View style={{ margin: 15, padding: 15 }}>
+            <Button textStyle={{ marginHorizontal: 10 }} touchableOpacity onPress={this.props.clearUploadProgress}>Okay!</Button>
+          </View>
+        </View>
+      );
+    }
+    return content;
   }
 }
 
@@ -36,4 +51,4 @@ const mapStateToProps = ({ newEntry }) => {
   return { uploading };
 };
 
-export default connect(mapStateToProps, {})(UploadingScene);
+export default connect(mapStateToProps, { clearUploadProgress })(UploadingScene);
