@@ -127,7 +127,7 @@ class EntryCreationScene extends Component {
         xhr.addEventListener('load', this.props.uploadComplete, false);
         xhr.addEventListener('error', (evt) => console.log('Error:', evt), false);
         xhr.addEventListener('abort', (evt) => console.log(evt), false);
-        Actions.UploadingScene();
+        Actions.UploadingScene({ uploading: true });
         xhr.open('PUT', url);
         // Explicitly set request header for android compatibility
         xhr.setRequestHeader('Content-Type', 'application/json');
@@ -136,7 +136,7 @@ class EntryCreationScene extends Component {
             if (xhr.status === 200) {
               console.log('success');
               this.props.handleVideoData(null);
-              Actions.MainScene({ type: 'reset' });
+              Actions.UploadingScene({ uploading: 'complete' });
             } else {
               console.log('failure');
               fetch('https://d1dpbg9jbgrqy5.cloudfront.net/requests/1', {
