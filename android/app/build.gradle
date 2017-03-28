@@ -123,10 +123,15 @@ android {
         }
     }
     buildTypes {
+        debug {
+            applicationIdSuffix ".debug"
+            buildConfigField "String", "CODEPUSH_KEY", '""'
+        }
         release {
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
             signingConfig signingConfigs.config
+            buildConfigField "String", "CODEPUSH_KEY", '"nm24vzplu771afJnaRwrzEvtklFU41rSYuBjf"'
         }
     }
     // applicationVariants are e.g. debug, release
