@@ -19,7 +19,7 @@ const LoginScene = ({ logOut, redirect }) => {
           in knead
         </Text>
         <Text style={text}>
-          "The power of kindness,{'\n'} one pizza at a time."
+          "The power of kindness,{'\n'} one pizza at a time"
         </Text>
       </View>
       <View style={bottom}>
