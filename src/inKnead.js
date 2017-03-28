@@ -6,7 +6,8 @@ import codePush from 'react-native-code-push';
 import reducers from './reducers';
 import Router from './Router';
 
-@codePush
+const codePushOptions = { checkFrequency: codePush.CheckFrequency.ON_APP_RESUME };
+
 class inknead extends Component {
   render() {
     const store = createStore(reducers, {}, applyMiddleware(ReduxThunk));
@@ -17,5 +18,8 @@ class inknead extends Component {
     );
   }
 }
+
+/* eslint no-class-assign: off */
+inknead = codePush(codePushOptions)(inknead);
 
 export default inknead;
