@@ -35,10 +35,10 @@
 		2D02E4C91E0B4AEC006451C7 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DAD3EA31DF850E9000B6D8A /* libReact.a */; };
 		2DCD954D1E0B4F2C00145EB5 /* inKneadAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* inKneadAppTests.m */; };
 		5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
-		6A04743C1E6C99DD00A07E56 /* libRCTCamera.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A7E38AE1E6C89F2007441C6 /* libRCTCamera.a */; };
 		6A04743D1E6C99E700A07E56 /* libRCTFBSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A7E38B11E6C89F2007441C6 /* libRCTFBSDK.a */; };
 		6A04743E1E6C99F100A07E56 /* libRCTVideo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A7E38C01E6C89F2007441C6 /* libRCTVideo.a */; };
 		6A3374631E7F6E650088EF74 /* libCodePush.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A5997781E7F1F6C0053D7EF /* libCodePush.a */; };
+		6A44B7AC1E8B6A9E00E301AF /* libRCTCamera.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A7E38AE1E6C89F2007441C6 /* libRCTCamera.a */; };
 		6A7E38DD1E6C8E9F007441C6 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A7E38D91E6C8E9F007441C6 /* Bolts.framework */; };
 		6A7E38DE1E6C8E9F007441C6 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A7E38DA1E6C8E9F007441C6 /* FBSDKCoreKit.framework */; };
 		6A7E38DF1E6C8E9F007441C6 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A7E38DB1E6C8E9F007441C6 /* FBSDKLoginKit.framework */; };
@@ -293,6 +293,29 @@
 		5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
 		6A04743F1E6C9A2900A07E56 /* inKneadApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = inKneadApp.entitlements; path = inKneadApp/inKneadApp.entitlements; sourceTree = "<group>"; };
 		6A3374441E7F6C2A0088EF74 /* CodePush.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CodePush.h; path = "../node_modules/react-native-code-push/ios/CodePush/CodePush.h"; sourceTree = "<group>"; };
+		6A6F6D861E8B69FF00A33764 /* dgph */ = {isa = PBXFileReference; lastKnownFileType = file; path = dgph; sourceTree = "<group>"; };
+		6A6F6D891E8B69FF00A33764 /* CameraFocusSquare.d */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.dtrace; path = CameraFocusSquare.d; sourceTree = "<group>"; };
+		6A6F6D8A1E8B69FF00A33764 /* CameraFocusSquare.dia */ = {isa = PBXFileReference; lastKnownFileType = file; path = CameraFocusSquare.dia; sourceTree = "<group>"; };
+		6A6F6D8B1E8B69FF00A33764 /* CameraFocusSquare.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = CameraFocusSquare.o; sourceTree = "<group>"; };
+		6A6F6D8C1E8B69FF00A33764 /* NSMutableDictionary+ImageMetadata.d */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.dtrace; path = "NSMutableDictionary+ImageMetadata.d"; sourceTree = "<group>"; };
+		6A6F6D8D1E8B69FF00A33764 /* NSMutableDictionary+ImageMetadata.dia */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NSMutableDictionary+ImageMetadata.dia"; sourceTree = "<group>"; };
+		6A6F6D8E1E8B69FF00A33764 /* NSMutableDictionary+ImageMetadata.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = "NSMutableDictionary+ImageMetadata.o"; sourceTree = "<group>"; };
+		6A6F6D8F1E8B69FF00A33764 /* RCTCamera.d */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.dtrace; path = RCTCamera.d; sourceTree = "<group>"; };
+		6A6F6D901E8B69FF00A33764 /* RCTCamera.dia */ = {isa = PBXFileReference; lastKnownFileType = file; path = RCTCamera.dia; sourceTree = "<group>"; };
+		6A6F6D911E8B69FF00A33764 /* RCTCamera.LinkFileList */ = {isa = PBXFileReference; lastKnownFileType = text; path = RCTCamera.LinkFileList; sourceTree = "<group>"; };
+		6A6F6D921E8B69FF00A33764 /* RCTCamera.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = RCTCamera.o; sourceTree = "<group>"; };
+		6A6F6D931E8B69FF00A33764 /* RCTCameraManager.d */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.dtrace; path = RCTCameraManager.d; sourceTree = "<group>"; };
+		6A6F6D941E8B69FF00A33764 /* RCTCameraManager.dia */ = {isa = PBXFileReference; lastKnownFileType = file; path = RCTCameraManager.dia; sourceTree = "<group>"; };
+		6A6F6D951E8B69FF00A33764 /* RCTCameraManager.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = RCTCameraManager.o; sourceTree = "<group>"; };
+		6A6F6D961E8B69FF00A33764 /* RCTSensorOrientationChecker.d */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.dtrace; path = RCTSensorOrientationChecker.d; sourceTree = "<group>"; };
+		6A6F6D971E8B69FF00A33764 /* RCTSensorOrientationChecker.dia */ = {isa = PBXFileReference; lastKnownFileType = file; path = RCTSensorOrientationChecker.dia; sourceTree = "<group>"; };
+		6A6F6D981E8B69FF00A33764 /* RCTSensorOrientationChecker.o */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.objfile"; path = RCTSensorOrientationChecker.o; sourceTree = "<group>"; };
+		6A6F6D991E8B69FF00A33764 /* RCTCamera-all-non-framework-target-headers.hmap */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RCTCamera-all-non-framework-target-headers.hmap"; sourceTree = "<group>"; };
+		6A6F6D9A1E8B69FF00A33764 /* RCTCamera-all-target-headers.hmap */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RCTCamera-all-target-headers.hmap"; sourceTree = "<group>"; };
+		6A6F6D9B1E8B69FF00A33764 /* RCTCamera-generated-files.hmap */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RCTCamera-generated-files.hmap"; sourceTree = "<group>"; };
+		6A6F6D9C1E8B69FF00A33764 /* RCTCamera-own-target-headers.hmap */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RCTCamera-own-target-headers.hmap"; sourceTree = "<group>"; };
+		6A6F6D9D1E8B69FF00A33764 /* RCTCamera-project-headers.hmap */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RCTCamera-project-headers.hmap"; sourceTree = "<group>"; };
+		6A6F6D9E1E8B69FF00A33764 /* RCTCamera.hmap */ = {isa = PBXFileReference; lastKnownFileType = file; path = RCTCamera.hmap; sourceTree = "<group>"; };
 		6A7E38D91E6C8E9F007441C6 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = ../../../Documents/FacebookSDK/Bolts.framework; sourceTree = "<group>"; };
 		6A7E38DA1E6C8E9F007441C6 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = ../../../Documents/FacebookSDK/FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		6A7E38DB1E6C8E9F007441C6 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = ../../../Documents/FacebookSDK/FBSDKLoginKit.framework; sourceTree = "<group>"; };
@@ -318,10 +341,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6A44B7AC1E8B6A9E00E301AF /* libRCTCamera.a in Frameworks */,
 				6A3374631E7F6E650088EF74 /* libCodePush.a in Frameworks */,
 				6A04743E1E6C99F100A07E56 /* libRCTVideo.a in Frameworks */,
 				6A04743D1E6C99E700A07E56 /* libRCTFBSDK.a in Frameworks */,
-				6A04743C1E6C99DD00A07E56 /* libRCTCamera.a in Frameworks */,
 				6A7E38DD1E6C8E9F007441C6 /* Bolts.framework in Frameworks */,
 				6A7E38DE1E6C8E9F007441C6 /* FBSDKCoreKit.framework in Frameworks */,
 				6A7E38DF1E6C8E9F007441C6 /* FBSDKLoginKit.framework in Frameworks */,
@@ -490,6 +513,69 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		6A6F6D831E8B69FF00A33764 /* RCTCamera.build */ = {
+			isa = PBXGroup;
+			children = (
+				6A6F6D841E8B69FF00A33764 /* Debug-iphonesimulator */,
+			);
+			name = RCTCamera.build;
+			path = build/Build/Intermediates/RCTCamera.build;
+			sourceTree = "<group>";
+		};
+		6A6F6D841E8B69FF00A33764 /* Debug-iphonesimulator */ = {
+			isa = PBXGroup;
+			children = (
+				6A6F6D851E8B69FF00A33764 /* RCTCamera.build */,
+			);
+			path = "Debug-iphonesimulator";
+			sourceTree = "<group>";
+		};
+		6A6F6D851E8B69FF00A33764 /* RCTCamera.build */ = {
+			isa = PBXGroup;
+			children = (
+				6A6F6D861E8B69FF00A33764 /* dgph */,
+				6A6F6D871E8B69FF00A33764 /* Objects-normal */,
+				6A6F6D991E8B69FF00A33764 /* RCTCamera-all-non-framework-target-headers.hmap */,
+				6A6F6D9A1E8B69FF00A33764 /* RCTCamera-all-target-headers.hmap */,
+				6A6F6D9B1E8B69FF00A33764 /* RCTCamera-generated-files.hmap */,
+				6A6F6D9C1E8B69FF00A33764 /* RCTCamera-own-target-headers.hmap */,
+				6A6F6D9D1E8B69FF00A33764 /* RCTCamera-project-headers.hmap */,
+				6A6F6D9E1E8B69FF00A33764 /* RCTCamera.hmap */,
+			);
+			path = RCTCamera.build;
+			sourceTree = "<group>";
+		};
+		6A6F6D871E8B69FF00A33764 /* Objects-normal */ = {
+			isa = PBXGroup;
+			children = (
+				6A6F6D881E8B69FF00A33764 /* x86_64 */,
+			);
+			path = "Objects-normal";
+			sourceTree = "<group>";
+		};
+		6A6F6D881E8B69FF00A33764 /* x86_64 */ = {
+			isa = PBXGroup;
+			children = (
+				6A6F6D891E8B69FF00A33764 /* CameraFocusSquare.d */,
+				6A6F6D8A1E8B69FF00A33764 /* CameraFocusSquare.dia */,
+				6A6F6D8B1E8B69FF00A33764 /* CameraFocusSquare.o */,
+				6A6F6D8C1E8B69FF00A33764 /* NSMutableDictionary+ImageMetadata.d */,
+				6A6F6D8D1E8B69FF00A33764 /* NSMutableDictionary+ImageMetadata.dia */,
+				6A6F6D8E1E8B69FF00A33764 /* NSMutableDictionary+ImageMetadata.o */,
+				6A6F6D8F1E8B69FF00A33764 /* RCTCamera.d */,
+				6A6F6D901E8B69FF00A33764 /* RCTCamera.dia */,
+				6A6F6D911E8B69FF00A33764 /* RCTCamera.LinkFileList */,
+				6A6F6D921E8B69FF00A33764 /* RCTCamera.o */,
+				6A6F6D931E8B69FF00A33764 /* RCTCameraManager.d */,
+				6A6F6D941E8B69FF00A33764 /* RCTCameraManager.dia */,
+				6A6F6D951E8B69FF00A33764 /* RCTCameraManager.o */,
+				6A6F6D961E8B69FF00A33764 /* RCTSensorOrientationChecker.d */,
+				6A6F6D971E8B69FF00A33764 /* RCTSensorOrientationChecker.dia */,
+				6A6F6D981E8B69FF00A33764 /* RCTSensorOrientationChecker.o */,
+			);
+			path = x86_64;
+			sourceTree = "<group>";
+		};
 		6A7E38A31E6C89F2007441C6 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -517,6 +603,7 @@
 		6A7E38D81E6C8E9F007441C6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6A6F6D831E8B69FF00A33764 /* RCTCamera.build */,
 				6A3374441E7F6C2A0088EF74 /* CodePush.h */,
 				6A7E38D91E6C8E9F007441C6 /* Bolts.framework */,
 				6A7E38DA1E6C8E9F007441C6 /* FBSDKCoreKit.framework */,
