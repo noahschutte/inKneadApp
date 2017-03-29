@@ -1,5 +1,5 @@
 <resources>
     <string moduleConfig="true" name="reactNativeCodePush_androidDeploymentKey">l4HlWVGawVzT_bdwOjNjqHFkIzkc41rSYuBjf</string>
-    <string name="app_name">knead.debug</string>
+    <string name="app_name">in knead-debug</string>
     <string name="facebook_app_id">207872036361157</string>
 </resources>

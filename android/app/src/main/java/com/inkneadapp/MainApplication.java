@@ -45,7 +45,7 @@ public class MainApplication extends Application implements ReactApplication {
           new ReactVideoPackage(),
           new RCTCameraPackage(),
           new FBSDKPackage(mCallbackManager),
-          new CodePush("b22e-ltd0qsdnaVjf2SW1uNQtBL741rSYuBjf", MainApplication.this, BuildConfig.DEBUG)
+          new CodePush(BuildConfig.CODEPUSH_KEY, MainApplication.this, BuildConfig.DEBUG)
       );
     }
   };
