@@ -260,16 +260,7 @@ class EntryCreationScene extends Component {
       errorMessages.push('Please record a video.');
     }
     if (errorMessages.length === 0) {
-      Alert.alert(
-        'Do you agree to the terms and conditions of the End User License Agreement?',
-        'Read the agreement here:\nwww.inknead.pizza/eula',
-        [
-          { text: 'Cancel' },
-          { text: 'I Agree',
-            onPress: this.dispatchThankYou
-          },
-        ],
-      );
+      this.dispatchThankYou();
     } else {
       Alert.alert(
         'Problem!',
