@@ -108,7 +108,7 @@ export const createSession = (userInfo, redirect = { scene: 'MainScene', paramet
         const acceptEula = new Promise((resolve) => {
           Alert.alert(
             'End User License Agreement',
-            'By using in knead you agree to our EULA \n\nRead the agreement here:\nwww.inknead.pizza/eula',
+            'By using in knead you agree to upload content that excludes potentially objectionable content, such as nudity, pornography, and profanity. \n\nRead the agreement here:\nwww.inknead.pizza',
             [
               {
                 text: 'I Agree',
