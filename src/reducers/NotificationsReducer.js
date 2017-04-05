@@ -11,6 +11,7 @@ import {
   INCOMING_GRATITUDE,
   REMOVE_NOTIFICATION,
   HANDLE_USER_LOGOUT,
+  REMOVED_VIDEO,
 } from '../actions/types';
 
 const INITIAL_STATE = {
@@ -232,6 +233,37 @@ export default (state = INITIAL_STATE, action) => {
           }
         ]
       };
+    case REMOVED_VIDEO: {
+      const timeFormat = createdAt => {
+        const year = createdAt.substring(0, 4);
+        const month = createdAt.substring(5, 7);
+        const day = createdAt.substring(8, 10);
+        return `${month}/${day}/${year}`;
+      };
+      return {
+        ...state,
+        userNotifications: [
+          ...state.userNotifications,
+          {
+            id: 7,
+            text: 'One of your videos has been removed',
+            expandable: {
+              text: `Due to receiving a number of reports, your video uploaded on ${timeFormat(action.payload.created_at)} has been removed.`,
+              buttons: [
+                {
+                  type: 'confirm',
+                  text: 'I understand',
+                  action: 'acknowledgeRemoval',
+                },
+              ],
+            },
+            redirect: {
+              parameter: action.payload,
+            },
+          },
+        ],
+      };
+    }
     case REFRESH_COMPLETE:
       Actions.refresh({ key: 'NotificationsScene' });
       return {

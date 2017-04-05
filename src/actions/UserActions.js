@@ -14,6 +14,7 @@ import {
   INCOMING_PIZZA,
   NOTIFICATIONS_REFRESHING,
   REMOVE_NOTIFICATION,
+  REMOVED_VIDEO,
   REDIRECT,
   UPDATE_EMAIL,
   USER_VERIFIED,
@@ -179,6 +180,8 @@ export const retrieveNotifications = (userID) => {
         recentDonations,  // An array of donations that have not been received
         awaitingThankYous, // An array of requests with status 'received' and no corresponding thankYou
         receivedThankYous, // An array of thankYous which the user (donor) has yet to view
+        removedRequests, // An array of any of the users requests that have been removed
+        removedThankYous, // An array of any of the users thank yous that have been removed
       } = responseJson;
 
       if (currentEmail && eulaAccepted) {
@@ -226,6 +229,14 @@ export const retrieveNotifications = (userID) => {
             payload: receivedThankYou,
             origin: 'notifications'
           });
+        }
+      }
+      if (removedRequests.length > 0 || removedThankYous.length > 0) {
+        for (const removedRequest of removedRequests) {
+          dispatch({ type: REMOVED_VIDEO, payload: removedRequest });
+        }
+        for (const removedThankYou of removedThankYous) {
+          dispatch({ type: REMOVED_VIDEO, payload: removedThankYou });
         }
       }
     })
