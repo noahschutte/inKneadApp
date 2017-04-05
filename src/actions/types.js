@@ -42,6 +42,7 @@ export const CREATE_THANK_YOU_REMINDER = 'create_thank_you_reminder';
 export const AWAITING_THANK_YOUS = 'awaiting_thank_yous';
 export const INCOMING_GRATITUDE = 'view_received_thank_you';
 export const REMOVE_NOTIFICATION = 'remove_notification';
+export const REMOVED_VIDEO = 'removed_video';
 
 // User constants
 export const ACCEPT_EULA = 'eula_accepted';

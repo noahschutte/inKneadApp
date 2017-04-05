@@ -37,6 +37,11 @@ class NotificationsScene extends Component {
           this.props.acceptEULA(userID);
           this.props.removeNotification(notificationID);
         };
+      case 'acknowledgeRemoval':
+        return () => {
+          this.acknowledgeRemoval(redirect.parameter);
+          this.props.removeNotification(notificationID);
+        };
       case 'nothing':
         return () => this.collapseNotification(this.state.expanded.indexOf(notificationID));
       case 'clear':
@@ -44,6 +49,28 @@ class NotificationsScene extends Component {
       default:
         return () => alert('this will work eventually');
     }
+  }
+
+  acknowledgeRemoval = (entry) => {
+    let url = `https://d1dpbg9jbgrqy5.cloudfront.net/requests/${entry.id}`;
+    if (entry.donor_viewed === true || entry.donor_viewed === false) {
+      console.log(entry);
+      url = `https://d1dpbg9jbgrqy5.cloudfront.net/thank_you/${entry.id}`;
+    }
+    fetch(url, {
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+      },
+      method: 'PATCH',
+      body: JSON.stringify({ removalViewed: true }),
+    })
+    .then(response => {
+      if (response.status === 400) {
+        alert('Something went wrong...');
+      }
+    })
+    .catch(err => alert(err));
   }
 
   buttonContent = (notification) => {
