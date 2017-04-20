@@ -22,7 +22,7 @@ import {
 
 export const acceptEULA = (userID) => {
   return dispatch => {
-    fetch(`https://d1dpbg9jbgrqy5.cloudfront.net/users/${userID}`, {
+    fetch(`https://in-knead.herokuapp.com/users/${userID}`, {
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json',
@@ -37,7 +37,7 @@ export const acceptEULA = (userID) => {
 
 export const blockUser = (userID, entry) => {
   return dispatch => {
-    fetch(`https://d1dpbg9jbgrqy5.cloudfront.net/requests/${entry.id}`, {
+    fetch(`https://in-knead.herokuapp.com/requests/${entry.id}`, {
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json',
@@ -68,7 +68,7 @@ export const blockUser = (userID, entry) => {
 export const confirmDonationReceived = (successfulRequest) => {
   return dispatch => {
     const userID = successfulRequest.creator_id;
-    fetch(`https://d1dpbg9jbgrqy5.cloudfront.net/requests/${successfulRequest.id}`, {
+    fetch(`https://in-knead.herokuapp.com/requests/${successfulRequest.id}`, {
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json',
@@ -94,7 +94,7 @@ export const confirmDonationReceived = (successfulRequest) => {
 
 export const createSession = (userInfo, redirect = { scene: 'MainScene', parameter: 'root' }) => {
   return (dispatch) => {
-    fetch('https://d1dpbg9jbgrqy5.cloudfront.net/users', {
+    fetch('https://in-knead.herokuapp.com/users', {
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json'
@@ -121,7 +121,7 @@ export const createSession = (userInfo, redirect = { scene: 'MainScene', paramet
         acceptEula.then((result) => {
           if (result === 'accept') {
             dispatch({ type: REDIRECT, payload: redirect });
-            fetch(`https://d1dpbg9jbgrqy5.cloudfront.net/users/${responseJson.user.id}`, {
+            fetch(`https://in-knead.herokuapp.com/users/${responseJson.user.id}`, {
               headers: {
                 Accept: 'application/json',
                 'Content-Type': 'application/json',
@@ -160,7 +160,7 @@ export const removeNotification = (notificationID) => {
 
 export const retrieveNotifications = (userID) => {
   return (dispatch) => {
-    fetch(`https://d1dpbg9jbgrqy5.cloudfront.net/users/${userID}`, {
+    fetch(`https://in-knead.herokuapp.com/users/${userID}`, {
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json'
@@ -246,7 +246,7 @@ export const retrieveNotifications = (userID) => {
 
 export const updateEmail = (updatedEmail, userID, redirect = null) => {
   return (dispatch) => {
-    fetch(`https://d1dpbg9jbgrqy5.cloudfront.net/users/${userID}`, {
+    fetch(`https://in-knead.herokuapp.com/users/${userID}`, {
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json'

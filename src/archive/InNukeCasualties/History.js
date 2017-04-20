@@ -40,7 +40,7 @@ export default class History extends Component {
   _onRefresh() {
     this.setState({ refreshing: true });
     const userID = this.props.user.id;
-    fetch(`https://d1dpbg9jbgrqy5.cloudfront.net/users/${userID}`)
+    fetch(`https://in-knead.herokuapp.com/users/${userID}`)
     .then((response) => response.json())
     .then((responseJson) => {
       this.props.sumDonatedPizzas(responseJson.totalDonatedPizzas);
@@ -61,7 +61,7 @@ export default class History extends Component {
   componentWillMount() {
     if (this.props.user && this.props.userRequests === null) {
       const userID = this.props.user.id;
-      fetch(`https://d1dpbg9jbgrqy5.cloudfront.net/users/${userID}`)
+      fetch(`https://in-knead.herokuapp.com/users/${userID}`)
       .then((response) => response.json())
       .then((responseJson) => {
         this.props.sumDonatedPizzas(responseJson.totalDonatedPizzas);

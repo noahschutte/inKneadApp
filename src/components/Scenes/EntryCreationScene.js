@@ -91,7 +91,7 @@ class EntryCreationScene extends Component {
 
     /* eslint camelcase: 0 */
     let videoKey = `${Date.now() + fb_userID}`;
-    fetch('https://d1dpbg9jbgrqy5.cloudfront.net/requests', {
+    fetch('https://in-knead.herokuapp.com/requests', {
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json'
@@ -139,7 +139,7 @@ class EntryCreationScene extends Component {
               Actions.UploadingScene({ uploading: 'complete' });
             } else {
               console.log('failure');
-              fetch('https://d1dpbg9jbgrqy5.cloudfront.net/requests/1', {
+              fetch('https://in-knead.herokuapp.com/requests/1', {
                 headers: {
                   Accept: 'application/json',
                   'Content-Type': 'application/json'
@@ -166,7 +166,7 @@ class EntryCreationScene extends Component {
     let videoKey = `${fb_userID + Date.now()}`;
     const { pizzas, vendor, donor_id, id: requestId } = entry;
 
-    fetch('https://d1dpbg9jbgrqy5.cloudfront.net/thank_you', {
+    fetch('https://in-knead.herokuapp.com/thank_you', {
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json'
@@ -205,7 +205,7 @@ class EntryCreationScene extends Component {
               Actions.MainScene({ type: 'reset' });
             } else {
               console.log('failure, status: ', xhr.status);
-              fetch('https://d1dpbg9jbgrqy5.cloudfront.net/thank_you/1', {
+              fetch('https://in-knead.herokuapp.com/thank_you/1', {
                 headers: {
                   Accept: 'application/json',
                   'Content-Type': 'application/json',

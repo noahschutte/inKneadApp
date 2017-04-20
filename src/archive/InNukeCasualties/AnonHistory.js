@@ -18,7 +18,7 @@ export default class AnonHistory extends Component {
   _onRefresh() {
     this.setState({ refreshing: true });
     const anonID = this.props.anonID;
-    fetch(`https://d1dpbg9jbgrqy5.cloudfront.net/anon/${anonID}`)
+    fetch(`https://in-knead.herokuapp.com/anon/${anonID}`)
     .then((response) => response.json())
     .then((responseJson) => {
       if (responseJson.errorMessage) {
@@ -50,7 +50,7 @@ export default class AnonHistory extends Component {
   }
   componentWillMount() {
     const anonID = this.props.anonID;
-    fetch(`https://d1dpbg9jbgrqy5.cloudfront.net/anon/${anonID}`)
+    fetch(`https://in-knead.herokuapp.com/anon/${anonID}`)
     .then((response) => response.json())
     .then((responseJson) => {
       if (responseJson.errorMessage) {

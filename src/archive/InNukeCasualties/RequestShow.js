@@ -45,7 +45,7 @@ export default class RequestShow extends Component {
   onConfirmPress(request) {
     this.requestShowToggle(true);
     const userID = this.props.user.id;
-    fetch(`https://d1dpbg9jbgrqy5.cloudfront.net/requests/${request.id}`, {
+    fetch(`https://in-knead.herokuapp.com/requests/${request.id}`, {
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json'
