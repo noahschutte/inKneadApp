@@ -20,7 +20,7 @@ import {
 
 export const confirmDelete = (entryId) => {
   return (dispatch) => {
-    fetch(`https://d1dpbg9jbgrqy5.cloudfront.net/requests/${entryId}`, {
+    fetch(`https://in-knead.herokuapp.com/requests/${entryId}`, {
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json'
@@ -44,7 +44,7 @@ export const confirmDelete = (entryId) => {
 // confirmDonation is invoked when a user commits to donating to a request
 export const confirmDonation = (donatorId, entry) => {
   return (dispatch) => {
-    fetch(`https://d1dpbg9jbgrqy5.cloudfront.net/requests/${entry.id}`, {
+    fetch(`https://in-knead.herokuapp.com/requests/${entry.id}`, {
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json'
@@ -94,7 +94,7 @@ export const confirmDonation = (donatorId, entry) => {
 export const getEntries = (userID = null) => {
   return (dispatch) => {
     dispatch({ type: GET_ENTRIES });
-    fetch('https://d1dpbg9jbgrqy5.cloudfront.net/requests', {
+    fetch('https://in-knead.herokuapp.com/requests', {
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json'
@@ -116,7 +116,7 @@ export const getEntries = (userID = null) => {
 export const getUserHistory = (userID) => {
   return (dispatch) => {
     dispatch({ type: GET_ENTRIES });
-    fetch(`https://d1dpbg9jbgrqy5.cloudfront.net/anon/${userID}`, {
+    fetch(`https://in-knead.herokuapp.com/anon/${userID}`, {
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json',
@@ -135,11 +135,11 @@ export const reportVideo = (userID, entry) => {
   return (dispatch) => {
     let url;
     if (entry.type === 'thankYou') {
-      url = `https://d1dpbg9jbgrqy5.cloudfront.net/thank_you/${entry.id}`;
+      url = `https://in-knead.herokuapp.com/thank_you/${entry.id}`;
       dispatch({ type: DELETE_THANK_YOU, payload: entry.id });
       dispatch({ type: ADD_REPORTED_THANK_YOU, payload: entry.id });
     } else {
-      url = `https://d1dpbg9jbgrqy5.cloudfront.net/requests/${entry.id}`;
+      url = `https://in-knead.herokuapp.com/requests/${entry.id}`;
       dispatch({ type: DELETE_REQUEST, payload: entry.id });
       dispatch({ type: ADD_REPORTED_REQUEST, payload: entry.id });
     }

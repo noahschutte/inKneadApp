@@ -10,7 +10,7 @@ export default class Notification extends Component {
     const userID = this.props.user.id;
     const receivedDonation = true;
     const recentSuccessfulRequestID = this.props.recentSuccessfulRequest.id;
-    fetch(`https://d1dpbg9jbgrqy5.cloudfront.net/requests/${recentSuccessfulRequestID}`, {
+    fetch(`https://in-knead.herokuapp.com/requests/${recentSuccessfulRequestID}`, {
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json'

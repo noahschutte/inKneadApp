@@ -52,10 +52,10 @@ class NotificationsScene extends Component {
   }
 
   acknowledgeRemoval = (entry) => {
-    let url = `https://d1dpbg9jbgrqy5.cloudfront.net/requests/${entry.id}`;
+    let url = `https://in-knead.herokuapp.com/requests/${entry.id}`;
     if (entry.donor_viewed === true || entry.donor_viewed === false) {
       console.log(entry);
-      url = `https://d1dpbg9jbgrqy5.cloudfront.net/thank_you/${entry.id}`;
+      url = `https://in-knead.herokuapp.com/thank_you/${entry.id}`;
     }
     fetch(url, {
       headers: {

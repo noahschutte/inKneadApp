@@ -46,7 +46,7 @@ export default class ThankYou extends Component {
         vendor,
       } = this.state;
 
-      fetch('https://d1dpbg9jbgrqy5.cloudfront.net/thank_you', {
+      fetch('https://in-knead.herokuapp.com/thank_you', {
         headers: {
           Accept: 'application/json',
           'Content-Type': 'application/json'
@@ -81,7 +81,7 @@ export default class ThankYou extends Component {
               } else {
                 console.log('failure');
                 const userID = that.props.user.id;
-                fetch('https://d1dpbg9jbgrqy5.cloudfront.net/thank_you/1', {
+                fetch('https://in-knead.herokuapp.com/thank_you/1', {
                   headers: {
                     Accept: 'application/json',
                     'Content-Type': 'application/json'

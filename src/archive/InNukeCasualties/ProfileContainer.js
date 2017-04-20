@@ -30,7 +30,7 @@ export default class ProfileContainer extends Component {
     this.setState({ verify: true });
     const userID = this.props.user.id;
     const updatedEmail = this.props.user.signup_email;
-    fetch(`https://d1dpbg9jbgrqy5.cloudfront.net/users/${userID}`, {
+    fetch(`https://in-knead.herokuapp.com/users/${userID}`, {
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json'
@@ -56,7 +56,7 @@ export default class ProfileContainer extends Component {
   onUpdateEmailPress() {
     const userID = this.props.user.id;
     const { updatedEmail } = this.state;
-    fetch(`https://d1dpbg9jbgrqy5.cloudfront.net/users/${userID}`, {
+    fetch(`https://in-knead.herokuapp.com/users/${userID}`, {
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json'
