@@ -226,6 +226,7 @@ class EntryCreationScene extends Component {
   }
 
   handleRequestSubmission = () => {
+    this.setState({ paused: true });
     const { videoData, pizzas, vendor } = this.props;
     const errorMessages = [];
     if (!videoData) {
