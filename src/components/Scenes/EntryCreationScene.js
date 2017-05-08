@@ -134,11 +134,10 @@ class EntryCreationScene extends Component {
         xhr.onreadystatechange = () => {
           if (xhr.readyState === 4) {
             if (xhr.status === 200) {
-              console.log('success');
               this.props.handleVideoData(null);
               Actions.UploadingScene({ uploading: 'complete' });
             } else {
-              console.log('failure');
+              console.log('failure, status: ', xhr.status);
               fetch('https://in-knead.herokuapp.com/requests/1', {
                 headers: {
                   Accept: 'application/json',
@@ -200,7 +199,6 @@ class EntryCreationScene extends Component {
         xhr.onreadystatechange = () => {
           if (xhr.readyState === 4) {
             if (xhr.status === 200) {
-              console.log('success');
               this.props.handleVideoData(null);
               Actions.MainScene({ type: 'reset' });
             } else {
