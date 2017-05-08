@@ -128,8 +128,7 @@ class EntryScene extends Component {
     let onButtonPress;
     let buttonText;
 
-
-    if (entry.status === 'active' && entry.donorId === userID && userID !== null) { // Has the current user committed to this request?
+    if (entry.status === 'active' && entry.donorId === userID && userID !== null && entry.type === 'request') { // Has the current user committed to this request?
       onButtonPress = this.completeDonation;
       buttonText = 'FINISH DONATION';
     } else if (entry.type === 'request' && entry.donorId !== null) { // Has someone committed to making this donation?
