@@ -42,8 +42,6 @@ class NotificationsScene extends Component {
           this.acknowledgeRemoval(redirect.parameter);
           this.props.removeNotification(notificationID);
         };
-      case 'nothing':
-        return () => this.collapseNotification(this.state.expanded.indexOf(notificationID));
       case 'clear':
         return () => this.props.removeNotification(notificationID);
       default:
@@ -73,9 +71,9 @@ class NotificationsScene extends Component {
     .catch(err => alert(err));
   }
 
-  buttonContent = (notification) => {
+  buttonContent = (notification, key) => {
     const { text, expandable, id, redirect } = notification;
-    if (expandable && this.state.expanded.indexOf(id) !== -1) {
+    if (expandable && this.state.expanded.indexOf(key) !== -1) {
       return (
         <DetailSection contentStyle={{ flexDirection: 'column' }}>
           <Text style={styles.text}>{text}</Text>
@@ -106,13 +104,14 @@ class NotificationsScene extends Component {
     );
   }
 
-  expandNotification = (id) => {
-    const expanded = [id, ...this.state.expanded];
+  expandNotification = (key) => {
+    const expanded = [key, ...this.state.expanded];
     this.setState({ expanded });
   }
 
-  collapseNotification = (index) => {
+  collapseNotification = (key) => {
     const expanded = [...this.state.expanded];
+    const index = expanded.indexOf(key);
     expanded.splice(index, 1);
     this.setState({ expanded });
   }
@@ -134,7 +133,7 @@ class NotificationsScene extends Component {
             onPress = () => this.collapseNotification(key);
           }
         }
-        const buttonContent = this.buttonContent(notification);
+        const buttonContent = this.buttonContent(notification, key);
         return (
           <View key={key} style={{ marginTop: 10 }}>
             <Button touchableOpacity onPress={onPress}>
