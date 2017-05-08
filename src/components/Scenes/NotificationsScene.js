@@ -122,20 +122,21 @@ class NotificationsScene extends Component {
     let content;
     if (notifications.length > 0) {
       content = notifications.map(notification => {
+        const key = notifications.indexOf(notification);
         let onPress;
         if (notification.redirect && !notification.expandable) {
           onPress = () => this.props.redirectTo(notification.redirect);
         } else if (notification.expandable) {
-          const index = this.state.expanded.indexOf(notification.id);
+          const index = this.state.expanded.indexOf(key);
           if (index === -1) {
-            onPress = () => this.expandNotification(notification.id);
+            onPress = () => this.expandNotification(key);
           } else {
-            onPress = () => this.collapseNotification(index);
+            onPress = () => this.collapseNotification(key);
           }
         }
         const buttonContent = this.buttonContent(notification);
         return (
-          <View key={notification.text + notifications.indexOf(notification)} style={{ marginTop: 10 }}>
+          <View key={key} style={{ marginTop: 10 }}>
             <Button touchableOpacity onPress={onPress}>
               {buttonContent}
             </Button>

@@ -226,8 +226,10 @@ export const retrieveNotifications = (userID) => {
         for (const receivedThankYou of receivedThankYous) {
           dispatch({
             type: INCOMING_GRATITUDE,
-            payload: receivedThankYou,
-            origin: 'notifications'
+            payload: {
+              parameter: receivedThankYou,
+              origin: 'notifications',
+            }
           });
         }
       }
