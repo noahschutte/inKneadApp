@@ -18,7 +18,7 @@ class NotificationsScene extends Component {
     expanded: [],
   }
 
-  onPress = (action, notificationID, redirect = null) => {
+  onPress = (action, notificationID, redirect = null, key) => {
     const { signupEmail, userID } = this.props;
     switch (action) {
       case 'viewThankYou':
@@ -45,6 +45,8 @@ class NotificationsScene extends Component {
           this.acknowledgeRemoval(redirect.parameter);
           this.props.removeNotification(notificationID);
         };
+      case 'nothing':
+        return () => this.collapseNotification(key);
       case 'clear':
         return () => this.props.removeNotification(notificationID);
       default:
@@ -88,7 +90,7 @@ class NotificationsScene extends Component {
                   key={id + button.type}
                   touchableOpacity
                   buttonType={button.type}
-                  onPress={this.onPress(button.action, id, redirect)}
+                  onPress={this.onPress(button.action, id, redirect, key)}
                 >
                   {button.text}
                 </Button>
