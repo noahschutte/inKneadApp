@@ -91,6 +91,24 @@ export const confirmDonation = (donatorId, entry) => {
   };
 };
 
+export const donorViewed = (thankYouID) => {
+ fetch(`https://in-knead.herokuapp.com/thank_you/${thankYouID}`, {
+   headers: {
+     Accept: 'application/json',
+     'Content-Type': 'application/json'
+   },
+   method: 'PATCH',
+   body: JSON.stringify({ viewedVideo: true }),
+ })
+ .then(response => response.json())
+ .then(responseJSON => {
+   if (responseJSON.errorMessage) {
+     alert(responseJSON.errorMessage);
+   }
+ })
+ .catch(err => console.error(err));
+};
+
 export const getEntries = (userID = null) => {
   return (dispatch) => {
     dispatch({ type: GET_ENTRIES });

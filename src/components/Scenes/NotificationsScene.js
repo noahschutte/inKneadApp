@@ -3,6 +3,7 @@ import { View, Text } from 'react-native';
 import { connect } from 'react-redux';
 import {
   acceptEULA,
+  donorViewed,
   redirectTo,
   confirmDonationReceived,
   removeNotification,
@@ -20,10 +21,12 @@ class NotificationsScene extends Component {
   onPress = (action, notificationID, redirect = null) => {
     const { signupEmail, userID } = this.props;
     switch (action) {
+      case 'viewThankYou':
+      /* eslint no-fallthrough: 0 */
+        this.props.donorViewed(redirect.parameter.id);
       case 'verifyEmailScene':
       case 'completeDonation':
       case 'createThankYou':
-      case 'viewThankYou':
         return () => this.props.redirectTo(redirect);
       case 'confirmDonation':
         return () => this.props.confirmDonationReceived(redirect.parameter);
@@ -52,7 +55,6 @@ class NotificationsScene extends Component {
   acknowledgeRemoval = (entry) => {
     let url = `https://in-knead.herokuapp.com/requests/${entry.id}`;
     if (entry.donor_viewed === true || entry.donor_viewed === false) {
-      console.log(entry);
       url = `https://in-knead.herokuapp.com/thank_you/${entry.id}`;
     }
     fetch(url, {
@@ -176,6 +178,7 @@ const mapStateToProps = (state) => {
 };
 export default connect(mapStateToProps, {
   acceptEULA,
+  donorViewed,
   redirectTo,
   confirmDonationReceived,
   removeNotification,

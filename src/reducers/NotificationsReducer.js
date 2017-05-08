@@ -197,8 +197,8 @@ export default (state = INITIAL_STATE, action) => {
             },
             redirect: {
               scene: 'EntryScene',
-              parameter: action.payload,
-              origin: action.origin,
+              parameter: action.payload.parameter,
+              origin: action.payload.origin,
             },
           },
         ],
