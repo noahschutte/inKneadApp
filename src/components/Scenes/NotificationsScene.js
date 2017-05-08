@@ -135,7 +135,7 @@ class NotificationsScene extends Component {
         }
         const buttonContent = this.buttonContent(notification);
         return (
-          <View key={notification.text} style={{ marginTop: 10 }}>
+          <View key={notification.text + notifications.indexOf(notification)} style={{ marginTop: 10 }}>
             <Button touchableOpacity onPress={onPress}>
               {buttonContent}
             </Button>
