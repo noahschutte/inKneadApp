@@ -28,3 +28,4 @@ export const cameraFlashAuto = require('../../assets/ic_flash_auto_white.png');
 export const cameraFlashOn = require('../../assets/ic_flash_on_white.png');
 export const cameraFlashOff = require('../../assets/ic_flash_off_white.png');
 export const facebookImage = require('../../assets/mobile-icons/facebook.png');
+export const inKneadText = require('../../assets/in_knead_ultra_beams.png');
