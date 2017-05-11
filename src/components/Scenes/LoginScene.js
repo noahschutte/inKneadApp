@@ -1,31 +1,18 @@
 import React from 'react';
-import { View, Text, Image } from 'react-native';
-import { pizzaOnPlate } from '../../assets';
+import { View, Image } from 'react-native';
+import { pizzaOnPlate, inKneadText } from '../../assets';
 import ReduxLogin from '../ReduxLogin';
 
-const LoginScene = ({ logOut, redirect }) => {
-  const { container, top, bottom, image, title, text } = styles;
-  let prompt;
-  if (logOut) {
-    prompt = 'Log out: ';
-  } else {
-    prompt = 'Please log in: ';
-  }
+const LoginScene = ({ redirect }) => {
+  const { container, top, bottom, pizzaImage, textImage } = styles;
+
   return (
     <View style={container}>
       <View style={top}>
-        <Image style={image} source={pizzaOnPlate} />
-        <Text style={title}>
-          in knead
-        </Text>
-        <Text style={text}>
-          "The power of human kindness,{'\n'} one pizza at a time."
-        </Text>
+        <Image style={pizzaImage} source={pizzaOnPlate} />
+        <Image style={textImage} source={inKneadText} />
       </View>
       <View style={bottom}>
-        <Text style={[text, { marginBottom: 0, marginTop: 30 }]}>
-          {prompt}
-        </Text>
         <View>
           <ReduxLogin redirect={redirect} />
         </View>
@@ -43,29 +30,23 @@ const styles = {
   top: {
     flex: 6,
     alignItems: 'center',
+    justifyContent: 'center',
   },
   bottom: {
     flex: 3,
     alignItems: 'center',
   },
-  image: {
-    height: 150,
-    width: 150,
-    marginTop: 25,
-    borderRadius: 100 / 2,
+  pizzaImage: {
+    height: 170,
+    width: 170,
+    marginBottom: 25,
+    resizeMode: 'contain',
   },
-  title: {
-    marginBottom: 20,
-    fontSize: 55,
-    color: 'white',
-    fontFamily: 'Gillsans'
-  },
-  text: {
-    textAlign: 'center',
-    marginBottom: 30,
-    fontSize: 16,
-    color: 'white',
-    fontFamily: 'Gillsans',
+  textImage: {
+    height: 49,
+    width: 166,
+    resizeMode: 'contain',
+    marginHorizontal: 50,
   },
 };
 
