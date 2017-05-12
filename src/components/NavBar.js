@@ -14,7 +14,6 @@ import { toggleScope, redirectTo, toggleSideMenu, retrieveNotifications } from '
 import {
   globalButton,
   historyButton,
-  backButton,
 } from '../assets';
 import Button from './Button2';
 // import NotificationAlert from './NotificationAlert';
@@ -72,12 +71,7 @@ class NavBar extends Component {
     let onPress;
     switch (navBarProps.leftButton) {
       case 'backButton':
-        result = (
-          <Image
-            style={[styles.leftButtonStyle, { right: 15 }]}
-            source={backButton}
-          />
-        );
+        result = <Icon name='chevron-left' style={{ fontSize: 36, color: '#ffffff' }} />;
         if (navBarProps.redirect) {
           onPress = () => this.props.redirectTo(navBarProps.redirect);
         } else {

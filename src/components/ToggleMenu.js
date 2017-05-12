@@ -65,7 +65,7 @@ const styles = {
     flex: 1,
     backgroundColor: '#424242',
     justifyContent: 'space-around',
-    paddingHorizontal: Dimensions.get('window').width * 0.12,
+    paddingLeft: Dimensions.get('window').width * 0.12,
     paddingTop: 25,
     paddingBottom: Dimensions.get('window').height * 0.40,
   },
