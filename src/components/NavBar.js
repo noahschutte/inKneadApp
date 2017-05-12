@@ -9,16 +9,15 @@ import {
 } from 'react-native';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
+import Icon from 'react-native-vector-icons/FontAwesome';
 import { toggleScope, redirectTo, toggleSideMenu, retrieveNotifications } from '../actions';
 import {
   globalButton,
   historyButton,
   backButton,
-  menuButton,
-  newRequestButton
 } from '../assets';
 import Button from './Button2';
-import NotificationAlert from './NotificationAlert';
+// import NotificationAlert from './NotificationAlert';
 
 class NavBar extends Component {
 
@@ -87,22 +86,18 @@ class NavBar extends Component {
         break;
       case 'sideMenu':
       case 'menuButton':
-        result = (
-          <Image
-            style={styles.leftButtonStyle}
-            source={menuButton}
-          />
-        );
-        if (this.props.doesHaveNotifications) {
-          result = (
-            <Image
-              style={styles.leftButtonStyle}
-              source={menuButton}
-            >
-              <NotificationAlert alertStyle={styles.alertStyle} />
-            </Image>
-          );
-        }
+        result = <Icon name='navicon' style={{ fontSize: 36, color: '#ffffff' }} />;
+        // Renders a little blue circle with an exclamation mark if notifications exist
+        // if (this.props.doesHaveNotifications) {
+        //   result = (
+        //     <Image
+        //       style={styles.leftButtonStyle}
+        //       source={menuButton}
+        //     >
+        //       <NotificationAlert alertStyle={styles.alertStyle} />
+        //     </Image>
+        //   );
+        // }
         onPress = () => this.props.toggleSideMenu(sideMenuOpen);
         break;
       default:
@@ -131,12 +126,7 @@ class NavBar extends Component {
           </Button>
         );
       case 'newRequest':
-        result = (
-          <Image
-            style={styles.rightButtonStyle}
-            source={newRequestButton}
-          />
-        );
+        result = <Icon name='plus' style={{ fontSize: 36, color: '#ffffff' }} />;
         if (this.props.userID) {
           onPress = Actions.EntryCreationScene;
         } else {
@@ -184,7 +174,8 @@ const styles = {
     flexDirection: 'row',
     backgroundColor: '#ce0000',
     alignItems: 'center',
-    padding: 5,
+    paddingVertical: 5,
+    paddingHorizontal: Dimensions.get('window').width * 0.05,
   },
   titleStyle: {
     color: '#fff',
