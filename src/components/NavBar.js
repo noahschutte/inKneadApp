@@ -164,7 +164,6 @@ class NavBar extends Component {
       content = (
         <View style={styles.navBarStyle}>
           <StatusBar
-            backgroundColor="blue"
             barStyle="light-content"
           />
           {this.renderLeftButton()}

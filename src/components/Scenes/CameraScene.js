@@ -150,7 +150,6 @@ class CameraScene extends Component {
     return (
       <View style={{ flex: 1 }}>
         <StatusBar
-          backgroundColor="blue"
           barStyle="light-content"
         />
         <Camera
