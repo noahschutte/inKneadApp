@@ -72,6 +72,12 @@ const RouterComponent = () => {
           component={Scenes.HowToScene}
         />
         <Scene
+          navBarProps={NavProps.backButton}
+          sceneStyle={sceneStyle}
+          key="AboutScene"
+          component={Scenes.AboutScene}
+        />
+        <Scene
           navBarProps={NavProps.notificationsScene}
           sceneStyle={sceneStyle}
           key="NotificationsScene"

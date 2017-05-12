@@ -1,3 +1,4 @@
+import AboutScene from './AboutScene';
 import CameraScene from './CameraScene';
 import EmailVerifyScene from './EmailVerifyScene';
 import EntryCreationScene from './EntryCreationScene';
@@ -13,6 +14,7 @@ import UploadingScene from './UploadingScene';
 import UserHistoryScene from './UserHistoryScene';
 
 export {
+  AboutScene,
   CameraScene,
   EmailVerifyScene,
   EntryCreationScene,
