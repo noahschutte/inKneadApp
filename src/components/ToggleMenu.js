@@ -1,8 +1,7 @@
 import React from 'react';
-import { View, Text, Image, Platform } from 'react-native';
+import { View, Text, Platform, Dimensions } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import { defaultProfileImage } from '../assets';
 import SideMenuButton from './SideMenuButton';
 // import NotificationAlert from './NotificationAlert';
 
@@ -18,15 +17,7 @@ const ToggleMenu = (props) => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.donatedPizzasText}>
-        <Text style={{ fontWeight: 'bold', fontSize: 14, color: '#ffffff' }}>
-          {props.totalDonatedPizzas}
-        </Text> pizzas have been donated through this app!
-      </Text>
-      <Image
-        source={defaultProfileImage}
-        style={styles.image}
-      />
+
       <SideMenuButton onPress={onPress.bind(this, () => Actions.refresh({ key: 'MainScene' }))}>
         <Text style={styles.textStyle}>
           ORDERS{'\b'}
@@ -37,13 +28,11 @@ const ToggleMenu = (props) => {
       <SideMenuButton
         onPress={props.userID ? onPress.bind(this, notificationsScene) : onPress.bind(this, () => Actions.LoginScene({ redirect: { scene: 'NotificationsScene' } }))}
       >
-        <View style={styles.notificationStyle}>
-          <Text style={styles.textStyle}>
-            NOTIFICATIONS{'\b'}
-            <Icon name='bell' style={styles.iconStyle} color='#ffffff' />
-          </Text>
-          {/* {props.doesHaveNotifications ? <NotificationAlert /> : null} */}
-        </View>
+        <Text style={styles.textStyle}>
+          NOTIFICATIONS{'\b'}
+          <Icon name='bell' style={styles.iconStyle} color='#ffffff' />
+        </Text>
+        {/* {props.doesHaveNotifications ? <NotificationAlert /> : null} */}
       </SideMenuButton>
 
       <SideMenuButton onPress={props.userID ? onPress.bind(this, Actions.ProfileScene) : onPress.bind(this, Actions.LoginScene)}>
@@ -76,9 +65,9 @@ const styles = {
     flex: 1,
     backgroundColor: '#424242',
     justifyContent: 'space-around',
-    alignItems: 'center',
-    paddingTop: 75,
-    paddingBottom: 75,
+    paddingHorizontal: Dimensions.get('window').width * 0.12,
+    paddingTop: 25,
+    paddingBottom: Dimensions.get('window').height * 0.40,
   },
   image: {
     height: 100,
@@ -89,7 +78,7 @@ const styles = {
     fontSize: 26,
   },
   textStyle: {
-    textAlign: 'center',
+    textAlign: 'left',
     fontSize: 20,
     color: 'white',
     fontFamily: (Platform.os === 'ios') ? 'AvenirNext-Regular' : 'sans-serif-thin',
