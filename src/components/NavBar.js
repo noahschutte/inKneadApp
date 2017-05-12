@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {
+  StatusBar,
   View,
   Text,
   Image,
@@ -162,6 +163,10 @@ class NavBar extends Component {
     if (this.props.navBarProps) {
       content = (
         <View style={styles.navBarStyle}>
+          <StatusBar
+            backgroundColor="blue"
+            barStyle="light-content"
+          />
           {this.renderLeftButton()}
           {this.renderTitle()}
           {this.renderRightButton()}
@@ -178,9 +183,10 @@ class NavBar extends Component {
 const styles = {
   navBarStyle: {
     position: 'absolute',
-    height: 54,
+    height: (Platform.OS === 'ios') ? 74 : 54,
     width: Dimensions.get('window').width,
-    top: (Platform.OS === 'ios') ? 20 : 0, //if platform is iOS give it a height of 20, else no height (Android apps have their own status bar)
+    top: 0,
+    paddingTop: (Platform.OS === 'ios') ? 25 : 0,
     flexDirection: 'row',
     backgroundColor: '#ce0000',
     alignItems: 'center',
