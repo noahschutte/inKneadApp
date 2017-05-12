@@ -35,7 +35,6 @@
 		2D02E4C91E0B4AEC006451C7 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DAD3EA31DF850E9000B6D8A /* libReact.a */; };
 		2DCD954D1E0B4F2C00145EB5 /* inKneadAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* inKneadAppTests.m */; };
 		5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
-		6A01459B1EC5381B0029284C /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6A0145911EC5381A0029284C /* FontAwesome.ttf */; };
 		6A04743D1E6C99E700A07E56 /* libRCTFBSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A7E38B11E6C89F2007441C6 /* libRCTFBSDK.a */; };
 		6A04743E1E6C99F100A07E56 /* libRCTVideo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A7E38C01E6C89F2007441C6 /* libRCTVideo.a */; };
 		6A3374631E7F6E650088EF74 /* libCodePush.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A5997781E7F1F6C0053D7EF /* libCodePush.a */; };
@@ -292,7 +291,6 @@
 		2D02E47B1E0B4A5D006451C7 /* inKneadApp-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "inKneadApp-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* inKneadApp-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "inKneadApp-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
-		6A0145911EC5381A0029284C /* FontAwesome.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome.ttf; sourceTree = "<group>"; };
 		6A04743F1E6C9A2900A07E56 /* inKneadApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = inKneadApp.entitlements; path = inKneadApp/inKneadApp.entitlements; sourceTree = "<group>"; };
 		6A3374441E7F6C2A0088EF74 /* CodePush.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CodePush.h; path = "../node_modules/react-native-code-push/ios/CodePush/CodePush.h"; sourceTree = "<group>"; };
 		6A6F6D861E8B69FF00A33764 /* dgph */ = {isa = PBXFileReference; lastKnownFileType = file; path = dgph; sourceTree = "<group>"; };
@@ -471,7 +469,6 @@
 		13B07FAE1A68108700A75B9A /* inKneadApp */ = {
 			isa = PBXGroup;
 			children = (
-				6A01458E1EC5381A0029284C /* Fonts */,
 				6A04743F1E6C9A2900A07E56 /* inKneadApp.entitlements */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
@@ -506,14 +503,6 @@
 				5E9157351DD0AC6500FF2AA8 /* libRCTAnimation-tvOS.a */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		6A01458E1EC5381A0029284C /* Fonts */ = {
-			isa = PBXGroup;
-			children = (
-				6A0145911EC5381A0029284C /* FontAwesome.ttf */,
-			);
-			path = Fonts;
 			sourceTree = "<group>";
 		};
 		6A5997741E7F1F6C0053D7EF /* Products */ = {
@@ -1098,7 +1087,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
-				6A01459B1EC5381B0029284C /* FontAwesome.ttf in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
