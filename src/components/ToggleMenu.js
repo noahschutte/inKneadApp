@@ -1,7 +1,6 @@
 import React from 'react';
 import { View, Text, Image } from 'react-native';
 import { Actions } from 'react-native-router-flux';
-import Icon from 'react-native-vector-icons/FontAwesome';
 import { defaultProfileImage } from '../assets';
 import SideMenuButton from './SideMenuButton';
 import NotificationAlert from './NotificationAlert';
@@ -35,7 +34,7 @@ const ToggleMenu = (props) => {
         onPress={props.userID ? onPress.bind(this, notificationsScene) : onPress.bind(this, () => Actions.LoginScene({ redirect: { scene: 'NotificationsScene' } }))}
       >
         <View style={styles.notificationStyle}>
-          <Text style={styles.textStyle}>Notifications <Icon name='bell' color='white' /> </Text>
+          <Text style={styles.textStyle}>Notifications </Text>
           {props.doesHaveNotifications ? <NotificationAlert /> : null}
         </View>
       </SideMenuButton>
