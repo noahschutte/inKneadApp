@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Image, TouchableOpacity, Dimensions } from 'react-native';
+import { View, Image, TouchableOpacity, Dimensions, StatusBar } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import { connect } from 'react-redux';
 import Camera from 'react-native-camera';
@@ -149,6 +149,9 @@ class CameraScene extends Component {
     }
     return (
       <View style={{ flex: 1 }}>
+        <StatusBar
+          barStyle="light-content"
+        />
         <Camera
           captureAudio
           ref={cam => {
