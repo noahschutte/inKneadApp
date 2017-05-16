@@ -17,7 +17,7 @@ const INITIAL_STATE = {
   loading: true,
   requests: [],
   scope: 'global',
-  shown: 'All',
+  shown: 'ALL',
   sideMenuOpen: false,
   thankYous: [],
   totalDonatedPizzas: 0,
@@ -73,7 +73,7 @@ export default (state = INITIAL_STATE, action) => {
       return {
         ...state,
         scope: 'global',
-        shown: 'All',
+        shown: 'ALL',
       };
     case MODIFY_ENTRY: {
         const newEntry = action.payload;

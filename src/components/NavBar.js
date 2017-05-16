@@ -144,12 +144,14 @@ class NavBar extends Component {
 
   render() {
     let content;
+    let statusBar;
+    if (Platform.os === 'ios') {
+      statusBar = <StatusBar barStyle='light-content' />;
+    }
     if (this.props.navBarProps) {
       content = (
         <View style={styles.navBarStyle}>
-          <StatusBar
-            barStyle="light-content"
-          />
+          {statusBar}
           {this.renderLeftButton()}
           {this.renderTitle()}
           {this.renderRightButton()}

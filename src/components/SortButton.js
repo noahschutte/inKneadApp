@@ -26,26 +26,23 @@ const SortButton = (props) => {
 
 const styles = {
   sortButtonStyle: {
-    backgroundColor: '#fe0000',
+    backgroundColor: '#caecf4',
     flex: 1,
-    borderLeftWidth: 0.5,
-    borderRightWidth: 0.5,
-    borderColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
   },
   shownSortButton: {
-    backgroundColor: '#ce0000',
+    backgroundColor: '#48beda',
     flex: 1,
-    borderWidth: 1,
-    borderColor: '#ce0000',
     alignItems: 'center',
     justifyContent: 'center',
     elevation: 1,
   },
   sortButtonText: {
     color: '#fff',
-    fontSize: 14,
+    fontSize: 20,
+    fontFamily: 'sans-serif-thin',
+    fontWeight: 'bold',
     textAlign: 'center',
   },
 };
