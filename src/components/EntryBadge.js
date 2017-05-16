@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 
-const EntryBadge = ({ entryData, anonID }) => {
+const EntryBadge = ({ entryData }) => {
   let text;
   let textColor;
   if (entryData.type === 'thankYou') {
@@ -14,7 +14,7 @@ const EntryBadge = ({ entryData, anonID }) => {
       text = 'WAITING DELIVERY';
       textColor = '#f5a623';
     }
-    if (anonID === entryData.donorId && entryData.status === 'received') {
+    if (entryData.donorId && entryData.status === 'received') {
       text = 'DELIVERED';
       textColor = '#f5a623';
     }
