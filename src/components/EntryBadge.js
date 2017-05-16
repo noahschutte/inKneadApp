@@ -3,26 +3,26 @@ import { View, Text } from 'react-native';
 
 const EntryBadge = ({ entryData, anonID }) => {
   let text;
+  let textColor;
   if (entryData.type === 'thankYou') {
-    if (anonID === entryData.donorId) {
-      text = 'Thanked!';
-    } else {
-      text = 'Thanks!';
-    }
+    text = 'GRATITUDE';
+    textColor = '#48beda';
   } else if (entryData.status !== 'expired') {
-    text = entryData.status;
-    text = text.charAt(0).toUpperCase() + text.slice(1);
+    text = 'IN KNEAD';
+    textColor = '#ce0000';
     if (entryData.status === 'active' && entryData.donorId !== null) {
-      text = 'Awaiting Pizza';
+      text = 'WAITING DELIVERY';
+      textColor = '#f5a623';
     }
     if (anonID === entryData.donorId && entryData.status === 'received') {
-      text = 'Donated';
+      text = 'DELIVERED';
+      textColor = '#f5a623';
     }
   }
   if (text) {
     return (
-      <View style={[styles.containerStyle, (entryData.status === 'active' ? styles.activeStyle : null)]}>
-        <Text style={styles.textStyle}>{text}</Text>
+      <View style={styles.containerStyle}>
+        <Text style={[styles.textStyle, { color: textColor }]}>{text}</Text>
       </View>
     );
   }
@@ -32,18 +32,15 @@ const EntryBadge = ({ entryData, anonID }) => {
 const styles = {
   containerStyle: {
     maxHeight: 25,
-    borderRadius: 4,
-    backgroundColor: '#00cece',
-    padding: 6,
+    paddingVertical: 10,
+    marginHorizontal: 5,
     justifyContent: 'center',
   },
   textStyle: {
+    fontSize: 20,
     fontWeight: 'bold',
-    color: 'white',
+    color: '#ce0000',
   },
-  activeStyle: {
-    backgroundColor: '#ce0000',
-  }
 };
 
 export default EntryBadge;

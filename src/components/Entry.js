@@ -17,22 +17,18 @@ const Entry = ({ userEntry, selectedRequest, origin, anonID }) => {
       style={[styles.container, (userEntry ? styles.userEntry : null)]}
     >
 
-      <View style={styles.thumbnailContainer}>
-        <Image style={styles.thumbnail} source={{ uri: thumbnail }} />
+      <View style={styles.leftContainer}>
+        <EntryBadge
+          anonID={anonID}
+          entryData={selectedRequest}
+        />
+        <RequestPizzas pizzas={pizzas} size='medium' />
       </View>
 
-      <EntryBadge
-        anonID={anonID}
-        entryData={selectedRequest}
-        style={styles.badgeStyle}
-      />
-
-      <View style={styles.infoContainer}>
+      <View style={styles.rightContainer}>
+        <Image style={styles.thumbnail} source={{ uri: thumbnail }} />
         <View style={styles.timeContainer}>
           <TimeAgo style={styles.time} secondsOld={seconds} />
-        </View>
-        <View style={styles.requestContent}>
-          <RequestPizzas pizzas={pizzas} style={styles.pizzas} />
         </View>
       </View>
 
@@ -42,34 +38,31 @@ const Entry = ({ userEntry, selectedRequest, origin, anonID }) => {
 
 const styles = {
   container: {
-    flex: 1,
+    height: 125,
     flexDirection: 'row',
     alignItems: 'center',
-    marginBottom: 3,
+    paddingVertical: 5,
+    paddingHorizontal: 15,
     borderBottomColor: '#BDBDBD',
     borderBottomWidth: 1,
     padding: 5,
   },
-  userEntry: {
-    backgroundColor: '#ceabab',
-  },
-  badgeStyle: {
-    alignItems: 'center',
-    flex: 3,
-  },
-  thumbnailContainer: {
-    flex: 3,
-  },
-  infoContainer: {
-    flex: 3,
-    alignItems: 'flex-end'
-  },
-  timeContainer: {
+  // userEntry: {
+  //   backgroundColor: '#ceabab',
+  // },
+  rightContainer: {
     flex: 1,
+    alignItems: 'center',
+    paddingVertical: 5,
+  },
+  leftContainer: {
+    flex: 3,
+    alignItems: 'flex-start'
   },
   thumbnail: {
     flex: 1,
-    width: 50,
+    width: 58,
+    borderWidth: 0.5,
     resizeMode: 'contain',
   },
 };
