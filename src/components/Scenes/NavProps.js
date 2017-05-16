@@ -20,6 +20,11 @@ export const instructionsScene = {
   },
 };
 
+export const aboutScene = {
+  leftButton: 'backButton',
+  title: 'ABOUT',
+};
+
 export const mainScene = {
   rightButton: 'newRequest',
   leftButton: 'sideMenu',
@@ -36,6 +41,7 @@ export const profileScene = {
   redirect: {
     scene: 'MainScene',
   },
+  title: 'ACCOUNT',
 };
 
 export const uploadingScene = {

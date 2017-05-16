@@ -96,7 +96,7 @@ class NavBar extends Component {
         onPress = () => this.props.toggleSideMenu(sideMenuOpen);
         break;
       default:
-        return null;
+        return <View />;
     }
     return (
       <TouchableWithoutFeedback onPress={onPress}>
@@ -133,7 +133,7 @@ class NavBar extends Component {
         }
         break;
       default:
-        return null;
+        return <View />;
     }
     return (
       <TouchableWithoutFeedback onPress={onPress}>
@@ -143,25 +143,19 @@ class NavBar extends Component {
   }
 
   render() {
-    let content;
     let statusBar;
     if (Platform.os === 'ios') {
       statusBar = <StatusBar barStyle='light-content' />;
     }
-    if (this.props.navBarProps) {
-      content = (
-        <View style={styles.navBarStyle}>
-          {statusBar}
-          {this.renderLeftButton()}
-          {this.renderTitle()}
-          {this.renderRightButton()}
-        </View>
-      );
-    } else {
-      content = <View style={styles.navBarStyle}><Text>No Nav Props</Text></View>;
-    }
 
-    return content;
+    return (
+      <View style={styles.navBarStyle}>
+        {statusBar}
+        {this.renderLeftButton()}
+        {this.renderTitle()}
+        {this.renderRightButton()}
+      </View>
+    );
   }
 }
 
@@ -175,31 +169,21 @@ const styles = {
     flexDirection: 'row',
     backgroundColor: '#ce0000',
     alignItems: 'center',
+    justifyContent: 'space-between',
     paddingVertical: 5,
     paddingHorizontal: Dimensions.get('window').width * 0.05,
   },
   titleStyle: {
     color: '#fff',
+    fontSize: 20,
+    fontFamily: 'sans-serif-thin',
     fontWeight: 'bold',
     textAlign: 'center',
-    flex: 4,
   },
   centerButtonStyle: {
-    flex: 4,
     resizeMode: 'contain',
+    alignSelf: 'center',
     height: 40,
-  },
-  rightButtonStyle: {
-    flex: 1.5,
-    resizeMode: 'contain',
-    height: 30,
-    width: null,
-  },
-  leftButtonStyle: {
-    flex: 1.5,
-    resizeMode: 'contain',
-    height: 30,
-    width: null,
   },
   alertStyle: {
     backgroundColor: '#43cece',
