@@ -17,18 +17,15 @@ const Entry = ({ userEntry, selectedRequest, origin, anonID }) => {
       style={[styles.container, (userEntry ? styles.userEntry : null)]}
     >
 
-      <View style={styles.infoContainer}>
-        <View style={styles.requestContent}>
-          <EntryBadge
-            anonID={anonID}
-            entryData={selectedRequest}
-            style={styles.badgeStyle}
-          />
-          <RequestPizzas pizzas={pizzas} size='medium' />
-        </View>
+      <View style={styles.leftContainer}>
+        <EntryBadge
+          anonID={anonID}
+          entryData={selectedRequest}
+        />
+        <RequestPizzas pizzas={pizzas} size='medium' />
       </View>
 
-      <View style={styles.thumbnailContainer}>
+      <View style={styles.rightContainer}>
         <Image style={styles.thumbnail} source={{ uri: thumbnail }} />
         <View style={styles.timeContainer}>
           <TimeAgo style={styles.time} secondsOld={seconds} />
@@ -50,19 +47,15 @@ const styles = {
     borderBottomWidth: 1,
     padding: 5,
   },
-  userEntry: {
-    backgroundColor: '#ceabab',
-  },
-  badgeStyle: {
-    alignItems: 'center',
-    flex: 3,
-  },
-  thumbnailContainer: {
+  // userEntry: {
+  //   backgroundColor: '#ceabab',
+  // },
+  rightContainer: {
     flex: 1,
     alignItems: 'center',
     paddingVertical: 5,
   },
-  infoContainer: {
+  leftContainer: {
     flex: 3,
     alignItems: 'flex-start'
   },
