@@ -211,7 +211,7 @@ export const toggleScope = (currentScope, userID = null) => {
           type: TOGGLE_SCOPE,
           payload: {
             scope: 'private',
-            shown: 'Requests ',
+            shown: 'MY ENTRIES',
           }
         });
         if (userID) {
@@ -227,7 +227,7 @@ export const toggleScope = (currentScope, userID = null) => {
     type: TOGGLE_SCOPE,
     payload: {
       scope: 'global',
-      shown: 'All'
+      shown: 'ALL'
     }
   });
 };

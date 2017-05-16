@@ -48,36 +48,27 @@ class MainScene extends Component {
       userDonatedThankYous,
     } = this.props.entries;
     switch (shown) {
-      case 'All':
+      case 'ALL':
         return [...requests, ...thankYous];
-      case 'Requests':
+      case 'OPEN':
         if (requests) {
           return requests.filter(request => request.donorId === null);
         }
         return [];
-      case 'Thanks':
-        return thankYous;
-      case 'Fulfilled':
-        return requests.filter(request => request.donorId !== null);
-      case 'Requests ':
-        return userCreatedRequests;
-      case 'Thank Yous':
-        return userCreatedThankYous;
-      case 'Donated':
-        return userDonatedRequests;
-      case 'Gratitude':
-        return userDonatedThankYous;
+      case 'DONE':
+        return [...thankYous, ...requests.filter(request => request.donorId !== null)];
+      case 'MY ENTRIES':
+        return [...userCreatedRequests, ...userCreatedThankYous];
+      case 'MY DONATIONS':
+        return [...userDonatedRequests, ...userDonatedThankYous];
       default:
         return requests;
     }
   }
 
   assembleOptions = () => {
-    // Global requests is called 'Requests'
-    // Private requests is called 'Requests '
-    // The space is a hack, but it works so hey.
-    const globalOptions = ['All', 'Requests', 'Fulfilled', 'Thanks'];
-    const userHistoryOptions = ['Requests ', 'Thank Yous', 'Donated', 'Gratitude'];
+    const globalOptions = ['ALL', 'OPEN', 'DONE'];
+    const userHistoryOptions = ['MY ENTRIES', 'MY DONATIONS'];
     if (this.props.entries.scope === 'global') {
       return globalOptions;
     }
