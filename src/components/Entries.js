@@ -69,9 +69,13 @@ class Entries extends Component {
       /* eslint no-underscore-dangle: 0 */
       if (dataSource._cachedRowCount === 0) {
         refreshPrompt = (
-          <Text style={{ position: 'absolute', marginHorizontal: 30, textAlign: 'center', paddingTop: 20 }}>
-            There doesn't seem to be anything here... {'\n'}Pull down to refresh
-          </Text>
+          <View style={{ alignItems: 'center', marginTop: 25 }}>
+            <Text style={{ fontSize: 20, color: '#555' }}>NO REQUESTS?</Text>
+            <Text style={{ fontSize: 20, color: '#555' }}>PULL DOWN TO REFRESH!</Text>
+          </View>
+          // <Text style={{ position: 'absolute', marginHorizontal: 30, textAlign: 'center', paddingTop: 20 }}>
+          //   There doesn't seem to be anything here... {'\n'}Pull down to refresh
+          // </Text>
         );
       }
       content = (
