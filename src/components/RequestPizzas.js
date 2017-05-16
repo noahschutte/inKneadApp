@@ -9,6 +9,10 @@ const RequestPizzas = ({ pizzas, size }) => {
     case 'large':
       style = styles.pizzaImageLarge;
       break;
+    case 'medium':
+      style = styles.pizzaImageMedium;
+      break;
+    case 'small':
     default:
       style = styles.pizzaImageSmall;
   }
@@ -34,6 +38,11 @@ const styles = {
   pizzaImageSmall: {
     width: 20,
     height: 20,
+  },
+  pizzaImageMedium: {
+    width: 38,
+    height: 38,
+    marginHorizontal: 3,
   },
   pizzaImageLarge: {
     width: 50,
