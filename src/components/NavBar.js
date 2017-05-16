@@ -72,7 +72,7 @@ class NavBar extends Component {
     let onPress;
     switch (navBarProps.leftButton) {
       case 'backButton':
-        result = <Icon name='chevron-left' style={{ fontSize: 36, color: '#ffffff' }} />;
+        result = <Icon name='angle-left' style={{ fontSize: 44, color: '#ffffff' }} />;
         if (navBarProps.redirect) {
           onPress = () => this.props.redirectTo(navBarProps.redirect);
         } else {
