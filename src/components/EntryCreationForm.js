@@ -25,7 +25,7 @@ const EntryCreationForm = props => {
 
   return (
     <View style={{ flex: 5 }}>
-      <DetailSection bannerText='# OF PIZZAS' />
+      <DetailSection bannerText='HOW MANY PIZZAS?' />
       <PizzaRadioButton
         selectedImage={selectedPizzaImage}
         unselectedImage={unselectedPizzaImage}
@@ -33,7 +33,7 @@ const EntryCreationForm = props => {
         selectedOption={pizzas}
         onPress={updateSelectedPizzas}
       />
-      <DetailSection bannerText='VENDOR NEAR YOU' />
+      <DetailSection bannerText='VENDORS' />
       <VendorRadioButton
         vendors={['Dominos', 'Papa Johns', 'Pizza Hut']}
         onPress={updateSelectedVendor}
@@ -58,7 +58,7 @@ const styles = {
     margin: 5,
     width: 50,
     height: 50,
-    opacity: 0.2,
+    opacity: 0.5,
   },
   buttonTextStyle: {
     textAlign: 'center',

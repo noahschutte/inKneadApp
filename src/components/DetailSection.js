@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, Platform } from 'react-native';
 
 const DetailSection = ({ bannerText, children, style, contentStyle }, props) => {
   const { bannerStyle, bannerTextStyle, contentStyling, placeholderStyle } = styles;
@@ -28,7 +28,7 @@ const DetailSection = ({ bannerText, children, style, contentStyle }, props) => 
   }
 
   return (
-    <View style={[{ margin: 3, backgroundColor: 'white', borderRadius: 2 }, style]}>
+    <View style={style}>
       {banner}
       {content}
     </View>
@@ -39,14 +39,17 @@ const styles = {
   bannerStyle: {
     flexDirection: 'row',
     justifyContent: 'center',
-    backgroundColor: '#ce0000',
+    backgroundColor: '#48beda',
     borderTopRightRadius: 2,
     borderTopLeftRadius: 2,
     alignSelf: 'stretch',
-    padding: 5,
+    // padding: 5,
   },
   bannerTextStyle: {
-    color: '#fff'
+    color: '#fff',
+    fontSize: 24,
+    fontFamily: Platform.OS === 'ios' ? 'AvenirNextRegular' : 'sans-serif-thin',
+    fontWeight: 'bold',
   },
   contentStyling: {
     flexDirection: 'row',
