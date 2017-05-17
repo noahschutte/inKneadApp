@@ -31,7 +31,7 @@ class NavBar extends Component {
 
       case 'scope':
         onPress = this.props.toggleScope.bind(this, scope, userID);
-        return <ScopeButton />;
+        return <ScopeButton onPress={onPress} scope={scope} />;
         // switch (scope) {
         //   case 'global':
         //   result = (
