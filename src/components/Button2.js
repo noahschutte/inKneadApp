@@ -3,7 +3,8 @@ import {
   TouchableOpacity,
   TouchableHighlight,
   TouchableWithoutFeedback,
-  Text
+  Text,
+  Platform,
 } from 'react-native';
 
 class Button extends Component {
@@ -113,6 +114,7 @@ const styles = {
     alignSelf: 'center',
     color: '#00cece',
     fontSize: 16,
+    fontFamily: Platform.OS === 'ios' ? 'AvenirNext-Regular' : 'sans-serif-thin',
     fontWeight: '600',
     paddingTop: 10,
     paddingBottom: 10,
