@@ -17,6 +17,7 @@ import {
   historyButton,
 } from '../assets';
 import Button from './Button2';
+import ScopeButton from './ScopeButton';
 // import NotificationAlert from './NotificationAlert';
 
 class NavBar extends Component {
@@ -29,29 +30,30 @@ class NavBar extends Component {
     switch (title) {
 
       case 'scope':
-      onPress = this.props.toggleScope.bind(this, scope, userID);
-        switch (scope) {
-          case 'global':
-          result = (
-            <Image
-              style={styles.centerButtonStyle}
-              source={globalButton}
-            />
-          );
-          break;
-          case 'private':
-          result = (
-            <Image
-              style={styles.centerButtonStyle}
-              source={historyButton}
-            />
-          );
-          break;
-          default:
-            result = null;
-            break;
-        }
-        break;
+        onPress = this.props.toggleScope.bind(this, scope, userID);
+        return <ScopeButton onPress={onPress} scope={scope} />;
+        // switch (scope) {
+        //   case 'global':
+        //   result = (
+        //     <Image
+        //       style={styles.centerButtonStyle}
+        //       source={globalButton}
+        //     />
+        //   );
+        //   break;
+        //   case 'private':
+        //   result = (
+        //     <Image
+        //       style={styles.centerButtonStyle}
+        //       source={historyButton}
+        //     />
+        //   );
+        //   break;
+        //   default:
+        //     result = null;
+        //     break;
+        // }
+        // break;
       case null:
         return null;
       default:
@@ -59,11 +61,11 @@ class NavBar extends Component {
           <Text style={styles.titleStyle}>{title}</Text>
         );
     }
-    return (
-      <TouchableWithoutFeedback onPress={onPress}>
-        {result}
-      </TouchableWithoutFeedback>
-    );
+    // return (
+    //   <TouchableWithoutFeedback onPress={onPress}>
+    //     {result}
+    //   </TouchableWithoutFeedback>
+    // );
   }
 
   renderLeftButton = () => {
