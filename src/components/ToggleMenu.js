@@ -81,7 +81,7 @@ const styles = {
     textAlign: 'left',
     fontSize: 20,
     color: 'white',
-    fontFamily: (Platform.os === 'ios') ? 'AvenirNext-Regular' : 'sans-serif-thin',
+    fontFamily: (Platform.OS === 'ios') ? 'AvenirNext-Regular' : 'sans-serif-thin',
   },
   donatedPizzasText: {
     color: 'white',

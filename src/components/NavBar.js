@@ -144,7 +144,7 @@ class NavBar extends Component {
 
   render() {
     let statusBar;
-    if (Platform.os === 'ios') {
+    if (Platform.OS === 'ios') {
       statusBar = <StatusBar barStyle='light-content' />;
     }
 
@@ -176,7 +176,7 @@ const styles = {
   titleStyle: {
     color: '#fff',
     fontSize: 20,
-    fontFamily: 'sans-serif-thin',
+    fontFamily: (Platform.OS === 'ios') ? 'AvenirNext-Regular' : 'sans-serif-thin',
     fontWeight: 'bold',
     textAlign: 'center',
   },
