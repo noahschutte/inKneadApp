@@ -20,7 +20,7 @@ const ToggleMenu = (props) => {
 
       <SideMenuButton onPress={onPress.bind(this, () => Actions.refresh({ key: 'MainScene' }))}>
         <Text style={styles.textStyle}>
-          ORDERS{'\b'}
+          ORDERS{'  '}
           <Icon name='pie-chart' style={styles.iconStyle} color='#ffffff' />
         </Text>
       </SideMenuButton>
@@ -29,7 +29,7 @@ const ToggleMenu = (props) => {
         onPress={props.userID ? onPress.bind(this, notificationsScene) : onPress.bind(this, () => Actions.LoginScene({ redirect: { scene: 'NotificationsScene' } }))}
       >
         <Text style={styles.textStyle}>
-          NOTIFICATIONS{'\b'}
+          NOTIFICATIONS{'  '}
           <Icon name='bell' style={styles.iconStyle} color='#ffffff' />
         </Text>
         {/* {props.doesHaveNotifications ? <NotificationAlert /> : null} */}
@@ -37,21 +37,21 @@ const ToggleMenu = (props) => {
 
       <SideMenuButton onPress={props.userID ? onPress.bind(this, Actions.ProfileScene) : onPress.bind(this, Actions.LoginScene)}>
         <Text style={styles.textStyle}>
-          ACCOUNT{'\b'}
+          ACCOUNT{'  '}
           <Icon name='cog' style={styles.iconStyle} color='#ffffff' />
         </Text>
       </SideMenuButton>
 
       <SideMenuButton onPress={onPress.bind(this, Actions.AboutScene)}>
         <Text style={styles.textStyle}>
-          ABOUT{'\b'}
+          ABOUT{'  '}
           <Icon name='info-circle' style={styles.iconStyle} color='#ffffff' />
         </Text>
       </SideMenuButton>
 
       <SideMenuButton onPress={onPress.bind(this, Actions.HowToScene)}>
         <Text style={styles.textStyle}>
-          HOW TO{'\b'}
+          HOW TO{'  '}
           <Icon name='question-circle' style={styles.iconStyle} color='#ffffff' />
         </Text>
       </SideMenuButton>
