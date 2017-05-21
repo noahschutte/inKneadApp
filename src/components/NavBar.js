@@ -3,7 +3,6 @@ import {
   StatusBar,
   View,
   Text,
-  Image,
   TouchableWithoutFeedback,
   Dimensions,
   Platform,
@@ -12,10 +11,6 @@ import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { toggleScope, redirectTo, toggleSideMenu, retrieveNotifications } from '../actions';
-import {
-  globalButton,
-  historyButton,
-} from '../assets';
 import Button from './Button2';
 import ScopeButton from './ScopeButton';
 // import NotificationAlert from './NotificationAlert';
@@ -25,35 +20,11 @@ class NavBar extends Component {
   renderTitle = () => {
     const { title } = this.props.navBarProps;
     const { scope, userID } = this.props;
-    let result;
     let onPress;
     switch (title) {
-
       case 'scope':
         onPress = this.props.toggleScope.bind(this, scope, userID);
         return <ScopeButton onPress={onPress} scope={scope} />;
-        // switch (scope) {
-        //   case 'global':
-        //   result = (
-        //     <Image
-        //       style={styles.centerButtonStyle}
-        //       source={globalButton}
-        //     />
-        //   );
-        //   break;
-        //   case 'private':
-        //   result = (
-        //     <Image
-        //       style={styles.centerButtonStyle}
-        //       source={historyButton}
-        //     />
-        //   );
-        //   break;
-        //   default:
-        //     result = null;
-        //     break;
-        // }
-        // break;
       case null:
         return null;
       default:
@@ -61,11 +32,6 @@ class NavBar extends Component {
           <Text style={styles.titleStyle}>{title}</Text>
         );
     }
-    // return (
-    //   <TouchableWithoutFeedback onPress={onPress}>
-    //     {result}
-    //   </TouchableWithoutFeedback>
-    // );
   }
 
   renderLeftButton = () => {

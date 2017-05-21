@@ -62,7 +62,6 @@ const styles = {
   thumbnail: {
     flex: 1,
     width: 58,
-    borderWidth: 0.5,
     resizeMode: 'contain',
   },
 };

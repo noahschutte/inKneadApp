@@ -34,6 +34,9 @@ class EmailVerifyScene extends Component {
     let textInput = (
       <TextInput
         autoFocus
+        placeholder={currentEmail}
+        placeholderTextColor='#ce8888'
+        returnKeyType='go'
         onChangeText={this.updateEmailText}
         maxLength={254}
         autoCorrect={false}
@@ -56,36 +59,21 @@ class EmailVerifyScene extends Component {
     }
     return (
       <View style={[{ flex: 1 }, iOSContainer]}>
-
-        <DetailSection style={{ flex: 3, marginTop: 15 }} bannerText='Current Email'>
-          <Text>{currentEmail}</Text>
+        <DetailSection style={{ flex: 5, justifyContent: 'center', }}>
+          {textInput}
         </DetailSection>
-
-        <View style={{ flex: 4 }}>
-          <DetailSection style={{ flex: 5 }} bannerText='New Email'>
-            {textInput}
-          </DetailSection>
-          <DetailSection
-            style={styles.buttonSectionStyle}
-            contentStyle={{ justifyContent: 'space-around' }}
+        <DetailSection
+          style={styles.buttonSectionStyle}
+          contentStyle={{ justifyContent: 'space-around' }}
+        >
+          <Button
+            touchableOpacity
+            onPress={this.state.validEmail ? this.onPress : () => alert('Please enter a valid email')}
+            buttonStyle={this.state.validEmail ? styles.submitStyle : styles.inactiveStyle}
           >
-            <Button
-              touchableOpacity
-              onPress={Actions.pop}
-              buttonType={'cancel'}
-            >
-              <Text style={[styles.buttonStyle]}>Cancel</Text>
-            </Button>
-            <Button
-              touchableOpacity
-              onPress={this.state.validEmail ? this.onPress : () => alert('Please enter a valid email')}
-              buttonStyle={this.state.validEmail ? styles.submitStyle : styles.inactiveStyle}
-            >
-              <Text style={styles.buttonStyle}>Update</Text>
-            </Button>
-          </DetailSection>
-        </View>
-
+            <Text style={styles.buttonStyle}>UPDATE</Text>
+          </Button>
+        </DetailSection>
       </View>
     );
   }
@@ -99,11 +87,15 @@ const styles = {
     flex: 1,
     marginHorizontal: 15,
     textAlign: 'center',
+    fontSize: 24,
+    color: '#ce0000',
   },
   iOSTextInput: {
     flex: 1,
     width: 300,
     textAlign: 'center',
+    fontSize: 24,
+    color: '#ce0000',
   },
   iOSTextInputWrapper: {
     height: 25,
@@ -115,6 +107,8 @@ const styles = {
   buttonStyle: {
     fontWeight: 'bold',
     color: 'white',
+    fontSize: 20,
+    paddingHorizontal: 25,
     margin: 10,
   },
   submitStyle: {
