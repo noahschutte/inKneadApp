@@ -7,7 +7,7 @@ import {
   hexagon
 } from '../assets';
 
-const Vendor = ({ vendor }) => {
+const Vendor = ({ vendor, selected }) => {
   let vendorImageSource;
   switch (vendor) {
     case 'Dominos':
@@ -28,7 +28,7 @@ const Vendor = ({ vendor }) => {
   );
 
   return (
-    <Image style={styles.container} source={hexagon}>
+    <Image style={[styles.container, selected ? styles.selected : styles.unselected]} source={hexagon}>
       {vendorImage}
     </Image>
   );
@@ -46,6 +46,10 @@ const styles = {
     height: 40,
     flex: 1,
     resizeMode: 'contain',
+  },
+  unselected: {
+    // margin: 2.5,
+    opacity: 0.2
   }
 };
 

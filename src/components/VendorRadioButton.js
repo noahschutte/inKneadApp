@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
-import { View, Image, TouchableWithoutFeedback } from 'react-native';
-import {
-  dominosVendorImage,
-  papasVendorImage,
-  pizzaHutVendorImage
-} from '../assets';
+import { View, TouchableOpacity } from 'react-native';
+import Vendor from './Vendor';
+
 
 class VendorRadioButton extends Component {
   getStyle = (vendorName) => {
@@ -24,42 +21,27 @@ class VendorRadioButton extends Component {
     };
   }
 
-  assembleImages = () => {
-    const dominos = (
-      <Image
-      name='Dominos'
-      source={dominosVendorImage}
-      style={this.getStyle('Dominos')}
-      />
-    );
-    const papas = (
-      <Image
-        name='Papa Johns'
-        source={papasVendorImage}
-        style={this.getStyle('Papa Johns')}
-      />
-    );
-    const pizzaHut = (
-      <Image
-        name='Pizza Hut'
-        source={pizzaHutVendorImage}
-        style={this.getStyle('Pizza Hut')}
-      />
-    );
+  assembleVendors = () => {
+    const selected = this.props.selectedVendor;
+
+    const dominos = <Vendor vendor='Dominos' selected={selected === 'Dominos'} />;
+    const papas = <Vendor vendor='Papa Johns' selected={selected === 'Papa Johns'} />;
+    const pizzaHut = <Vendor vendor='Pizza Hut' selected={selected === 'Pizza Hut'} />;
+
     return [dominos, papas, pizzaHut];
   }
 
 
   renderContent = () => {
     const { onPress } = this.props;
-    const images = this.assembleImages();
+    const vendors = this.assembleVendors();
     return (
       <View style={styles.container}>
-        {images.map((image, index) => {
+        {vendors.map((vendor, index) => {
           return (
-            <TouchableWithoutFeedback onPress={() => onPress(image.props.name)} key={index}>
-              {image}
-            </TouchableWithoutFeedback>
+            <TouchableOpacity onPress={() => onPress(vendor.props.vendor)} key={index}>
+              {vendor}
+            </TouchableOpacity>
           );
         })}
       </View>

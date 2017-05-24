@@ -81,7 +81,7 @@ const EntryDetails = ({
       <DetailSection bannerText={bannerText}>
         <RequestPizzas size='large' pizzas={pizzas} />
         <Text style={styles.requestTextStyle}>from</Text>
-        <Vendor vendor={vendor} />
+        <Vendor vendor={vendor} selected />
       </DetailSection>
 
       <View style={styles.buttonWrapper}>
