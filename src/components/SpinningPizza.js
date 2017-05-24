@@ -27,14 +27,14 @@ class SpinningPizza extends Component {
       outputRange: ['0deg', '360deg']
     });
     return (
-      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }} >
+      <View style={{ flex: 1, justifyContent: 'flex-end', alignItems: 'center' }} >
           <Animated.Image
             style={{
-              flex: 4,
+              // flex: 4,
               transform: [{ rotate: spin }],
               alignSelf: 'center',
               margin: 20,
-              height: 100,
+              height: 150,
               resizeMode: 'contain'
             }}
             source={loadingPizzaImage}

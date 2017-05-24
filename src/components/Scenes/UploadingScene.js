@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, Platform } from 'react-native';
 import { connect } from 'react-redux';
 import { clearUploadProgress } from '../../actions';
 import Button from '../Button2';
@@ -12,7 +12,10 @@ class UploadingScene extends Component {
         <View style={styles.animationContainer}>
           <SpinningPizza />
         </View>
-        <Text style={styles.textStyle}>Uploading your video now...</Text>
+        <View style={styles.textWrapper}>
+          <Text style={styles.textStyle}>UPLOADING YOUR</Text>
+          <Text style={styles.textStyle}>PIZZA REQUEST!</Text>
+        </View>
       </View>
     );
     if (this.props.uploading === 'complete') {
@@ -41,8 +44,14 @@ const styles = {
   animationContainer: {
     flex: 1,
   },
+  textWrapper: {
+    flex: 1,
+    alignItems: 'center',
+  },
   textStyle: {
-    flex: 2,
+    fontFamily: Platform.OS === 'ios' ? 'AvenirNext-Bold' : 'sans-serif',
+    fontSize: 24,
+    fontWeight: 'bold',
   }
 };
 
