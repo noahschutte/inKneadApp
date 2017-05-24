@@ -43,7 +43,7 @@ const styles = {
     borderTopRightRadius: 2,
     borderTopLeftRadius: 2,
     alignSelf: 'stretch',
-    // padding: 5,
+    padding: 5,
   },
   bannerTextStyle: {
     color: '#fff',

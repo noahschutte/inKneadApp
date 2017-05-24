@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View, Image } from 'react-native';
+import { View, Image } from 'react-native';
 import { wholePizzaImage } from '../assets';
 import DetailSection from './DetailSection';
 import PizzaRadioButton from './PizzaRadioButton';
@@ -39,11 +39,11 @@ const EntryCreationForm = props => {
         onPress={updateSelectedVendor}
         selectedVendor={vendor}
       />
-      <View style={{ marginLeft: 20, marginRight: 20 }}>
-        <Button onPress={handleRequestSubmission} touchableOpacity>
-          <Text style={styles.buttonTextStyle}>Submit Request</Text>
+      <DetailSection>
+        <Button onPress={handleRequestSubmission} textStyle={styles.buttonTextStyle} buttonStyle={styles.buttonStyle} touchableOpacity>
+          REQUEST
         </Button>
-      </View>
+      </DetailSection>
     </View>
   );
 };
@@ -52,19 +52,27 @@ const styles = {
   selectedImageStyle: {
     width: 50,
     height: 50,
-    margin: 5,
+    marginVertical: 10,
+    marginHorizontal: 5,
     },
   unselectedImageStyle: {
-    margin: 5,
+    marginVertical: 10,
+    marginHorizontal: 5,
     width: 50,
     height: 50,
     opacity: 0.5,
   },
+  buttonStyle: {
+    backgroundColor: '#ce0000',
+    margin: 20,
+  },
   buttonTextStyle: {
-    textAlign: 'center',
-    fontSize: 28,
-    color: '#ce0000',
-    padding: 15
+    alignSelf: 'center',
+    color: '#fff',
+    fontSize: 30,
+    fontWeight: 'bold',
+    paddingVertical: 5,
+    marginHorizontal: 25,
   }
 };
 
