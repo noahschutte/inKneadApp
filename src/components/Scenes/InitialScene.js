@@ -1,7 +1,8 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, Image } from 'react-native';
 import { connect } from 'react-redux';
 import { AccessToken, GraphRequest, GraphRequestManager } from 'react-native-fbsdk';
+import { pizzaOnPlate, inKneadText } from '../../assets';
 import {
   createSession,
   getEntries,
@@ -42,11 +43,11 @@ const InitialScene = (props) => {
   );
   return (
     <View style={styles.containerStyle}>
-      <SpinningPizza />
-      <View style={styles.textContainer}>
-        <Text style={styles.textStyle}>
-          in knead
-        </Text>
+      <View style={{ flex: 2, justifyContent: 'flex-end' }}>
+        <Image style={styles.pizzaStyle} source={pizzaOnPlate} />
+      </View>
+      <View style={{ flex: 3, justifyContent: 'flex-start' }}>
+        <Image style={styles.inKneadStyle} source={inKneadText} />
       </View>
     </View>
   );
@@ -56,19 +57,17 @@ const styles = {
   containerStyle: {
     paddingTop: 25,
     justifyContent: 'center',
+    alignItems: 'center',
     flex: 1,
     backgroundColor: '#ce0000'
   },
-  textContainer: {
-    flex: 0.75,
-    alignItems: 'center',
+  pizzaStyle: {
+    resizeMode: 'contain',
+    height: 170,
   },
-  textStyle: {
-    fontSize: 50,
-    paddingTop: 25,
-    color: 'white',
-    textShadowOffset: { width: 1, height: 1 },
-    textShadowRadius: 10,
+  inKneadStyle: {
+    resizeMode: 'contain',
+    width: 170,
   },
 };
 
