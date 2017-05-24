@@ -48,7 +48,6 @@ const styles = {
     resizeMode: 'contain',
   },
   unselected: {
-    // margin: 2.5,
     opacity: 0.2
   }
 };
