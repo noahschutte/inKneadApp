@@ -34,7 +34,7 @@ const EntryDetails = ({
 
   return (
     <View style={{ flex: 5 }}>
-      <DetailSection contentStyle={{ justifyContent: 'space-between' }}>
+      {/* <DetailSection contentStyle={{ justifyContent: 'space-between' }}>
         <TimeAgo secondsOld={seconds} />
         <Menu onSelect={value => value()} style={styles.userHistoryButton}>
           <MenuTrigger text=' ... ' customStyles={{ triggerText: { fontSize: 16, fontWeight: 'bold' } }} />
@@ -76,19 +76,20 @@ const EntryDetails = ({
             />
           </MenuOptions>
         </Menu>
-      </DetailSection>
-
-      <DetailSection bannerText={bannerText}>
+      </DetailSection> */}
+      <DetailSection bannerStyle={{ padding: 10, }} bannerText={bannerText}>
         <RequestPizzas size='large' pizzas={pizzas} />
-        <Text style={styles.requestTextStyle}>from</Text>
-        <Vendor vendor={vendor} selected />
       </DetailSection>
-
-      <View style={styles.buttonWrapper}>
-        <Button touchableOpacity onPress={onButtonPress}>
-          <Text style={styles.donateTextStyle}>{buttonText}</Text>
-        </Button>
+      <Text style={styles.requestTextStyle}>from</Text>
+      <View style={{ justifyContent: 'center', alignItems: 'center', }}>
+        <Vendor vendor={vendor} selected />
       </View>
+
+      <DetailSection>
+        <Button touchableOpacity onPress={onButtonPress} textStyle={styles.donateTextStyle} buttonStyle={styles.buttonStyle}>
+        {buttonText}
+        </Button>
+      </DetailSection>
     </View>
   );
 };
@@ -97,37 +98,20 @@ const styles = {
   requestTextStyle: {
     fontWeight: 'bold',
     padding: 10,
+    fontSize: 24,
     alignSelf: 'center',
   },
-  buttonWrapper: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    flex: 1,
-  },
-  userHistoryText: {
-    color: 'black',
-    textDecorationLine: 'underline',
-    padding: 0,
-    margin: 0,
-  },
-  userHistoryButton: {
-    borderWidth: 0,
-    margin: 0,
-    padding: 0,
-    borderColor: 'black',
+  buttonStyle: {
+    backgroundColor: '#ce0000',
+    margin: 20,
   },
   donateTextStyle: {
     alignSelf: 'center',
-    color: '#ce0000',
+    color: '#fff',
     fontSize: 30,
     fontWeight: 'bold',
-    margin: 20,
-    textShadowColor: '#ccc',
-    textShadowOffset: {
-      width: 1,
-      height: 2,
-    },
-    textShadowRadius: 2,
+    paddingVertical: 5,
+    marginHorizontal: 20,
   }
 };
 

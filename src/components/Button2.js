@@ -116,8 +116,7 @@ const styles = {
     fontSize: 16,
     fontFamily: Platform.OS === 'ios' ? 'AvenirNext-Regular' : 'sans-serif-thin',
     fontWeight: '600',
-    paddingTop: 10,
-    paddingBottom: 10,
+    paddingVertical: 10,
   },
   defaultButtonStyle: {
     alignSelf: 'stretch',
