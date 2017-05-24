@@ -4,22 +4,6 @@ import Vendor from './Vendor';
 
 
 class VendorRadioButton extends Component {
-  getStyle = (vendorName) => {
-    if (vendorName === this.props.selectedVendor) {
-      return {
-        width: 55,
-        height: 55,
-        resizeMode: 'contain',
-      };
-    }
-    return {
-      margin: 2.5,
-      width: 50,
-      height: 50,
-      resizeMode: 'contain',
-      opacity: 0.2,
-    };
-  }
 
   assembleVendors = () => {
     const selected = this.props.selectedVendor;
