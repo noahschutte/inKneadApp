@@ -22,6 +22,7 @@ const styles = {
     borderColor: '#ffffff',
     borderRadius: 5,
     flexDirection: 'row',
+    overflow: 'hidden',
   },
   iconStyle: {
     color: '#fff',

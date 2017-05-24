@@ -138,7 +138,7 @@ const styles = {
     backgroundColor: '#ce0000',
     alignItems: 'center',
     justifyContent: 'space-between',
-    paddingVertical: 5,
+    // paddingVertical: 5,
     paddingHorizontal: Dimensions.get('window').width * 0.05,
   },
   titleStyle: {
@@ -147,11 +147,6 @@ const styles = {
     fontFamily: (Platform.OS === 'ios') ? 'AvenirNext-Regular' : 'sans-serif-thin',
     fontWeight: 'bold',
     textAlign: 'center',
-  },
-  centerButtonStyle: {
-    resizeMode: 'contain',
-    alignSelf: 'center',
-    height: 40,
   },
   alertStyle: {
     backgroundColor: '#43cece',

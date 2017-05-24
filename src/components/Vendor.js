@@ -1,12 +1,13 @@
 import React from 'react';
-import { View, Image } from 'react-native';
+import { Image } from 'react-native';
 import {
   dominosVendorImage,
   papasVendorImage,
-  pizzaHutVendorImage
+  pizzaHutVendorImage,
+  hexagon
 } from '../assets';
 
-const Vendor = ({ vendor, size }) => {
+const Vendor = ({ vendor, selected }) => {
   let vendorImageSource;
   switch (vendor) {
     case 'Dominos':
@@ -22,40 +23,33 @@ const Vendor = ({ vendor, size }) => {
       break;
   }
 
-  let style;
-  switch (size) {
-    case 'large':
-      style = styles.vendorImageLarge;
-      break;
-    default:
-      style = styles.vendorImageSmall;
-      break;
-  }
-
   const vendorImage = (
-    <Image source={vendorImageSource} style={style} />
+    <Image source={vendorImageSource} style={styles.vendorImage} />
   );
 
   return (
-    <View style={styles.container}>
+    <Image style={[styles.container, selected ? styles.selected : styles.unselected]} source={hexagon}>
       {vendorImage}
-    </View>
+    </Image>
   );
 };
 
 const styles = {
   container: {
     margin: 2,
+    width: 60,
+    height: 60,
+    alignItems: 'center',
   },
-  vendorImageSmall: {
-    width: 20,
-    height: 20,
+  vendorImage: {
+    width: 40,
+    height: 40,
+    flex: 1,
     resizeMode: 'contain',
   },
-  vendorImageLarge: {
-    width: 55,
-    height: 55,
-    resizeMode: 'contain',
+  unselected: {
+    // margin: 2.5,
+    opacity: 0.2
   }
 };
 
