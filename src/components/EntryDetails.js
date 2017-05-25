@@ -34,7 +34,7 @@ const EntryDetails = ({
 
   return (
     <View style={{ flex: 5 }}>
-      {/* <DetailSection contentStyle={{ justifyContent: 'space-between' }}>
+      <DetailSection contentStyle={{ justifyContent: 'space-between' }}>
         <TimeAgo secondsOld={seconds} />
         <Menu onSelect={value => value()} style={styles.userHistoryButton}>
           <MenuTrigger text=' ... ' customStyles={{ triggerText: { fontSize: 16, fontWeight: 'bold' } }} />
@@ -76,7 +76,7 @@ const EntryDetails = ({
             />
           </MenuOptions>
         </Menu>
-      </DetailSection> */}
+      </DetailSection>
       <DetailSection bannerStyle={{ padding: 10, }} bannerText={bannerText}>
         <RequestPizzas size='large' pizzas={pizzas} />
       </DetailSection>
