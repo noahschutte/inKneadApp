@@ -35,11 +35,14 @@ const EntryBadge = ({ entryData, origin, anonID }) => {
       } else if (entryData.creatorId === anonID) {
         text = 'RECEIVED';
         textColor = '#f5a623';
+      } else {
+        text = 'DELIVERED';
+        textColor = '#f5a623';
       }
-    } else {
-      text = 'DELIVERED';
-      textColor = '#f5a623';
     }
+  } else {
+    text = 'EXPIRED';
+    textColor = '#999';
   }
   if (text) {
     return (

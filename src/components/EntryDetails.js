@@ -25,12 +25,16 @@ const EntryDetails = ({
   if (entryData.type === 'request') {
     if (entryData.donorId === null) {
       bannerText = 'REQUESTED';
+      if (entryData.status === 'expired') {
+        bannerText = 'EXPIRED REQUEST';
+      }
     } else {
       bannerText = 'RECEIVED';
     }
   } else {
     bannerText = 'THANKS FOR';
   }
+  const expired = entryData.status === 'expired';
 
   return (
     <View style={{ flex: 5 }}>
@@ -86,7 +90,12 @@ const EntryDetails = ({
       </View>
 
       <DetailSection>
-        <Button touchableOpacity onPress={onButtonPress} textStyle={styles.donateTextStyle} buttonStyle={styles.buttonStyle}>
+        <Button
+          touchableOpacity
+          onPress={expired ? null : onButtonPress}
+          textStyle={styles.donateTextStyle}
+          buttonStyle={expired ? styles.expired : styles.buttonStyle}
+        >
         {buttonText}
         </Button>
       </DetailSection>
@@ -111,6 +120,11 @@ const styles = {
     fontSize: 30,
     paddingVertical: 5,
     marginHorizontal: 20,
+  },
+  expired: {
+    backgroundColor: '#999',
+    margin: 20,
+    borderColor: '#999',
   }
 };
 
