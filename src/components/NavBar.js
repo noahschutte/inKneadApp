@@ -39,7 +39,7 @@ class NavBar extends Component {
     let onPress;
     switch (navBarProps.leftButton) {
       case 'backButton':
-        result = <Icon name='angle-left' style={{ fontSize: 44, color: '#ffffff' }} />;
+        result = <Icon name='angle-left' style={{ paddingRight: 25, fontSize: 36, color: '#ffffff' }} />;
         if (navBarProps.redirect) {
           onPress = () => this.props.redirectTo(navBarProps.redirect);
         } else {
@@ -82,7 +82,7 @@ class NavBar extends Component {
           <TouchableOpacity
             onPress={() => this.props.retrieveNotifications(this.props.userID)}
           >
-            <Icon name='refresh' style={{ fontSize: 36, color: '#ffffff' }} />
+            <Icon name='refresh' style={{ fontSize: 28, color: '#ffffff' }} />
           </TouchableOpacity>
         );
       case 'newRequest':
@@ -131,6 +131,7 @@ const styles = {
     width: Dimensions.get('window').width,
     top: 0,
     paddingTop: (Platform.OS === 'ios') ? 25 : 0,
+    // paddingBottom: 5,
     flexDirection: 'row',
     backgroundColor: '#ce0000',
     alignItems: 'center',
