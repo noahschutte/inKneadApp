@@ -148,6 +148,8 @@ class EntryScene extends Component {
         onButtonPress = this.deleteEntry.bind(this, entry.id);
         buttonText = 'REMOVE';
       }
+    } else if (entry.status === 'expired') {
+      buttonText = 'EXPIRED';
     } else { // Default Yay pizza button
       onButtonPress = this.onThankYouPress;
       buttonText = this.state.thanksText;
