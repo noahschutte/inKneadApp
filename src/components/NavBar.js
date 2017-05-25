@@ -144,8 +144,7 @@ const styles = {
   titleStyle: {
     color: '#fff',
     fontSize: 20,
-    fontFamily: (Platform.OS === 'ios') ? 'AvenirNext-Regular' : 'sans-serif-thin',
-    fontWeight: 'bold',
+    fontFamily: (Platform.OS === 'ios') ? 'AvenirNext-Regular' : 'sans-serif',
     textAlign: 'center',
   },
   alertStyle: {
