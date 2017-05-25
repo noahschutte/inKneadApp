@@ -27,8 +27,8 @@ const Entry = ({ userEntry, selectedRequest, origin, anonID }) => {
 
       <View style={styles.rightContainer}>
         <Image style={styles.thumbnail} source={{ uri: thumbnail }} />
-        <View style={styles.timeContainer}>
-          <TimeAgo style={styles.time} secondsOld={seconds} />
+        <View>
+          <TimeAgo secondsOld={seconds} />
         </View>
       </View>
 
@@ -51,7 +51,7 @@ const styles = {
   //   backgroundColor: '#ceabab',
   // },
   rightContainer: {
-    flex: 1,
+    flex: 1.2,
     alignItems: 'center',
     paddingVertical: 5,
   },

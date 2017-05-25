@@ -233,10 +233,10 @@ class EntryCreationScene extends Component {
       errorMessages.push('Please record a video');
     }
     if (pizzas === 0) {
-      errorMessages.push('Please select how many pizzas you need');
+      errorMessages.push('Select how many pizzas you need');
     }
     if (vendor === '') {
-      errorMessages.push('Please choose a preferred pizza place');
+      errorMessages.push('Choose a preferred pizza place');
     }
     if (errorMessages.length === 0) {
       this.dispatchRequest();
