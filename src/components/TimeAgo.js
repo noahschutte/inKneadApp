@@ -6,15 +6,15 @@ const TimeAgo = ({ secondsOld }) => {
   let ago;
   /* eslint no-multi-spaces: off */
   if (secondsOld === 1) {
-    ago = 'sec';
+    ago = 'secs';
   } else if (secondsOld === 60) {
-    ago = 'min';
+    ago = 'mins';
   } else if (secondsOld === 3600) {
-    ago = 'hr';
+    ago = 'hrs';
   } else if (secondsOld === 86400) {
-    ago = 'd';
+    ago = 'days';
   } else if (secondsOld === 604800) {
-    ago = 'wk';
+    ago = 'wks';
   }
   if (secondsOld === 1     ||
       secondsOld === 60    ||
@@ -24,22 +24,25 @@ const TimeAgo = ({ secondsOld }) => {
         time = 1;
   } else if (secondsOld < 60) {
     time = secondsOld;
-    ago = 'sec';
+    ago = 'secs';
   } else if (secondsOld < 3600) {
     time = Math.floor(secondsOld / 60);
-    ago = 'min';
+    ago = 'mins';
   } else if (secondsOld < 86400) {
     time = Math.floor(secondsOld / 3600);
-    ago = 'hr';
+    ago = 'hrs';
   } else if (secondsOld < 604800) {
     time = Math.floor(secondsOld / 86400);
-    ago = 'd';
+    ago = 'days';
   } else {
     time = Math.floor(secondsOld / 604800);
-    ago = 'wk';
+    ago = 'wks';
+  }
+  if (time === 1) {
+    ago = ago.substring(0, ago.length - 1);
   }
   return (
-    <PlatformText>{time} {ago}</PlatformText>
+    <PlatformText>{time} {ago} ago</PlatformText>
   );
 };
 
