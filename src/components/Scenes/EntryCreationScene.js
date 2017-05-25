@@ -135,7 +135,7 @@ class EntryCreationScene extends Component {
           if (xhr.readyState === 4) {
             if (xhr.status === 200) {
               this.props.handleVideoData(null);
-              Actions.UploadingScene({ uploading: 'complete' });
+              Actions.UploadCompleteScene();
             } else {
               console.log('failure, status: ', xhr.status);
               fetch('https://in-knead.herokuapp.com/requests/1', {
@@ -200,7 +200,7 @@ class EntryCreationScene extends Component {
           if (xhr.readyState === 4) {
             if (xhr.status === 200) {
               this.props.handleVideoData(null);
-              Actions.MainScene({ type: 'reset' });
+              Actions.UploadCompleteScene();
             } else {
               console.log('failure, status: ', xhr.status);
               fetch('https://in-knead.herokuapp.com/thank_you/1', {
