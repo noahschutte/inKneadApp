@@ -1,22 +1,20 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { View, Text, Platform } from 'react-native';
 import SpinningPizza from '../SpinningPizza';
 
-class UploadingScene extends Component {
-  render() {
-    return (
-      <View style={styles.containerStyle}>
-        <View style={styles.animationContainer}>
-          <SpinningPizza />
-        </View>
-        <View style={styles.textWrapper}>
-          <Text style={styles.textStyle}>UPLOADING YOUR</Text>
-          <Text style={styles.textStyle}>PIZZA REQUEST!</Text>
-        </View>
+const UploadingScene = () => {
+  return (
+    <View style={styles.containerStyle}>
+      <View style={styles.animationContainer}>
+        <SpinningPizza />
       </View>
-    );
-  }
-}
+      <View style={styles.textWrapper}>
+        <Text style={styles.textStyle}>UPLOADING YOUR</Text>
+        <Text style={styles.textStyle}>PIZZA REQUEST!</Text>
+      </View>
+    </View>
+  );
+};
 
 const styles = {
   containerStyle: {
