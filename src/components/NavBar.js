@@ -3,7 +3,7 @@ import {
   StatusBar,
   View,
   Text,
-  TouchableWithoutFeedback,
+  TouchableOpacity,
   Dimensions,
   Platform,
 } from 'react-native';
@@ -11,7 +11,6 @@ import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { toggleScope, redirectTo, toggleSideMenu, retrieveNotifications } from '../actions';
-import Button from './Button2';
 import ScopeButton from './ScopeButton';
 // import NotificationAlert from './NotificationAlert';
 
@@ -67,9 +66,9 @@ class NavBar extends Component {
         return <View />;
     }
     return (
-      <TouchableWithoutFeedback onPress={onPress}>
+      <TouchableOpacity onPress={onPress}>
         {result}
-      </TouchableWithoutFeedback>
+      </TouchableOpacity>
     );
   }
 
@@ -80,13 +79,11 @@ class NavBar extends Component {
     switch (rightButton) {
       case 'retrieveNotifications':
         return (
-          <Button
-            touchableOpacity
-            buttonStyle={{ backgroundColor: '#ce0000', paddingTop: -3 }}
+          <TouchableOpacity
             onPress={() => this.props.retrieveNotifications(this.props.userID)}
           >
-            Refresh
-          </Button>
+            <Icon name='refresh' style={{ fontSize: 36, color: '#ffffff' }} />
+          </TouchableOpacity>
         );
       case 'newRequest':
         result = <Icon name='plus' style={{ fontSize: 36, color: '#ffffff' }} />;
@@ -104,9 +101,9 @@ class NavBar extends Component {
         return <View />;
     }
     return (
-      <TouchableWithoutFeedback onPress={onPress}>
+      <TouchableOpacity onPress={onPress}>
         {result}
-      </TouchableWithoutFeedback>
+      </TouchableOpacity>
     );
   }
 
