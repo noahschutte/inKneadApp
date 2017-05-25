@@ -19,6 +19,7 @@ const Entry = ({ userEntry, selectedRequest, origin, anonID }) => {
 
       <View style={styles.leftContainer}>
         <EntryBadge
+          origin={origin}
           anonID={anonID}
           entryData={selectedRequest}
         />

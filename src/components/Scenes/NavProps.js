@@ -4,6 +4,7 @@ export const backButton = {
 
 export const emailVerifyScene = {
   leftButton: 'backButton',
+  title: 'EMAIL'
 };
 
 export const entryCreationScene = {
@@ -11,6 +12,12 @@ export const entryCreationScene = {
   redirect: {
     scene: 'MainScene',
   },
+  title: 'UPLOAD VIDEO',
+};
+
+export const howToScene = {
+  leftButton: 'backButton',
+  title: 'HOW TO',
 };
 
 export const instructionsScene = {
@@ -18,6 +25,7 @@ export const instructionsScene = {
   redirect: {
     scene: 'MainScene',
   },
+  title: 'DOUGHNATE',
 };
 
 export const aboutScene = {
@@ -34,6 +42,7 @@ export const mainScene = {
 export const notificationsScene = {
   leftButton: 'backButton',
   rightButton: 'retrieveNotifications',
+  title: 'NOTIFICATIONS',
 };
 
 export const profileScene = {
@@ -49,4 +58,9 @@ export const uploadingScene = {
   redirect: {
     scene: 'MainScene',
   },
+};
+
+export const userHistoryScene = {
+  leftButton: 'backButton',
+  title: 'HISTORY',
 };
