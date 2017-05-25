@@ -48,7 +48,7 @@ const styles = {
   bannerTextStyle: {
     color: '#fff',
     fontSize: 24,
-    fontFamily: Platform.OS === 'ios' ? 'AvenirNextRegular' : 'sans-serif-thin',
+    fontFamily: Platform.OS === 'ios' ? 'AvenirNext-Regular' : 'sans-serif-thin',
     fontWeight: 'bold',
   },
   contentStyling: {
