@@ -115,7 +115,6 @@ const styles = {
     color: '#00cece',
     fontSize: 16,
     fontFamily: Platform.OS === 'ios' ? 'AvenirNext-Regular' : 'sans-serif-thin',
-    fontWeight: '600',
     paddingVertical: 10,
   },
   defaultButtonStyle: {

@@ -70,7 +70,6 @@ const styles = {
     alignSelf: 'center',
     color: '#fff',
     fontSize: 30,
-    fontWeight: 'bold',
     paddingVertical: 5,
     marginHorizontal: 25,
   }
