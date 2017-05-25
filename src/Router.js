@@ -72,7 +72,7 @@ const RouterComponent = () => {
           component={Scenes.EntryScene}
         />
         <Scene
-          navBarProps={NavProps.backButton}
+          navBarProps={NavProps.howToScene}
           sceneStyle={sceneStyle}
           key="HowToScene"
           component={Scenes.HowToScene}
@@ -96,7 +96,7 @@ const RouterComponent = () => {
           component={Scenes.ProfileScene}
         />
         <Scene
-          navBarProps={NavProps.backButton}
+          navBarProps={NavProps.userHistoryScene}
           sceneStyle={sceneStyle}
           key="UserHistoryScene"
           component={Scenes.UserHistoryScene}
