@@ -1,39 +1,20 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { View, Text, Platform } from 'react-native';
-import { connect } from 'react-redux';
-import { clearUploadProgress } from '../../actions';
-import Button from '../Button2';
 import SpinningPizza from '../SpinningPizza';
 
-class UploadingScene extends Component {
-  render() {
-    let content = (
-      <View style={styles.containerStyle}>
-        <View style={styles.animationContainer}>
-          <SpinningPizza />
-        </View>
-        <View style={styles.textWrapper}>
-          <Text style={styles.textStyle}>UPLOADING YOUR</Text>
-          <Text style={styles.textStyle}>PIZZA REQUEST!</Text>
-        </View>
+const UploadingScene = () => {
+  return (
+    <View style={styles.containerStyle}>
+      <View style={styles.animationContainer}>
+        <SpinningPizza />
       </View>
-    );
-    if (this.props.uploading === 'complete') {
-      content = (
-        <View style={styles.containerStyle}>
-          <View>
-            <Text style={{ textAlign: 'center' }}>Upload Complete!</Text>
-            <Text style={{ textAlign: 'center' }}>Please give the video some time to be processed</Text>
-          </View>
-          <View style={{ margin: 15, padding: 15 }}>
-            <Button textStyle={{ marginHorizontal: 10 }} touchableOpacity onPress={this.props.clearUploadProgress}>Okay!</Button>
-          </View>
-        </View>
-      );
-    }
-    return content;
-  }
-}
+      <View style={styles.textWrapper}>
+        <Text style={styles.textStyle}>UPLOADING YOUR</Text>
+        <Text style={styles.textStyle}>PIZZA REQUEST!</Text>
+      </View>
+    </View>
+  );
+};
 
 const styles = {
   containerStyle: {
@@ -55,9 +36,4 @@ const styles = {
   }
 };
 
-const mapStateToProps = ({ newEntry }) => {
-  const { uploading } = newEntry;
-  return { uploading };
-};
-
-export default connect(mapStateToProps, { clearUploadProgress })(UploadingScene);
+export default UploadingScene;

@@ -10,6 +10,7 @@ import LoginScene from './LoginScene';
 import MainScene from './MainScene';
 import NotificationsScene from './NotificationsScene';
 import ProfileScene from './ProfileScene';
+import UploadCompleteScene from './UploadCompleteScene';
 import UploadingScene from './UploadingScene';
 import UserHistoryScene from './UserHistoryScene';
 
@@ -26,6 +27,7 @@ export {
   MainScene,
   NotificationsScene,
   ProfileScene,
+  UploadCompleteScene,
   UploadingScene,
   UserHistoryScene,
 };
