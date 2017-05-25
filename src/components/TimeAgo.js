@@ -1,20 +1,20 @@
 import React from 'react';
-import { Text } from 'react-native';
+import PlatformText from './PlatformText';
 
 const TimeAgo = ({ secondsOld }) => {
   let time;
   let ago;
   /* eslint no-multi-spaces: off */
   if (secondsOld === 1) {
-    ago = 'seconds';
+    ago = 'sec';
   } else if (secondsOld === 60) {
-    ago = 'minutes';
+    ago = 'min';
   } else if (secondsOld === 3600) {
-    ago = 'hours';
+    ago = 'hr';
   } else if (secondsOld === 86400) {
-    ago = 'days';
+    ago = 'd';
   } else if (secondsOld === 604800) {
-    ago = 'weeks';
+    ago = 'wk';
   }
   if (secondsOld === 1     ||
       secondsOld === 60    ||
@@ -24,25 +24,22 @@ const TimeAgo = ({ secondsOld }) => {
         time = 1;
   } else if (secondsOld < 60) {
     time = secondsOld;
-    ago = 'seconds';
+    ago = 'sec';
   } else if (secondsOld < 3600) {
     time = Math.floor(secondsOld / 60);
-    ago = 'minutes';
+    ago = 'min';
   } else if (secondsOld < 86400) {
     time = Math.floor(secondsOld / 3600);
-    ago = 'hours';
+    ago = 'hr';
   } else if (secondsOld < 604800) {
     time = Math.floor(secondsOld / 86400);
-    ago = 'days';
+    ago = 'd';
   } else {
     time = Math.floor(secondsOld / 604800);
-    ago = 'weeks';
-  }
-  if (time === 1) {
-    ago = ago.substring(0, ago.length - 1);
+    ago = 'wk';
   }
   return (
-    <Text style={{ fontWeight: 'bold' }}>{time} {ago} ago</Text>
+    <PlatformText>{time} {ago}</PlatformText>
   );
 };
 
