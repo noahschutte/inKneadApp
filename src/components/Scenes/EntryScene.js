@@ -10,7 +10,8 @@ import EntryDetails from '../EntryDetails';
 class EntryScene extends Component {
   state = {
     paused: true,
-    thanksText: 'YAY PIZZA!'
+    thanksText: 'YAY PIZZA!',
+    receivedText: 'RECEIVED'
   };
 
   onDonatePress = () => {
@@ -49,6 +50,12 @@ class EntryScene extends Component {
     let thanksText = this.state.thanksText;
     thanksText += ' PIZZA!';
     this.setState({ thanksText });
+  }
+
+  onReceivedPress = () => {
+    let receivedText = this.state.receivedText;
+    receivedText += ' PIZZA!';
+    this.setState({ receivedText });
   }
 
   confirmDonation = () => {
@@ -132,8 +139,8 @@ class EntryScene extends Component {
       onButtonPress = this.completeDonation;
       buttonText = 'FINISH DONATION';
     } else if (entry.type === 'request' && entry.donorId !== null) { // Has someone committed to making this donation?
-      onButtonPress = null;              // Ignores whether recipient has acknowledged receipt or not.
-      buttonText = 'RECEIVED';
+      onButtonPress = this.onReceivedPress;              // Ignores whether recipient has acknowledged receipt or not.
+      buttonText = this.state.receivedText;
     } else if (entry.status === 'active' && entry.donorId === null) { // Is this an active request?
       onButtonPress = this.onDonatePress;
       buttonText = 'DONATE';
