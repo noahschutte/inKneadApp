@@ -61,7 +61,10 @@ const styles = {
   },
   thumbnail: {
     flex: 1,
-    width: 58,
+    minWidth: 100,
+    minHeight: 100,
+    maxWidth: 400,
+    maxHeight: 400,
     resizeMode: 'contain',
   },
 };
