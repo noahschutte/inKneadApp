@@ -23,7 +23,7 @@ const Entry = ({ userEntry, selectedRequest, origin, anonID }) => {
           anonID={anonID}
           entryData={selectedRequest}
         />
-        <RequestPizzas pizzas={pizzas} size='medium' />
+        <RequestPizzas style={{ alignSelf: 'flex-start' }} pizzas={pizzas} size='medium' />
       </View>
 
       <View style={styles.rightContainer}>
@@ -63,7 +63,7 @@ const styles = {
   thumbnail: {
     flex: 1,
     minWidth: 100,
-    minHeight: 100,
+    minHeight: 90,
     maxWidth: 400,
     maxHeight: 400,
     resizeMode: 'contain',

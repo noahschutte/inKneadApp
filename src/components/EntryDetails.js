@@ -81,23 +81,23 @@ const EntryDetails = ({
           </MenuOptions>
         </Menu>
       </DetailSection>
-      <DetailSection bannerStyle={{ padding: 10, }} bannerText={bannerText}>
+      <DetailSection contentStyle={{ flexDirection: 'column' }} bannerStyle={{ padding: 10, }} bannerText={bannerText}>
         <RequestPizzas size='large' pizzas={pizzas} />
-      </DetailSection>
-      <Text style={styles.requestTextStyle}>from</Text>
-      <View style={{ justifyContent: 'center', alignItems: 'center', }}>
-        <Vendor vendor={vendor} selected />
-      </View>
+        <Text style={styles.requestTextStyle}>from</Text>
+        <View style={{ justifyContent: 'center', alignItems: 'center', }}>
+          <Vendor vendor={vendor} selected />
+        </View>
 
-      <DetailSection>
-        <Button
-          touchableOpacity
-          onPress={expired ? null : onButtonPress}
-          textStyle={styles.donateTextStyle}
-          buttonStyle={expired ? styles.expired : styles.buttonStyle}
-        >
-        {buttonText}
-        </Button>
+        <DetailSection>
+          <Button
+            touchableOpacity
+            onPress={expired ? null : onButtonPress}
+            textStyle={styles.donateTextStyle}
+            buttonStyle={expired ? styles.expired : styles.buttonStyle}
+          >
+          {buttonText}
+          </Button>
+        </DetailSection>
       </DetailSection>
     </View>
   );
@@ -106,13 +106,14 @@ const EntryDetails = ({
 const styles = {
   requestTextStyle: {
     fontWeight: 'bold',
-    padding: 10,
+    padding: 5,
     fontSize: 24,
     alignSelf: 'center',
   },
   buttonStyle: {
     backgroundColor: '#ce0000',
     margin: 20,
+    elevation: 1,
   },
   donateTextStyle: {
     alignSelf: 'center',

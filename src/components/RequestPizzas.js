@@ -2,24 +2,24 @@ import React from 'react';
 import { View, Image } from 'react-native';
 import { wholePizzaImage } from '../assets';
 
-const RequestPizzas = ({ pizzas, size }) => {
+const RequestPizzas = ({ pizzas, size, style }) => {
   const pizzaImages = [];
-  let style;
+  let pizzaStyle;
   switch (size) {
     case 'large':
-      style = styles.pizzaImageLarge;
+      pizzaStyle = styles.pizzaImageLarge;
       break;
     case 'medium':
-      style = styles.pizzaImageMedium;
+      pizzaStyle = styles.pizzaImageMedium;
       break;
     case 'small':
     default:
-      style = styles.pizzaImageSmall;
+      pizzaStyle = styles.pizzaImageSmall;
   }
   for (let i = 0; i < pizzas; i++) {
     const pizzaImage = (
       <Image
-        style={style}
+        style={pizzaStyle}
         source={wholePizzaImage}
         key={i}
       />
@@ -28,7 +28,7 @@ const RequestPizzas = ({ pizzas, size }) => {
   }
 
   return (
-    <View style={styles.pizzas}>
+    <View style={[styles.pizzas, style]}>
       {pizzaImages}
     </View>
   );
@@ -47,9 +47,11 @@ const styles = {
   pizzaImageLarge: {
     width: 50,
     height: 50,
+    margin: 3,
   },
   pizzas: {
     flexDirection: 'row',
+    alignSelf: 'center',
     margin: 2,
   },
 };

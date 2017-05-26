@@ -31,13 +31,14 @@ const styles = {
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+    elevation: 1
   },
   shownSortButton: {
     backgroundColor: '#48beda',
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    elevation: 1,
+    elevation: 2,
   },
   sortButtonText: {
     color: '#fff',
