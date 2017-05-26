@@ -1,5 +1,6 @@
 import React from 'react';
-import { View, Text, Platform } from 'react-native';
+import { View } from 'react-native';
+import PlatformText from './PlatformText';
 
 const DetailSection = ({ bannerText, children, style, contentStyle }, props) => {
   const { bannerStyle, bannerTextStyle, contentStyling, placeholderStyle } = styles;
@@ -8,7 +9,7 @@ const DetailSection = ({ bannerText, children, style, contentStyle }, props) => 
   if (bannerText) {
     banner = (
       <View style={[bannerStyle, props.bannerStyle]}>
-        <Text style={bannerTextStyle}>{bannerText}</Text>
+        <PlatformText type='thin' textStyle={bannerTextStyle}>{bannerText}</PlatformText>
       </View>
     );
   }
@@ -16,7 +17,7 @@ const DetailSection = ({ bannerText, children, style, contentStyle }, props) => 
   if (typeof children === 'string') {
     content = (
       <View style={[contentStyling, contentStyle]}>
-        <Text style={placeholderStyle}>{children}</Text>
+        <PlatformText textStyle={placeholderStyle}>{children}</PlatformText>
       </View>
     );
   } else {
@@ -48,7 +49,6 @@ const styles = {
   bannerTextStyle: {
     color: '#fff',
     fontSize: 24,
-    fontFamily: Platform.OS === 'ios' ? 'AvenirNext-Regular' : 'sans-serif-thin',
     fontWeight: 'bold',
   },
   contentStyling: {

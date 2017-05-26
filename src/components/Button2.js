@@ -3,9 +3,8 @@ import {
   TouchableOpacity,
   TouchableHighlight,
   TouchableWithoutFeedback,
-  Text,
-  Platform,
 } from 'react-native';
+import PlatformText from './PlatformText';
 
 class Button extends Component {
 
@@ -71,7 +70,7 @@ class Button extends Component {
 
     if (childType === 'Raw Text') {
       content = (
-        <Text style={tStyle}>{children}</Text>
+        <PlatformText style='thin' textStyle={tStyle}>{children}</PlatformText>
       );
     } else {
       content = children;
@@ -114,7 +113,6 @@ const styles = {
     alignSelf: 'center',
     color: '#00cece',
     fontSize: 16,
-    fontFamily: Platform.OS === 'ios' ? 'AvenirNext-Regular' : 'sans-serif-thin',
     paddingVertical: 10,
   },
   defaultButtonStyle: {

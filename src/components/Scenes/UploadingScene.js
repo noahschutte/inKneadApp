@@ -1,5 +1,6 @@
 import React from 'react';
-import { View, Text, Platform } from 'react-native';
+import { View } from 'react-native';
+import PlatformText from '../PlatformText';
 import SpinningPizza from '../SpinningPizza';
 
 const UploadingScene = () => {
@@ -9,8 +10,8 @@ const UploadingScene = () => {
         <SpinningPizza />
       </View>
       <View style={styles.textWrapper}>
-        <Text style={styles.textStyle}>UPLOADING YOUR</Text>
-        <Text style={styles.textStyle}>PIZZA REQUEST!</Text>
+        <PlatformText type='bold' fontSize={24}>UPLOADING YOUR</PlatformText>
+        <PlatformText type='bold' fontSize={24}>PIZZA REQUEST!</PlatformText>
       </View>
     </View>
   );
@@ -29,11 +30,6 @@ const styles = {
     flex: 1,
     alignItems: 'center',
   },
-  textStyle: {
-    fontFamily: Platform.OS === 'ios' ? 'AvenirNext-Bold' : 'sans-serif',
-    fontSize: 24,
-    fontWeight: 'bold',
-  }
 };
 
 export default UploadingScene;
