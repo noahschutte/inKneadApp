@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Alert } from 'react-native';
+import { Alert, ScrollView } from 'react-native';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
 import { MenuContext } from 'react-native-popup-menu';
@@ -162,6 +162,7 @@ class EntryScene extends Component {
           thumbnail={entry.thumbnail}
           paused={this.state.paused}
         />
+        <ScrollView style={{ flex: 5 }}>
         <EntryDetails
           shouldUserBeHere={this.shouldUserBeHere()}
           userID={userID}
@@ -174,6 +175,7 @@ class EntryScene extends Component {
           onButtonPress={onButtonPress}
           buttonText={buttonText}
         />
+      </ScrollView>
       </MenuContext>
     );
   }
@@ -192,6 +194,7 @@ const mapStateToProps = ({ user, notifications }) => {
 const styles = {
   container: {
     flex: 1,
+    overflow: 'scroll',
   },
 };
 

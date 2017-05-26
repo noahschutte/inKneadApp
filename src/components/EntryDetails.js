@@ -37,7 +37,7 @@ const EntryDetails = ({
   const expired = entryData.status === 'expired';
 
   return (
-    <View style={{ flex: 5 }}>
+    <View style={{ flex: 1 }}>
       <DetailSection contentStyle={{ justifyContent: 'space-between' }}>
         <TimeAgo secondsOld={seconds} />
         <Menu onSelect={value => value()} style={styles.userHistoryButton}>

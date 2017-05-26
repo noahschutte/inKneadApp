@@ -24,7 +24,7 @@ const EntryCreationForm = props => {
   );
 
   return (
-    <View style={{ flex: 5 }}>
+    <View style={{ flex: 1 }}>
       <DetailSection bannerText='HOW MANY PIZZAS?' />
       <PizzaRadioButton
         selectedImage={selectedPizzaImage}

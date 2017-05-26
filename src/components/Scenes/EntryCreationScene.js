@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Image, Platform, Alert } from 'react-native';
+import { View, Image, Platform, Alert, ScrollView } from 'react-native';
 import Camera from 'react-native-camera';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
@@ -338,7 +338,9 @@ class EntryCreationScene extends Component {
     return (
       <View style={{ flex: 1 }} >
         {videoDisplay}
-        {entryCreationForm}
+        <ScrollView style={{ flex: 5 }}>
+          {entryCreationForm}
+        </ScrollView>
       </View>
     );
   }
@@ -346,7 +348,7 @@ class EntryCreationScene extends Component {
 
 const styles = {
   videoContainer: {
-    flex: 3,
+    flex: 0.75,
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#000',
