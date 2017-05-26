@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text, TextInput, Platform, Dimensions } from 'react-native';
 import { connect } from 'react-redux';
-import { Actions } from 'react-native-router-flux';
 import { updateEmail } from '../../actions';
 import DetailSection from '../DetailSection';
 import Button from '../Button2';

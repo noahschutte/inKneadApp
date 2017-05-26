@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 import {
-  StatusBar,
-  View,
-  Text,
-  TouchableOpacity,
   Dimensions,
   Platform,
+  StatusBar,
+  TouchableOpacity,
+  View,
 } from 'react-native';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import PlatformText from './PlatformText';
 import { toggleScope, redirectTo, toggleSideMenu, retrieveNotifications } from '../actions';
 import ScopeButton from './ScopeButton';
 // import NotificationAlert from './NotificationAlert';
@@ -28,7 +28,7 @@ class NavBar extends Component {
         return null;
       default:
         return (
-          <Text style={styles.titleStyle}>{title}</Text>
+          <PlatformText textStyle={styles.titleStyle}>{title}</PlatformText>
         );
     }
   }
@@ -142,7 +142,6 @@ const styles = {
   titleStyle: {
     color: '#fff',
     fontSize: 20,
-    fontFamily: (Platform.OS === 'ios') ? 'AvenirNext-Regular' : 'sans-serif',
     textAlign: 'center',
   },
   alertStyle: {

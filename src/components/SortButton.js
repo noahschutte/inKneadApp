@@ -1,5 +1,6 @@
 import React from 'react';
-import { Text, TouchableOpacity, Platform } from 'react-native';
+import { TouchableOpacity } from 'react-native';
+import PlatformText from './PlatformText';
 
 const SortButton = (props) => {
   const { children, onPress, shown } = props;
@@ -17,9 +18,9 @@ const SortButton = (props) => {
       onPress={press}
       activeOpacity={0.7}
     >
-      <Text style={styles.sortButtonText}>
+      <PlatformText type='bold' textStyle={styles.sortButtonText}>
         {children}
-      </Text>
+      </PlatformText>
     </TouchableOpacity>
   );
 };
@@ -41,8 +42,6 @@ const styles = {
   sortButtonText: {
     color: '#fff',
     fontSize: 20,
-    fontFamily: (Platform.OS === 'ios') ? 'AvenirNext-Regular' : 'sans-serif-thin',
-    fontWeight: 'bold',
     textAlign: 'center',
   },
 };

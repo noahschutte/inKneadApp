@@ -1,8 +1,9 @@
 import React from 'react';
-import { View, Text, Platform, Dimensions } from 'react-native';
+import { View, Dimensions } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import SideMenuButton from './SideMenuButton';
+import PlatformText from './PlatformText';
 // import NotificationAlert from './NotificationAlert';
 
 const ToggleMenu = (props) => {
@@ -19,41 +20,41 @@ const ToggleMenu = (props) => {
     <View style={styles.container}>
 
       <SideMenuButton onPress={onPress.bind(this, () => Actions.refresh({ key: 'MainScene' }))}>
-        <Text style={styles.textStyle}>
+        <PlatformText type='thin' textStyle={styles.textStyle}>
           ORDERS{'  '}
           <Icon name='pie-chart' style={styles.iconStyle} color='#ffffff' />
-        </Text>
+        </PlatformText>
       </SideMenuButton>
 
       <SideMenuButton
         onPress={props.userID ? onPress.bind(this, notificationsScene) : onPress.bind(this, () => Actions.LoginScene({ redirect: { scene: 'NotificationsScene' } }))}
       >
-        <Text style={styles.textStyle}>
+        <PlatformText type='thin' textStyle={styles.textStyle}>
           NOTIFICATIONS{'  '}
           <Icon name='bell' style={styles.iconStyle} color='#ffffff' />
-        </Text>
+        </PlatformText>
         {/* {props.doesHaveNotifications ? <NotificationAlert /> : null} */}
       </SideMenuButton>
 
       <SideMenuButton onPress={props.userID ? onPress.bind(this, Actions.ProfileScene) : onPress.bind(this, Actions.LoginScene)}>
-        <Text style={styles.textStyle}>
+        <PlatformText type='thin' textStyle={styles.textStyle}>
           ACCOUNT{'  '}
           <Icon name='cog' style={styles.iconStyle} color='#ffffff' />
-        </Text>
+        </PlatformText>
       </SideMenuButton>
 
       <SideMenuButton onPress={onPress.bind(this, Actions.AboutScene)}>
-        <Text style={styles.textStyle}>
+        <PlatformText type='thin' textStyle={styles.textStyle}>
           ABOUT{'  '}
           <Icon name='info-circle' style={styles.iconStyle} color='#ffffff' />
-        </Text>
+        </PlatformText>
       </SideMenuButton>
 
       <SideMenuButton onPress={onPress.bind(this, Actions.HowToScene)}>
-        <Text style={styles.textStyle}>
+        <PlatformText type='thin' textStyle={styles.textStyle}>
           HOW TO{'  '}
           <Icon name='question-circle' style={styles.iconStyle} color='#ffffff' />
-        </Text>
+        </PlatformText>
       </SideMenuButton>
 
     </View>
@@ -81,7 +82,6 @@ const styles = {
     textAlign: 'left',
     fontSize: 20,
     color: 'white',
-    fontFamily: (Platform.OS === 'ios') ? 'AvenirNext-Regular' : 'sans-serif-thin',
   },
   donatedPizzasText: {
     color: 'white',
