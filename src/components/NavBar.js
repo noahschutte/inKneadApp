@@ -138,6 +138,7 @@ const styles = {
     justifyContent: 'space-between',
     // paddingVertical: 5,
     paddingHorizontal: Dimensions.get('window').width * 0.05,
+    elevation: 2,
   },
   titleStyle: {
     color: '#fff',

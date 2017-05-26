@@ -73,7 +73,7 @@ const EntryVideo = (props) => {
 
 const styles = {
   container: {
-    flex: 3.5,
+    flex: 0.75,
     backgroundColor: 'black',
   },
   wrapper: {
