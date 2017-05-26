@@ -52,11 +52,11 @@ class MainScene extends Component {
         return [...requests, ...thankYous];
       case 'OPEN':
         if (requests) {
-          return requests.filter(request => request.donorId === null);
+          return requests.filter(request => (request.donorId === null && request.status !== 'expired'));
         }
         return [];
       case 'DONE':
-        return [...thankYous, ...requests.filter(request => request.donorId !== null)];
+        return [...thankYous, ...requests.filter(request => (request.donorId !== null || request.status === 'expired'))];
       case 'MY ENTRIES':
         return [...userCreatedRequests, ...userCreatedThankYous];
       case 'MY DONATIONS':
