@@ -42,7 +42,7 @@ const styles = {
   pizzaImageMedium: {
     width: 38,
     height: 38,
-    marginHorizontal: 3,
+    margin: 4,
   },
   pizzaImageLarge: {
     width: 50,
