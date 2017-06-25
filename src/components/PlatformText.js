@@ -19,6 +19,9 @@ class PlatformText extends Component {
         case 'thin':
         style.fontFamily = 'AvenirNext-Regular';
         break;
+        case 'medium':
+        style.fontFamiliiy = 'AvenirNext-Medium';
+        break;
         case 'bold':
         style.fontFamily = 'AvenirNext-Bold';
         break;

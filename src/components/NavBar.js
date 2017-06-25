@@ -28,7 +28,9 @@ class NavBar extends Component {
         return null;
       default:
         return (
-          <PlatformText textStyle={styles.titleStyle}>{title}</PlatformText>
+          <View style={styles.titleStyle}>
+            <PlatformText type='medium' textStyle={{ color: '#fff', fontSize: 20 }}>{title}</PlatformText>
+          </View>
         );
     }
   }
@@ -141,9 +143,13 @@ const styles = {
     elevation: 2,
   },
   titleStyle: {
-    color: '#fff',
-    fontSize: 20,
-    textAlign: 'center',
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: 15,
   },
   alertStyle: {
     backgroundColor: '#43cece',
