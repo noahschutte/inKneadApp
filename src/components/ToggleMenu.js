@@ -15,6 +15,7 @@ const ToggleMenu = (props) => {
     props.retrieveNotifications();
     Actions.NotificationsScene();
   };
+  const notificationBell = props.doesHaveNotifications ? <Icon name='bell' style={styles.iconStyle} color='#ce0000' /> : <Icon name='bell' style={styles.iconStyle} color='#ffffff' />;
 
   return (
     <View style={styles.container}>
@@ -31,7 +32,7 @@ const ToggleMenu = (props) => {
       >
         <PlatformText type='thin' textStyle={styles.textStyle}>
           NOTIFICATIONS{'  '}
-          <Icon name='bell' style={styles.iconStyle} color='#ffffff' />
+          {notificationBell}
         </PlatformText>
         {/* {props.doesHaveNotifications ? <NotificationAlert /> : null} */}
       </SideMenuButton>
