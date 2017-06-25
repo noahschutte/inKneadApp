@@ -15,7 +15,7 @@ class AboutScene extends Component {
         <View style={styles.bottomHalf}>
           <Text style={[styles.bottomTextStyle, styles.textStyle]}>
             "THE POWER OF HUMAN KINDNESS,{'\n'}ONE PIZZA AT A TIME."
-            {'\n'}contact: <Text style={{ fontWeight: 'bold' }}>pizza@inknead.pizza</Text>
+            {'\n'}contact: <Text style={{ fontWeight: 'bold' }}>noah@noahschutte.com</Text>
           </Text>
         </View>
       </View>
