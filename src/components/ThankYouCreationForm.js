@@ -1,49 +1,58 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { Text, View, Image } from 'react-native';
+import { flyingPizza } from '../assets';
 import Button from './Button2';
 import DetailSection from './DetailSection';
+import PlatformText from './PlatformText';
 
 const ThankYouCreationForm = ({ handleThankYouSubmission }) => {
   return (
     <View style={{ flex: 5, justifyContent: 'space-around' }}>
       <DetailSection>
-        <Text style={styles.mainText}>
-          Send your donor some gratitude!
-        </Text>
+        <PlatformText type='bold' textStyle={styles.mainText}>
+          Wow, Pizza Delivered!
+        </PlatformText>
+      </DetailSection>
+      <Image style={{ alignSelf: 'center' }} source={flyingPizza} />
+      <DetailSection>
+        <PlatformText type='medium' textStyle={styles.subText}>
+          Before you eat the whole pie, why not send a quick thanks to the donor?
+        </PlatformText>
       </DetailSection>
       <DetailSection>
-        <Text style={styles.subText}>
-          Record a "Thank You" video and hit the button below to share the love!
-        </Text>
-      </DetailSection>
-      <Button
+        <Button
         touchableOpacity
         textStyle={styles.buttonText}
         buttonStyle={styles.buttonStyle}
         onPress={handleThankYouSubmission}
-      >
-        Thanks!
-      </Button>
+        >
+            SEND
+        </Button>
+      </DetailSection>
     </View>
   );
 };
 
 const styles = {
   mainText: {
-    fontSize: 22,
+    fontSize: 24,
     textAlign: 'center',
+    marginTop: 20,
   },
   buttonText: {
-    margin: 10,
+    marginHorizontal: 50,
     fontSize: 24,
+    color: '#fff',
   },
   buttonStyle: {
-    margin: 15,
+    backgroundColor: '#ce0000',
+    margin: 20,
   },
   subText: {
+    fontSize: 18,
     margin: 10,
     textAlign: 'center',
-  }
+  },
 };
 
 export default ThankYouCreationForm;
