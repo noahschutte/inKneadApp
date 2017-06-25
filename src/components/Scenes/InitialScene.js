@@ -49,6 +49,7 @@ const InitialScene = (props) => {
       <View style={{ flex: 3, justifyContent: 'flex-start' }}>
         <Image style={styles.inKneadStyle} source={inKneadText} />
       </View>
+      <Text style={styles.disclaimerText}>Waking up our servers...</Text>
     </View>
   );
 };
@@ -69,6 +70,11 @@ const styles = {
     resizeMode: 'contain',
     width: 170,
   },
+  disclaimerText: {
+    fontSize: 16,
+    color: 'white',
+    marginBottom: 25,
+  }
 };
 
 export default connect(null, {
