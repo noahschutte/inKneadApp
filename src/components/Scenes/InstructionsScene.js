@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Clipboard, Linking, TouchableOpacity, View, Text } from 'react-native';
+import PlatformText from '../PlatformText';
 import DetailSection from '../DetailSection';
 
 const vendors = {
@@ -33,8 +34,6 @@ class InstructionsScene extends Component {
 
   render() {
     const { stepOneStyle, email, stepTwoStyle, hyperlinkButton, hyperlink } = styles;
-    let status;
-    let statusText;
     let stepTwo;
     let completed;
 
@@ -43,12 +42,6 @@ class InstructionsScene extends Component {
         textDecorationLine: 'line-through',
         color: '#bcbcbc',
       };
-      status = {
-        paddingTop: 15,
-        fontWeight: 'bold',
-        color: 'green',
-      };
-      statusText = 'Copied!';
       stepTwo = (
         <View style={{ flexDirection: 'column', alignItems: 'center' }}>
           <Text style={stepTwoStyle}>Step 2:</Text>
@@ -64,23 +57,16 @@ class InstructionsScene extends Component {
           </TouchableOpacity>
         </View>
       );
-    } else {
-      statusText = 'Not Copied Yet';
-      status = {
-        paddingTop: 15,
-        fontWeight: 'bold',
-        color: 'red',
-      };
     }
     return (
       <View style={{ flex: 1 }}>
-        <DetailSection>
-          <View style={{ alignItems: 'center' }}>
-            <Text style={[stepOneStyle, completed]}>Step 1: Tap the email below to copy it</Text>
-            <Text style={[stepOneStyle, email, completed]} onPress={this._setClipboardContent}>
+        <DetailSection style={{ marginTop: 40 }}>
+          <View style={{ alignItems: 'center', marginHorizontal: 25 }}>
+            <PlatformText type='bold' textStyle={stepOneStyle}>Step 1:</PlatformText>
+            <PlatformText type='demi-bold' textStyle={[stepOneStyle, completed]}>Tap the email below to copy</PlatformText>
+            <PlatformText type='bold' textStyle={[stepOneStyle, email, completed]} onPress={this._setClipboardContent}>
               {this.props.recipientEmail}
-            </Text>
-            <Text style={status}>Status: {statusText}</Text>
+            </PlatformText>
           </View>
         </DetailSection>
         <DetailSection>
@@ -93,21 +79,16 @@ class InstructionsScene extends Component {
 
 const styles = {
   stepOneStyle: {
-    fontSize: 15,
-    fontWeight: 'bold',
+    fontSize: 30,
+    textAlign: 'center',
     paddingBottom: 5,
     paddingTop: 15,
     textDecorationLine: 'none',
     color: 'black',
   },
   email: {
-    fontSize: 20,
-    color: 'black',
-    textShadowOffset: {
-      width: 1,
-      height: 1,
-    },
-    textShadowRadius: 4,
+    fontSize: 24,
+    color: '#ce0000',
   },
   stepTwoStyle: {
     textAlign: 'center',
