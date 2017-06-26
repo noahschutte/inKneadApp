@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Clipboard, Linking, Text, View } from 'react-native';
+import { Clipboard, Linking, View } from 'react-native';
 import { IndicatorViewPager } from 'rn-viewpager';
 import { Actions } from 'react-native-router-flux';
 import PlatformText from '../PlatformText';
@@ -35,7 +35,7 @@ class InstructionsScene extends Component {
   };
 
   render() {
-    const { stepTextStyle, email, hyperlinkButton, hyperlink } = styles;
+    const { stepTextStyle, email, hyperlink } = styles;
 
     const onPress = () => {
       this._setClipboardContent();
@@ -106,13 +106,6 @@ const styles = {
   email: {
     fontSize: 24,
     color: '#ce0000',
-  },
-  hyperlinkButton: {
-    marginTop: 30,
-    padding: 10,
-    backgroundColor: '#ce0000',
-    marginBottom: 10,
-    borderRadius: 5,
   },
   hyperlink: {
     color: 'white',
