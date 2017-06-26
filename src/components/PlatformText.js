@@ -8,6 +8,7 @@ class PlatformText extends Component {
       type,
       textStyle,
       fontSize,
+      onPress,
     } = this.props;
     const style = {
       fontSize,
@@ -19,8 +20,8 @@ class PlatformText extends Component {
         case 'thin':
         style.fontFamily = 'AvenirNext-Regular';
         break;
-        case 'medium':
-        style.fontFamiliiy = 'AvenirNext-Medium';
+        case 'demi-bold':
+        style.fontFamily = 'AvenirNext-DemiBold';
         break;
         case 'bold':
         style.fontFamily = 'AvenirNext-Bold';
@@ -35,6 +36,10 @@ class PlatformText extends Component {
         case 'thin':
         style.fontFamily = 'sans-serif-thin';
         break;
+        case 'demi-bold':
+        style.fontFamily = 'sans-serif-thin';
+        style.fontWeight = 'bold';
+        break;
         case 'bold':
         style.fontFamily = 'sans-serif';
         style.fontWeight = 'bold';
@@ -46,7 +51,7 @@ class PlatformText extends Component {
       }
     }
     return (
-      <Text style={[style, textStyle]}>{children}</Text>
+      <Text style={[style, textStyle]} onPress={onPress}>{children}</Text>
     );
   }
 }

@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
-import { Clipboard, Linking, TouchableOpacity, View, Text } from 'react-native';
-import DetailSection from '../DetailSection';
+import { Clipboard, Linking, Text, View } from 'react-native';
+import { IndicatorViewPager } from 'rn-viewpager';
+import { Actions } from 'react-native-router-flux';
+import PlatformText from '../PlatformText';
+import Button from '../Button2';
 
 const vendors = {
   'Pizza Hut': 'https://pizzahutstore.wgiftcard.com/chrome/pizzahut/',
@@ -32,102 +35,88 @@ class InstructionsScene extends Component {
   };
 
   render() {
-    const { stepOneStyle, email, stepTwoStyle, hyperlinkButton, hyperlink } = styles;
-    let status;
-    let statusText;
-    let stepTwo;
-    let completed;
+    const { stepTextStyle, email, hyperlinkButton, hyperlink } = styles;
 
-    if (this.state.copied) {
-      completed = {
-        textDecorationLine: 'line-through',
-        color: '#bcbcbc',
-      };
-      status = {
-        paddingTop: 15,
-        fontWeight: 'bold',
-        color: 'green',
-      };
-      statusText = 'Copied!';
-      stepTwo = (
-        <View style={{ flexDirection: 'column', alignItems: 'center' }}>
-          <Text style={stepTwoStyle}>Step 2:</Text>
-          <Text style={stepTwoStyle}>
-            Great! Now paste that email address into the "recipient email" form on the following page and complete your donation!</Text>
-          <TouchableOpacity
-            onPress={() => this.handleVendorSite(vendors[this.props.entry.vendor])}
-            style={hyperlinkButton}
-          >
-            <Text style={hyperlink}>
-              {this.props.entry.vendor}
-            </Text>
-          </TouchableOpacity>
-        </View>
-      );
-    } else {
-      statusText = 'Not Copied Yet';
-      status = {
-        paddingTop: 15,
-        fontWeight: 'bold',
-        color: 'red',
-      };
-    }
+    const onPress = () => {
+      this._setClipboardContent();
+      console.log('this.props', this.props);
+      Actions.InstructionsScene({
+        page: 1,
+        entry: {
+          vendor: 'Dominos',
+          pizzas: 2,
+        }
+      });
+    };
     return (
       <View style={{ flex: 1 }}>
-        <DetailSection>
-          <View style={{ alignItems: 'center' }}>
-            <Text style={[stepOneStyle, completed]}>Step 1: Tap the email below to copy it</Text>
-            <Text style={[stepOneStyle, email, completed]} onPress={this._setClipboardContent}>
+        <IndicatorViewPager
+          style={{ flex: 1 }}
+          initialPage={this.props.page}
+        >
+
+          <View style={styles.pageWrapper}>
+            <PlatformText type='bold' textStyle={stepTextStyle}>Step 1:</PlatformText>
+            <PlatformText type='demi-bold' textStyle={stepTextStyle}>Tap the email below to copy</PlatformText>
+            <PlatformText type='bold' textStyle={[stepTextStyle, email]} onPress={onPress}>
               {this.props.recipientEmail}
-            </Text>
-            <Text style={status}>Status: {statusText}</Text>
+            </PlatformText>
           </View>
-        </DetailSection>
-        <DetailSection>
-          {stepTwo}
-        </DetailSection>
+
+          <View style={styles.pageWrapper}>
+            <PlatformText type='bold' textStyle={stepTextStyle}>Step 2:</PlatformText>
+            <PlatformText type='demi-bold' textStyle={stepTextStyle}>
+              Follow the link below and paste the email where it says "recipient email"
+            </PlatformText>
+
+            <Button
+              onPress={() => this.handleVendorSite(vendors[this.props.entry.vendor])}
+              touchableOpacity
+              buttonStyle={{ backgroundColor: '#ce0000', marginVertical: 25 }}
+              textStyle={hyperlink}
+            >
+              {this.props.entry.vendor}
+            </Button>
+            <PlatformText type='demi-bold' textStyle={{ fontSize: 24, color: '#000', textAlign: 'center' }}>
+              And wait for them to receive your awesome gift!
+            </PlatformText>
+          </View>
+
+        </IndicatorViewPager>
       </View>
     );
   }
 }
 
 const styles = {
-  stepOneStyle: {
-    fontSize: 15,
-    fontWeight: 'bold',
+  pageWrapper: {
+    flex: 1,
+    paddingVertical: 40,
+    alignItems: 'center',
+    paddingHorizontal: 25,
+  },
+  stepTextStyle: {
+    fontSize: 30,
+    textAlign: 'center',
     paddingBottom: 5,
     paddingTop: 15,
     textDecorationLine: 'none',
     color: 'black',
   },
   email: {
-    fontSize: 20,
-    color: 'black',
-    textShadowOffset: {
-      width: 1,
-      height: 1,
-    },
-    textShadowRadius: 4,
-  },
-  stepTwoStyle: {
-    textAlign: 'center',
-    fontWeight: 'bold',
-  },
-  status: {
-    paddingTop: 15,
-    fontWeight: 'bold',
-    color: 'green',
+    fontSize: 24,
+    color: '#ce0000',
   },
   hyperlinkButton: {
     marginTop: 30,
     padding: 10,
     backgroundColor: '#ce0000',
     marginBottom: 10,
-    borderRadius: 2,
+    borderRadius: 5,
   },
   hyperlink: {
     color: 'white',
-    fontWeight: 'bold',
+    fontSize: 24,
   }
 };
 
