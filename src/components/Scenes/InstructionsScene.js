@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Clipboard, Linking, TouchableOpacity, View, Text } from 'react-native';
+import { IndicatorViewPager } from 'rn-viewpager';
+import { Actions } from 'react-native-router-flux';
 import PlatformText from '../PlatformText';
 import DetailSection from '../DetailSection';
 
@@ -58,20 +60,35 @@ class InstructionsScene extends Component {
         </View>
       );
     }
+    const onPress = () => {
+      this._setClipboardContent();
+      console.log('this.props', this.props);
+      Actions.InstructionsScene({
+        page: 1,
+        entry: {
+          vendor: 'Dominos',
+          pizzas: 2,
+        }
+      });
+    };
     return (
       <View style={{ flex: 1 }}>
-        <DetailSection style={{ marginTop: 40 }}>
-          <View style={{ alignItems: 'center', marginHorizontal: 25 }}>
-            <PlatformText type='bold' textStyle={stepOneStyle}>Step 1:</PlatformText>
-            <PlatformText type='demi-bold' textStyle={[stepOneStyle, completed]}>Tap the email below to copy</PlatformText>
-            <PlatformText type='bold' textStyle={[stepOneStyle, email, completed]} onPress={this._setClipboardContent}>
-              {this.props.recipientEmail}
-            </PlatformText>
+        <IndicatorViewPager style={{ flex: 1 }}>
+          <View style={{ flex: 1 }}>
+            <DetailSection style={{ marginTop: 40 }}>
+              <View style={{ alignItems: 'center', marginHorizontal: 25 }}>
+                <PlatformText type='bold' textStyle={stepOneStyle}>Step 1:</PlatformText>
+                <PlatformText type='demi-bold' textStyle={[stepOneStyle, completed]}>Tap the email below to copy</PlatformText>
+                <PlatformText type='bold' textStyle={[stepOneStyle, email, completed]} onPress={onPress}>
+                  {this.props.recipientEmail}
+                </PlatformText>
+              </View>
+            </DetailSection>
+            <DetailSection>
+              {stepTwo}
+            </DetailSection>
           </View>
-        </DetailSection>
-        <DetailSection>
-          {stepTwo}
-        </DetailSection>
+        </IndicatorViewPager>
       </View>
     );
   }
