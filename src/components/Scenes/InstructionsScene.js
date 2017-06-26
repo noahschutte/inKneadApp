@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { Clipboard, Linking, TouchableOpacity, View, Text } from 'react-native';
+import { Clipboard, Linking, Text, View } from 'react-native';
 import { IndicatorViewPager } from 'rn-viewpager';
 import { Actions } from 'react-native-router-flux';
 import PlatformText from '../PlatformText';
-import DetailSection from '../DetailSection';
+import Button from '../Button2';
 
 const vendors = {
   'Pizza Hut': 'https://pizzahutstore.wgiftcard.com/chrome/pizzahut/',
@@ -35,31 +35,8 @@ class InstructionsScene extends Component {
   };
 
   render() {
-    const { stepOneStyle, email, stepTwoStyle, hyperlinkButton, hyperlink } = styles;
-    let stepTwo;
-    let completed;
+    const { stepTextStyle, email, hyperlinkButton, hyperlink } = styles;
 
-    if (this.state.copied) {
-      completed = {
-        textDecorationLine: 'line-through',
-        color: '#bcbcbc',
-      };
-      stepTwo = (
-        <View style={{ flexDirection: 'column', alignItems: 'center' }}>
-          <Text style={stepTwoStyle}>Step 2:</Text>
-          <Text style={stepTwoStyle}>
-            Great! Now paste that email address into the "recipient email" form on the following page and complete your donation!</Text>
-          <TouchableOpacity
-            onPress={() => this.handleVendorSite(vendors[this.props.entry.vendor])}
-            style={hyperlinkButton}
-          >
-            <Text style={hyperlink}>
-              {this.props.entry.vendor}
-            </Text>
-          </TouchableOpacity>
-        </View>
-      );
-    }
     const onPress = () => {
       this._setClipboardContent();
       console.log('this.props', this.props);
@@ -79,25 +56,30 @@ class InstructionsScene extends Component {
         >
 
           <View style={styles.pageWrapper}>
-            <PlatformText type='bold' textStyle={stepOneStyle}>Step 1:</PlatformText>
-            <PlatformText type='demi-bold' textStyle={[stepOneStyle, completed]}>Tap the email below to copy</PlatformText>
-            <PlatformText type='bold' textStyle={[stepOneStyle, email, completed]} onPress={onPress}>
+            <PlatformText type='bold' textStyle={stepTextStyle}>Step 1:</PlatformText>
+            <PlatformText type='demi-bold' textStyle={stepTextStyle}>Tap the email below to copy</PlatformText>
+            <PlatformText type='bold' textStyle={[stepTextStyle, email]} onPress={onPress}>
               {this.props.recipientEmail}
             </PlatformText>
           </View>
 
           <View style={styles.pageWrapper}>
-            <Text style={stepTwoStyle}>Step 2:</Text>
-            <Text style={stepTwoStyle}>
-              Great! Now paste that email address into the "recipient email" form on the following page and complete your donation!</Text>
-            <TouchableOpacity
+            <PlatformText type='bold' textStyle={stepTextStyle}>Step 2:</PlatformText>
+            <PlatformText type='demi-bold' textStyle={stepTextStyle}>
+              Follow the link below and paste the email where it says "recipient email"
+            </PlatformText>
+
+            <Button
               onPress={() => this.handleVendorSite(vendors[this.props.entry.vendor])}
-              style={hyperlinkButton}
+              touchableOpacity
+              buttonStyle={{ backgroundColor: '#ce0000', marginVertical: 25 }}
+              textStyle={hyperlink}
             >
-              <Text style={hyperlink}>
-                {this.props.entry.vendor}
-              </Text>
-            </TouchableOpacity>
+              {this.props.entry.vendor}
+            </Button>
+            <PlatformText type='demi-bold' textStyle={{ fontSize: 24, color: '#000', textAlign: 'center' }}>
+              And wait for them to receive your awesome gift!
+            </PlatformText>
           </View>
 
         </IndicatorViewPager>
@@ -109,11 +91,11 @@ class InstructionsScene extends Component {
 const styles = {
   pageWrapper: {
     flex: 1,
-    marginTop: 40,
+    paddingVertical: 40,
     alignItems: 'center',
-    marginHorizontal: 25,
+    paddingHorizontal: 25,
   },
-  stepOneStyle: {
+  stepTextStyle: {
     fontSize: 30,
     textAlign: 'center',
     paddingBottom: 5,
@@ -125,25 +107,16 @@ const styles = {
     fontSize: 24,
     color: '#ce0000',
   },
-  stepTwoStyle: {
-    textAlign: 'center',
-    fontWeight: 'bold',
-  },
-  status: {
-    paddingTop: 15,
-    fontWeight: 'bold',
-    color: 'green',
-  },
   hyperlinkButton: {
     marginTop: 30,
     padding: 10,
     backgroundColor: '#ce0000',
     marginBottom: 10,
-    borderRadius: 2,
+    borderRadius: 5,
   },
   hyperlink: {
     color: 'white',
-    fontWeight: 'bold',
+    fontSize: 24,
   }
 };
 
