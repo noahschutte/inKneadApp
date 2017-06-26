@@ -73,21 +73,33 @@ class InstructionsScene extends Component {
     };
     return (
       <View style={{ flex: 1 }}>
-        <IndicatorViewPager style={{ flex: 1 }}>
-          <View style={{ flex: 1 }}>
-            <DetailSection style={{ marginTop: 40 }}>
-              <View style={{ alignItems: 'center', marginHorizontal: 25 }}>
-                <PlatformText type='bold' textStyle={stepOneStyle}>Step 1:</PlatformText>
-                <PlatformText type='demi-bold' textStyle={[stepOneStyle, completed]}>Tap the email below to copy</PlatformText>
-                <PlatformText type='bold' textStyle={[stepOneStyle, email, completed]} onPress={onPress}>
-                  {this.props.recipientEmail}
-                </PlatformText>
-              </View>
-            </DetailSection>
-            <DetailSection>
-              {stepTwo}
-            </DetailSection>
+        <IndicatorViewPager
+          style={{ flex: 1 }}
+          initialPage={this.props.page}
+        >
+
+          <View style={styles.pageWrapper}>
+            <PlatformText type='bold' textStyle={stepOneStyle}>Step 1:</PlatformText>
+            <PlatformText type='demi-bold' textStyle={[stepOneStyle, completed]}>Tap the email below to copy</PlatformText>
+            <PlatformText type='bold' textStyle={[stepOneStyle, email, completed]} onPress={onPress}>
+              {this.props.recipientEmail}
+            </PlatformText>
           </View>
+
+          <View style={styles.pageWrapper}>
+            <Text style={stepTwoStyle}>Step 2:</Text>
+            <Text style={stepTwoStyle}>
+              Great! Now paste that email address into the "recipient email" form on the following page and complete your donation!</Text>
+            <TouchableOpacity
+              onPress={() => this.handleVendorSite(vendors[this.props.entry.vendor])}
+              style={hyperlinkButton}
+            >
+              <Text style={hyperlink}>
+                {this.props.entry.vendor}
+              </Text>
+            </TouchableOpacity>
+          </View>
+
         </IndicatorViewPager>
       </View>
     );
@@ -95,6 +107,12 @@ class InstructionsScene extends Component {
 }
 
 const styles = {
+  pageWrapper: {
+    flex: 1,
+    marginTop: 40,
+    alignItems: 'center',
+    marginHorizontal: 25,
+  },
   stepOneStyle: {
     fontSize: 30,
     textAlign: 'center',
