@@ -90,7 +90,7 @@ class NavBar extends Component {
       case 'newRequest':
         result = <Icon name='plus' style={{ fontSize: 36, color: '#ffffff' }} />;
         if (this.props.userID) {
-          onPress = Actions.InstructionsScene.bind(this, { recipientEmail: 'jamo@jamo.com', page: 0, entry: { pizzas: 2, vendor: 'Dominos' } });
+          onPress = Actions.EntryCreationScene;
         } else {
           onPress = () => Actions.LoginScene({
             redirect: {
