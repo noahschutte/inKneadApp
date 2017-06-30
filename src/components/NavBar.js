@@ -132,7 +132,7 @@ const styles = {
     height: (Platform.OS === 'ios') ? 74 : 54,
     width: Dimensions.get('window').width,
     top: 0,
-    paddingTop: (Platform.OS === 'ios') ? 25 : 0,
+    paddingTop: (Platform.OS === 'ios') ? 15 : 0,
     // paddingBottom: 5,
     flexDirection: 'row',
     backgroundColor: '#ce0000',
@@ -149,7 +149,7 @@ const styles = {
     right: 0,
     alignItems: 'center',
     justifyContent: 'center',
-    marginTop: 15,
+    marginTop: (Platform.OS === 'ios') ? 33 : 15
   },
   alertStyle: {
     backgroundColor: '#43cece',
