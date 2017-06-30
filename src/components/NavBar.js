@@ -10,7 +10,7 @@ import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import PlatformText from './PlatformText';
-import { toggleScope, redirectTo, toggleSideMenu, retrieveNotifications } from '../actions';
+import { handleVideoData, toggleScope, redirectTo, toggleSideMenu, retrieveNotifications } from '../actions';
 import ScopeButton from './ScopeButton';
 // import NotificationAlert from './NotificationAlert';
 
@@ -36,9 +36,13 @@ class NavBar extends Component {
   }
 
   renderLeftButton = () => {
-    const { navBarProps, sideMenuOpen } = this.props;
+    const { handleVideoData, navBarProps, sideMenuOpen } = this.props;
     let result;
     let onPress;
+    const ecbb = () => {
+      handleVideoData(null);
+      Actions.pop();
+    };
     switch (navBarProps.leftButton) {
       case 'backButton':
         result = <Icon name='angle-left' style={{ paddingRight: 25, fontSize: 36, color: '#ffffff' }} />;
@@ -47,6 +51,10 @@ class NavBar extends Component {
         } else {
           onPress = Actions.pop;
         }
+        break;
+      case 'entryCreationBackButton':
+        result = <Icon name='angle-left' style={{ paddingRight: 25, fontSize: 36, color: '#ffffff' }} />;
+        onPress = ecbb;
         break;
       case 'sideMenu':
       case 'menuButton':
@@ -170,4 +178,4 @@ const mapStateToProps = ({ entries, user, nav, notifications }) => {
   return { scope, userID, sideMenuOpen, doesHaveNotifications };
 };
 
-export default connect(mapStateToProps, { toggleScope, redirectTo, toggleSideMenu, retrieveNotifications })(NavBar);
+export default connect(mapStateToProps, { handleVideoData, toggleScope, redirectTo, toggleSideMenu, retrieveNotifications })(NavBar);
