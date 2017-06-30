@@ -34,7 +34,8 @@ export const confirmDelete = (entryId) => {
       return response.json();
     })
     .then((responseJson) => {
-      Actions.MainScene({ type: 'reset' });
+      Actions.root();
+      Actions.MainScene();
       alert(responseJson.errorMessage);
     })
     .catch(err => alert(err));
