@@ -12,7 +12,6 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import PlatformText from './PlatformText';
 import { handleVideoData, toggleScope, redirectTo, toggleSideMenu, retrieveNotifications } from '../actions';
 import ScopeButton from './ScopeButton';
-// import NotificationAlert from './NotificationAlert';
 
 class NavBar extends Component {
 
@@ -59,17 +58,6 @@ class NavBar extends Component {
       case 'sideMenu':
       case 'menuButton':
         result = <Icon name='navicon' style={{ fontSize: 36, color: '#ffffff' }} />;
-        // Renders a little blue circle with an exclamation mark if notifications exist
-        // if (this.props.doesHaveNotifications) {
-        //   result = (
-        //     <Image
-        //       style={styles.leftButtonStyle}
-        //       source={menuButton}
-        //     >
-        //       <NotificationAlert alertStyle={styles.alertStyle} />
-        //     </Image>
-        //   );
-        // }
         onPress = () => this.props.toggleSideMenu(sideMenuOpen);
         break;
       default:
@@ -141,12 +129,10 @@ const styles = {
     width: Dimensions.get('window').width,
     top: 0,
     paddingTop: (Platform.OS === 'ios') ? 15 : 0,
-    // paddingBottom: 5,
     flexDirection: 'row',
     backgroundColor: '#ce0000',
     alignItems: 'center',
     justifyContent: 'space-between',
-    // paddingVertical: 5,
     paddingHorizontal: Dimensions.get('window').width * 0.05,
     elevation: 2,
   },
@@ -159,15 +145,6 @@ const styles = {
     justifyContent: 'center',
     marginTop: (Platform.OS === 'ios') ? 33 : 15
   },
-  alertStyle: {
-    backgroundColor: '#43cece',
-    width: 20,
-    height: 20,
-    borderRadius: 20 / 2,
-    position: 'relative',
-    top: 11,
-    left: 11,
-  }
 };
 
 const mapStateToProps = ({ entries, user, nav, notifications }) => {
