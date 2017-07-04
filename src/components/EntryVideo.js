@@ -42,6 +42,9 @@ const EntryVideo = (props) => {
     const videoDisplay =
       (<Video
         source={{ uri: source }}
+        ref={(ref) => {
+          this.player = ref;
+        }}
         paused={originPaused}
         repeat
         rate={1.0}

@@ -62,5 +62,8 @@ export const uploadingScene = {
 
 export const userHistoryScene = {
   leftButton: 'backButton',
+  redirect: {
+    scene: 'MainScene'
+  },
   title: 'HISTORY',
 };
