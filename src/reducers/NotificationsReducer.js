@@ -33,7 +33,7 @@ export default (state = INITIAL_STATE, action) => {
           ...state.userNotifications,
           {
             id: 0,
-            text: 'Please verify your email',
+            text: 'PLEASE VERIFY YOUR EMAIL',
             expandable: {
               text: `Is ${action.payload} the best place to reach you at?`,
               buttons: [
@@ -62,7 +62,7 @@ export default (state = INITIAL_STATE, action) => {
           ...state.userNotifications,
           {
             id: 1,
-            text: 'You have an outstanding donation',
+            text: 'YOU HAVE AN OUTSTANDING DONATION',
             expandable: {
               text: 'Once your recipient acknowledges the donation, they\'ll send you a thank you video!',
               buttons: [
@@ -95,7 +95,7 @@ export default (state = INITIAL_STATE, action) => {
           ...state.userNotifications,
           {
             id: 2,
-            text: 'Incoming Pizza!',
+            text: 'INCOMING PIZZA!',
             expandable: {
               text: 'Someone has donated to a recent request of yours, watch for a gift card to arrive in your email!',
               buttons: [
@@ -125,7 +125,7 @@ export default (state = INITIAL_STATE, action) => {
           ...state.userNotifications,
           {
             id: 3,
-            text: 'Thank your donor!',
+            text: 'THANK YOUR DONOR!',
             expandable: {
               text: 'Reward the community by letting them see the impact of their good will',
               buttons: [
@@ -158,7 +158,7 @@ export default (state = INITIAL_STATE, action) => {
           ...state.userNotifications,
           {
             id: 4,
-            text: 'Your donation has been received',
+            text: 'YOUR DONATION HAS BEEN RECEIVED',
             expandable: {
               text: 'You\'ve successfully made a donation! Be on the lookout for a thank you from your recipient',
               buttons: [
@@ -179,7 +179,7 @@ export default (state = INITIAL_STATE, action) => {
           ...state.userNotifications,
           {
             id: 5,
-            text: 'Incoming Gratitude!',
+            text: 'INCOMING GRATITUDE!',
             expandable: {
               text: 'Someone you donated pizza to wants to send you some thanks!',
               buttons: [
@@ -220,7 +220,7 @@ export default (state = INITIAL_STATE, action) => {
           ...state.userNotifications,
           {
             id: 6,
-            text: 'Please accept our EULA',
+            text: 'PLEASE ACCEPT OUR EULA',
             expandable: {
               buttons: [
                 {
@@ -246,7 +246,7 @@ export default (state = INITIAL_STATE, action) => {
           ...state.userNotifications,
           {
             id: 7,
-            text: 'One of your videos has been removed',
+            text: 'ONE OF YOUR VIDEOS HAS BEEN REMOVED',
             expandable: {
               text: `Due to receiving a number of reports, your video uploaded on ${timeFormat(action.payload.created_at)} has been removed.`,
               buttons: [

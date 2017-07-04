@@ -10,7 +10,6 @@ import {
   updateEmail
 } from '../../actions';
 import Button from '../Button2';
-import Notification from '../Notification';
 import DetailSection from '../DetailSection';
 
 class NotificationsScene extends Component {
@@ -103,7 +102,7 @@ class NotificationsScene extends Component {
       );
     }
     return (
-      <DetailSection>
+      <DetailSection style={{ margin: 0, padding: 0, elevation: 0 }}>
         <Text style={styles.text}>{text}</Text>
       </DetailSection>
     );
@@ -141,9 +140,11 @@ class NotificationsScene extends Component {
         const buttonContent = this.buttonContent(notification, key);
         return (
           <View key={key} style={{ marginTop: 10 }}>
-            <Notification onPress={onPress}>
-              {buttonContent}
-            </Notification>
+            <Button touchableOpacity buttonStyle={styles.buttonStyle} onPress={onPress}>
+              <View>
+                {buttonContent}
+              </View>
+            </Button>
           </View>
         );
       });
@@ -151,7 +152,7 @@ class NotificationsScene extends Component {
       content = <Text style={{ textAlign: 'center', marginTop: 50 }}>Nothing to show...</Text>;
     }
     return (
-      <View style={{ flex: 1 }}>
+      <View style={{ flex: 1, marginTop: 20 }}>
           {content}
       </View>
     );
@@ -160,17 +161,27 @@ class NotificationsScene extends Component {
 
 const styles = {
   text: {
-    textAlign: 'center',
-    fontSize: 22,
+    textAlign: 'left',
+    fontSize: 24,
     padding: 5,
     fontWeight: 'bold',
-    color: '#00cece',
+    color: '#000',
   },
   subText: {
-    fontSize: 14,
+    fontSize: 18,
     lineHeight: 22,
     fontWeight: 'normal',
     color: 'black',
+  },
+  buttonStyle: {
+    borderTopWidth: 0,
+    borderRadius: 0,
+    borderRightWidth: 0,
+    borderLeftWidth: 0,
+    alignSelf: 'stretch',
+    alignItems: 'flex-start',
+    borderBottomWidth: 1,
+    borderColor: 'black',
   },
 };
 
