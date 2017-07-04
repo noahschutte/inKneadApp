@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, Platform } from 'react-native';
 import { connect } from 'react-redux';
 import {
   acceptEULA,
@@ -139,11 +139,9 @@ class NotificationsScene extends Component {
         }
         const buttonContent = this.buttonContent(notification, key);
         return (
-          <View key={key} style={{ marginTop: 10 }}>
+          <View key={key} style={{ marginTop: 10, marginHorizontal: -5 }}>
             <Button touchableOpacity buttonStyle={styles.buttonStyle} onPress={onPress}>
-              <View>
-                {buttonContent}
-              </View>
+              {buttonContent}
             </Button>
           </View>
         );
@@ -152,18 +150,34 @@ class NotificationsScene extends Component {
       content = <Text style={{ textAlign: 'center', marginTop: 50 }}>Nothing to show...</Text>;
     }
     return (
-      <View style={{ flex: 1, marginTop: 20 }}>
+      <View style={{ flex: 1, marginTop: 25 }}>
           {content}
       </View>
     );
   }
 }
 
+const buttonStyleIOS = {
+    borderWidth: 0,
+    alignItems: 'flex-start',
+    borderBottomWidth: 1,
+    borderColor: 'black',
+    paddingLeft: 5,
+  };
+
+const buttonStyleAndroid = {
+  borderWidth: 0,
+  borderRadius: 0,
+  borderBottomWidth: 1,
+  alignItems: 'flex-start',
+  borderColor: 'black',
+  paddingLeft: 5,
+};
+
 const styles = {
   text: {
     textAlign: 'left',
     fontSize: 24,
-    padding: 5,
     fontWeight: 'bold',
     color: '#000',
   },
@@ -173,16 +187,7 @@ const styles = {
     fontWeight: 'normal',
     color: 'black',
   },
-  buttonStyle: {
-    borderTopWidth: 0,
-    borderRadius: 0,
-    borderRightWidth: 0,
-    borderLeftWidth: 0,
-    alignSelf: 'stretch',
-    alignItems: 'flex-start',
-    borderBottomWidth: 1,
-    borderColor: 'black',
-  },
+  buttonStyle: Platform.OS === 'ios' ? buttonStyleIOS : buttonStyleAndroid,
 };
 
 const mapStateToProps = (state) => {

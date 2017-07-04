@@ -123,7 +123,6 @@ const styles = {
     borderColor: '#ce0000',
     marginLeft: 5,
     marginRight: 5,
-    elevation: 1,
   },
   cancelButtonStyle: {
     backgroundColor: '#00cece',
