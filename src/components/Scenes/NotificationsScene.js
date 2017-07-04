@@ -10,6 +10,7 @@ import {
   updateEmail
 } from '../../actions';
 import Button from '../Button2';
+import Notification from '../Notification';
 import DetailSection from '../DetailSection';
 
 class NotificationsScene extends Component {
@@ -140,9 +141,9 @@ class NotificationsScene extends Component {
         const buttonContent = this.buttonContent(notification, key);
         return (
           <View key={key} style={{ marginTop: 10 }}>
-            <Button touchableOpacity onPress={onPress}>
+            <Notification onPress={onPress}>
               {buttonContent}
-            </Button>
+            </Notification>
           </View>
         );
       });

@@ -78,18 +78,13 @@ const styles = {
   },
   iconStyle: {
     fontSize: 26,
+    textShadowRadius: 2,
+    textShadowOffset: { width: 2, height: 2 },
   },
   textStyle: {
     textAlign: 'left',
     fontSize: 20,
     color: 'white',
-  },
-  donatedPizzasText: {
-    color: 'white',
-    top: 25,
-    textAlign: 'center',
-    marginHorizontal: 5,
-    position: 'absolute',
   },
   notificationStyle: {
     flexDirection: 'row',
