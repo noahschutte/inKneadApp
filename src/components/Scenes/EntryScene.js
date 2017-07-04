@@ -94,7 +94,8 @@ class EntryScene extends Component {
 
   navigateToUser = () => {
     this.setState({ paused: true });
-    Actions.UserHistoryScene({ userID: this.props.entry.creatorId });
+    Actions.root();
+    Actions.UserHistoryScene({ type: 'reset', userID: this.props.entry.creatorId });
   }
 
   shouldUserBeHere = () => {
