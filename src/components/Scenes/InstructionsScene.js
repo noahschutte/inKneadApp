@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { Clipboard, Linking, View, Text } from 'react-native';
-import { Actions } from 'react-native-router-flux';
+import { Clipboard, Linking, View } from 'react-native';
 import PlatformText from '../PlatformText';
 import Button from '../Button2';
 
