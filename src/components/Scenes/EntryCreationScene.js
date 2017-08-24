@@ -91,7 +91,7 @@ class EntryCreationScene extends Component {
 
     /* eslint camelcase: 0 */
     let videoKey = `${Date.now() + fb_userID}`;
-    fetch('https://in-knead.herokuapp.com/requests', {
+    fetch('https://inknead.herokuapp.com/requests', {
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json'
@@ -138,7 +138,7 @@ class EntryCreationScene extends Component {
               Actions.UploadCompleteScene();
             } else {
               console.log('failure, status: ', xhr.status);
-              fetch('https://in-knead.herokuapp.com/requests/1', {
+              fetch('https://inknead.herokuapp.com/requests/1', {
                 headers: {
                   Accept: 'application/json',
                   'Content-Type': 'application/json'
@@ -165,7 +165,7 @@ class EntryCreationScene extends Component {
     let videoKey = `${fb_userID + Date.now()}`;
     const { pizzas, vendor, donor_id, id: requestId } = entry;
 
-    fetch('https://in-knead.herokuapp.com/thank_you', {
+    fetch('https://inknead.herokuapp.com/thank_you', {
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json'
@@ -203,7 +203,7 @@ class EntryCreationScene extends Component {
               Actions.UploadCompleteScene();
             } else {
               console.log('failure, status: ', xhr.status);
-              fetch('https://in-knead.herokuapp.com/thank_you/1', {
+              fetch('https://inknead.herokuapp.com/thank_you/1', {
                 headers: {
                   Accept: 'application/json',
                   'Content-Type': 'application/json',
