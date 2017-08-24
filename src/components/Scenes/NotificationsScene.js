@@ -55,9 +55,9 @@ class NotificationsScene extends Component {
   }
 
   acknowledgeRemoval = (entry) => {
-    let url = `https://in-knead.herokuapp.com/requests/${entry.id}`;
+    let url = `https://inknead.herokuapp.com/requests/${entry.id}`;
     if (entry.donor_viewed === true || entry.donor_viewed === false) {
-      url = `https://in-knead.herokuapp.com/thank_you/${entry.id}`;
+      url = `https://inknead.herokuapp.com/thank_you/${entry.id}`;
     }
     fetch(url, {
       headers: {
