@@ -137,7 +137,7 @@ const styles = {
     elevation: 2,
   },
   titleStyle: {
-    position: 'absolute',
+    // position: 'absolute', This causes issues with iOS TouchableOpacity
     top: 0,
     left: 0,
     right: 0,
