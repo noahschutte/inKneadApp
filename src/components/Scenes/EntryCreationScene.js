@@ -3,6 +3,7 @@ import { View, Image, Platform, Alert, ScrollView } from 'react-native';
 import Camera from 'react-native-camera';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
+import { DB_URL } from 'react-native-dotenv';
 import {
   updateSelectedPizzas,
   updateSelectedVendor,
@@ -91,7 +92,7 @@ class EntryCreationScene extends Component {
 
     /* eslint camelcase: 0 */
     let videoKey = `${Date.now() + fb_userID}`;
-    fetch('https://inknead.herokuapp.com/requests', {
+    fetch(`${DB_URL}/requests`, {
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json'
@@ -138,7 +139,7 @@ class EntryCreationScene extends Component {
               Actions.UploadCompleteScene();
             } else {
               console.log('failure, status: ', xhr.status);
-              fetch('https://inknead.herokuapp.com/requests/1', {
+              fetch(`${DB_URL}/requests/1`, {
                 headers: {
                   Accept: 'application/json',
                   'Content-Type': 'application/json'
@@ -165,7 +166,7 @@ class EntryCreationScene extends Component {
     let videoKey = `${fb_userID + Date.now()}`;
     const { pizzas, vendor, donor_id, id: requestId } = entry;
 
-    fetch('https://inknead.herokuapp.com/thank_you', {
+    fetch(`${DB_URL}/thank_you`, {
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json'
@@ -203,7 +204,7 @@ class EntryCreationScene extends Component {
               Actions.UploadCompleteScene();
             } else {
               console.log('failure, status: ', xhr.status);
-              fetch('https://inknead.herokuapp.com/thank_you/1', {
+              fetch(`${DB_URL}/thank_you/1`, {
                 headers: {
                   Accept: 'application/json',
                   'Content-Type': 'application/json',

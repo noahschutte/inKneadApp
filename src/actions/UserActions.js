@@ -1,5 +1,6 @@
 import { Actions } from 'react-native-router-flux';
 import { Alert } from 'react-native';
+import { DB_URL } from 'react-native-dotenv';
 import {
   ACCEPT_EULA,
   ACTIVE_DONATION_REMINDER,
@@ -22,7 +23,7 @@ import {
 
 export const acceptEULA = (userID) => {
   return dispatch => {
-    fetch(`https://inknead.herokuapp.com/users/${userID}`, {
+    fetch(`${DB_URL}/users/${userID}`, {
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json',
@@ -37,7 +38,7 @@ export const acceptEULA = (userID) => {
 
 export const blockUser = (userID, entry) => {
   return dispatch => {
-    fetch(`https://inknead.herokuapp.com/requests/${entry.id}`, {
+    fetch(`${DB_URL}/requests/${entry.id}`, {
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json',
@@ -68,7 +69,7 @@ export const blockUser = (userID, entry) => {
 export const confirmDonationReceived = (successfulRequest) => {
   return dispatch => {
     const userID = successfulRequest.creator_id;
-    fetch(`https://inknead.herokuapp.com/requests/${successfulRequest.id}`, {
+    fetch(`${DB_URL}/requests/${successfulRequest.id}`, {
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json',
@@ -94,7 +95,7 @@ export const confirmDonationReceived = (successfulRequest) => {
 
 export const createSession = (userInfo, redirect = { scene: 'MainScene', parameter: 'root' }) => {
   return (dispatch) => {
-    fetch('https://inknead.herokuapp.com/users', {
+    fetch(`${DB_URL}/users`, {
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json'
@@ -121,7 +122,7 @@ export const createSession = (userInfo, redirect = { scene: 'MainScene', paramet
         acceptEula.then((result) => {
           if (result === 'accept') {
             dispatch({ type: REDIRECT, payload: redirect });
-            fetch(`https://inknead.herokuapp.com/users/${responseJson.user.id}`, {
+            fetch(`${DB_URL}/users/${responseJson.user.id}`, {
               headers: {
                 Accept: 'application/json',
                 'Content-Type': 'application/json',
@@ -160,7 +161,7 @@ export const removeNotification = (notificationID) => {
 
 export const retrieveNotifications = (userID) => {
   return (dispatch) => {
-    fetch(`https://inknead.herokuapp.com/users/${userID}`, {
+    fetch(`${DB_URL}/users/${userID}`, {
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json'
@@ -248,7 +249,7 @@ export const retrieveNotifications = (userID) => {
 
 export const updateEmail = (updatedEmail, userID, redirect = null) => {
   return (dispatch) => {
-    fetch(`https://inknead.herokuapp.com/users/${userID}`, {
+    fetch(`${DB_URL}/users/${userID}`, {
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json'

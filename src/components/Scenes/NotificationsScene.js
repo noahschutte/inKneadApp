@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, Platform } from 'react-native';
 import { connect } from 'react-redux';
+import { DB_URL } from 'react-native-dotenv';
 import {
   acceptEULA,
   donorViewed,
@@ -55,9 +56,9 @@ class NotificationsScene extends Component {
   }
 
   acknowledgeRemoval = (entry) => {
-    let url = `https://inknead.herokuapp.com/requests/${entry.id}`;
+    let url = `${DB_URL}/requests/${entry.id}`;
     if (entry.donor_viewed === true || entry.donor_viewed === false) {
-      url = `https://inknead.herokuapp.com/thank_you/${entry.id}`;
+      url = `${DB_URL}/thank_you/${entry.id}`;
     }
     fetch(url, {
       headers: {
