@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { View, Text, Image } from 'react-native';
+import { View, Text, Image, Linking } from 'react-native';
 import { connect } from 'react-redux';
 import { loadingPizzaImage } from '../../assets';
+import Button from '../Button2';
 
 class AboutScene extends Component {
   render() {
@@ -17,6 +18,14 @@ class AboutScene extends Component {
             "THE POWER OF HUMAN KINDNESS,{'\n'}ONE PIZZA AT A TIME."
             {'\n'}contact: <Text style={{ fontWeight: 'bold' }}>noah@noahschutte.com</Text>
           </Text>
+          <Button
+            onPress={() => Linking.openURL('https://www.inknead.pizza')}
+            touchableOpacity
+            buttonStyle={{ backgroundColor: '#ce0000', marginVertical: 25 }}
+            textStyle={styles.hyperlink}
+          >
+            www.inknead.pizza
+          </Button>
         </View>
       </View>
     );
@@ -55,6 +64,10 @@ const styles = {
   bottomTextStyle: {
     fontSize: 18,
     lineHeight: 30,
+  },
+  hyperlink: {
+    color: 'white',
+    fontSize: 24,
   }
 };
 
