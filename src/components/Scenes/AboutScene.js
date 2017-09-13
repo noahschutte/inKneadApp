@@ -21,10 +21,10 @@ class AboutScene extends Component {
           <Button
             onPress={() => Linking.openURL('https://www.inknead.pizza')}
             touchableOpacity
-            buttonStyle={{ backgroundColor: '#ce0000', marginVertical: 25 }}
+            buttonStyle={{ backgroundColor: '#ce0000', marginVertical: 25, alignSelf: 'center', paddingHorizontal: 25 }}
             textStyle={styles.hyperlink}
           >
-            www.inknead.pizza
+            inknead.pizza
           </Button>
         </View>
       </View>
