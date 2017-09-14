@@ -1,5 +1,6 @@
 import { Actions } from 'react-native-router-flux';
 import { Alert } from 'react-native';
+import { DB_URL } from 'react-native-dotenv';
 import {
   ACTIVE_DONATION_REMINDER,
   ADD_REPORTED_REQUEST,
@@ -20,7 +21,7 @@ import {
 
 export const confirmDelete = (entryId) => {
   return (dispatch) => {
-    fetch(`https://inknead.herokuapp.com/requests/${entryId}`, {
+    fetch(`${DB_URL}/requests/${entryId}`, {
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json'
@@ -45,7 +46,7 @@ export const confirmDelete = (entryId) => {
 // confirmDonation is invoked when a user commits to donating to a request
 export const confirmDonation = (donatorId, entry) => {
   return (dispatch) => {
-    fetch(`https://inknead.herokuapp.com/requests/${entry.id}`, {
+    fetch(`${DB_URL}/requests/${entry.id}`, {
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json'
@@ -93,7 +94,7 @@ export const confirmDonation = (donatorId, entry) => {
 };
 
 export const donorViewed = (thankYouID) => {
- fetch(`https://inknead.herokuapp.com/thank_you/${thankYouID}`, {
+ fetch(`${DB_URL}/thank_you/${thankYouID}`, {
    headers: {
      Accept: 'application/json',
      'Content-Type': 'application/json'
@@ -113,7 +114,7 @@ export const donorViewed = (thankYouID) => {
 export const getEntries = (userID = null) => {
   return (dispatch) => {
     dispatch({ type: GET_ENTRIES });
-    fetch('https://inknead.herokuapp.com/requests', {
+    fetch(`${DB_URL}/requests`, {
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json'
@@ -135,7 +136,7 @@ export const getEntries = (userID = null) => {
 export const getUserHistory = (userID) => {
   return (dispatch) => {
     dispatch({ type: GET_ENTRIES });
-    fetch(`https://inknead.herokuapp.com/anon/${userID}`, {
+    fetch(`${DB_URL}/anon/${userID}`, {
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json',
@@ -154,11 +155,11 @@ export const reportVideo = (userID, entry) => {
   return (dispatch) => {
     let url;
     if (entry.type === 'thankYou') {
-      url = `https://inknead.herokuapp.com/thank_you/${entry.id}`;
+      url = `${DB_URL}/thank_you/${entry.id}`;
       dispatch({ type: DELETE_THANK_YOU, payload: entry.id });
       dispatch({ type: ADD_REPORTED_THANK_YOU, payload: entry.id });
     } else {
-      url = `https://inknead.herokuapp.com/requests/${entry.id}`;
+      url = `${DB_URL}/requests/${entry.id}`;
       dispatch({ type: DELETE_REQUEST, payload: entry.id });
       dispatch({ type: ADD_REPORTED_REQUEST, payload: entry.id });
     }
