@@ -11,7 +11,7 @@ const UploadingScene = () => {
       </View>
       <View style={styles.textWrapper}>
         <PlatformText type='bold' fontSize={24}>UPLOADING YOUR</PlatformText>
-        <PlatformText type='bold' fontSize={24}>PIZZA REQUEST!</PlatformText>
+        <PlatformText type='bold' fontSize={24}>VIDEO NOW!</PlatformText>
       </View>
     </View>
   );
