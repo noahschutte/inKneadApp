@@ -137,10 +137,10 @@ const styles = {
     elevation: 2,
   },
   titleStyle: {
-    // position: 'absolute', This causes issues with iOS TouchableOpacity
+    position: 'absolute',
+    width: Dimensions.get('window').width - 100,
     top: 0,
-    left: 0,
-    right: 0,
+    marginLeft: 50,
     alignItems: 'center',
     justifyContent: 'center',
     marginTop: (Platform.OS === 'ios') ? 33 : 15
