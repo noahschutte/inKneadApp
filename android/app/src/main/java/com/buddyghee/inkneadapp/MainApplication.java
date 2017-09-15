@@ -3,6 +3,7 @@ package com.buddyghee.inkneadapp;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.learnium.RNDeviceInfo.RNDeviceInfo;
 import com.brentvatne.react.ReactVideoPackage;
 import com.facebook.reactnative.androidsdk.FBSDKPackage;
 import com.lwansbrough.RCTCamera.RCTCameraPackage;
@@ -42,6 +43,7 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+          new RNDeviceInfo(),
           new ReactVideoPackage(),
           new RCTCameraPackage(),
           new FBSDKPackage(mCallbackManager),
