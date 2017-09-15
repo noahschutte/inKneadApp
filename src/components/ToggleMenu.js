@@ -1,7 +1,8 @@
 import React from 'react';
-import { View, Dimensions } from 'react-native';
+import { View, Dimensions, Text } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import DeviceInfo from 'react-native-device-info';
 import SideMenuButton from './SideMenuButton';
 import PlatformText from './PlatformText';
 // import NotificationAlert from './NotificationAlert';
@@ -19,6 +20,7 @@ const ToggleMenu = (props) => {
 
   return (
     <View style={styles.container}>
+      <Text>v{DeviceInfo.getVersion()}</Text>
 
       <SideMenuButton onPress={onPress.bind(this, () => Actions.refresh({ key: 'MainScene' }))}>
         <PlatformText type='thin' textStyle={styles.textStyle}>
