@@ -6,6 +6,7 @@ import {
   PagerTabIndicator,
   PagerDotIndicator
 } from 'rn-viewpager';
+import EntryVideo from '../EntryVideo';
 import {
   leftCaretImage,
   ovalImage,
@@ -16,6 +17,9 @@ import {
 } from '../../assets';
 
 class HowToScene extends Component {
+  state = {
+    paused: true,
+  }
   _renderTitleIndicator() {
     return <PagerTitleIndicator titles={['Update Email', 'Donate', 'Request']} />;
   }
@@ -44,6 +48,9 @@ class HowToScene extends Component {
     }];
     return <PagerTabIndicator tabs={tabs} />;
   }
+  togglePlay = (toggle) => {
+    this.setState({ paused: toggle });
+  }
   render() {
     const {
       container,
@@ -61,13 +68,11 @@ class HowToScene extends Component {
           indicator={this._renderDotIndicator()}
         >
 
-          <View style={steps}>
-            <Text style={text}>Step 1</Text>
-            <Image style={oval} source={ovalImage}>
-              <Image style={icon} source={stepOneImage} />
-            </Image>
-            <Text style={textBottom}>Watch a video request, {'\n'}or make your own</Text>
-          </View>
+          <EntryVideo
+             source={'https://s3.amazonaws.com/in-knead/howTo/request/noah1.mov'}
+             paused={this.state.paused}
+             togglePlay={this.togglePlay}
+          />
 
           <View style={steps}>
             <Text style={text}>Step 2</Text>
