@@ -67,30 +67,28 @@ class HowToScene extends Component {
           style={container}
           indicator={this._renderDotIndicator()}
         >
+          <View style={{ flex: 1 }}>
+            <EntryVideo
+              source={'https://s3.amazonaws.com/in-knead/howTo/intro/intro1.MOV'}
+              paused={this.state.paused}
+              togglePlay={this.togglePlay}
+            />
+          </View>
+
+          <View style={{ flex: 1 }}>
+            <EntryVideo
+               source={'https://s3.amazonaws.com/in-knead/howTo/request/noah1.mov'}
+               paused={this.state.paused}
+               togglePlay={this.togglePlay}
+            />
+          </View>
 
           <EntryVideo
-             source={'https://s3.amazonaws.com/in-knead/howTo/request/noah1.mov'}
+             source={'https://s3.amazonaws.com/in-knead/howTo/donate/jamo1.mov'}
              paused={this.state.paused}
              togglePlay={this.togglePlay}
           />
 
-          <View style={steps}>
-            <Text style={text}>Step 2</Text>
-            <Image style={oval} source={ovalImage}>
-              <Image style={icon} source={stepTwoImage} />
-            </Image>
-            <Text style={textBottom}>Choose what to donate or request</Text>
-          </View>
-
-          <View style={steps}>
-            <Text style={text}>Step 3</Text>
-            <Image style={oval} source={ovalImage}>
-              <Image style={icon} source={stepThreeA}>
-                <Image style={threeB} source={stepThreeB} />
-              </Image>
-            </Image>
-            <Text style={textBottom}>send (or receive) your Gratitude!</Text>
-          </View>
         </IndicatorViewPager>
       </View>
     );
