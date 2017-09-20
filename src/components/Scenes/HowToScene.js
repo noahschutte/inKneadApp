@@ -2,14 +2,9 @@ import React, { Component } from 'react';
 import { View } from 'react-native';
 import {
   IndicatorViewPager,
-  PagerTitleIndicator,
-  PagerTabIndicator,
   PagerDotIndicator
 } from 'rn-viewpager';
 import EntryVideo from '../EntryVideo';
-import {
-  leftCaretImage,
-} from '../../assets';
 
 class HowToScene extends Component {
   state = {
@@ -25,9 +20,6 @@ class HowToScene extends Component {
     this.setState({ requestNumber: this.randomNumber(2) });
     this.setState({ donateNumber: this.randomNumber(3) });
   }
-  _renderTitleIndicator() {
-    return <PagerTitleIndicator titles={['Update Email', 'Donate', 'Request']} />;
-  }
   _renderDotIndicator() {
     return (
       <PagerDotIndicator
@@ -36,22 +28,6 @@ class HowToScene extends Component {
         selectedDotStyle={{ backgroundColor: '#ce0000' }}
       />
     );
-  }
-  _renderTabIndicator() {
-    const tabs = [{
-      text: 'Step 1',
-      iconSource: leftCaretImage,
-      selectedIconSource: leftCaretImage
-    }, {
-      text: 'Step 2',
-      iconSource: leftCaretImage,
-      selectedIconSource: leftCaretImage
-    }, {
-      text: 'Step 3',
-      iconSource: leftCaretImage,
-      selectedIconSource: leftCaretImage
-    }];
-    return <PagerTabIndicator tabs={tabs} />;
   }
   toggleIntroPlay = (toggle) => {
     this.setState({ introPaused: toggle });
@@ -74,6 +50,7 @@ class HowToScene extends Component {
         <IndicatorViewPager
           style={container}
           indicator={this._renderDotIndicator()}
+          onPageScroll={() => this.setState({ introPaused: true, requestPaused: true, donatePaused: true, })}
         >
           <View style={{ flex: 1 }}>
             <EntryVideo
@@ -108,47 +85,7 @@ class HowToScene extends Component {
 const styles = {
   container: {
     flex: 1,
-  },
-  steps: {
-    flex: 1,
-    backgroundColor: 'white',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-  },
-  oval: {
-    flex: 3,
-    resizeMode: 'contain',
-    width: 200,
-    height: null,
-  },
-  text: {
-    fontSize: 30,
-    fontFamily: 'GillSans',
-    // need specific font, using this as template
-    textAlign: 'center',
-    flex: 0.5,
-    paddingTop: 25,
-  },
-  textBottom: {
-    fontSize: 20,
-    fontFamily: 'GillSans',
-    textAlign: 'center',
-    alignItems: 'flex-end',
-    flex: 1,
-  },
-  icon: {
-    width: 100,
-    alignSelf: 'center',
-    flex: 1,
-    resizeMode: 'contain',
-  },
-  threeB: {
-    width: 50,
-    flex: 1,
-    alignSelf: 'center',
-    resizeMode: 'contain',
-    marginBottom: 15,
-  },
+  }
 };
 
 export default HowToScene;
