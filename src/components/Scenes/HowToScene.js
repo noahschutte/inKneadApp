@@ -1,21 +1,22 @@
 import React, { Component } from 'react';
-import { Image, View, Text } from 'react-native';
+import { View } from 'react-native';
 import {
   IndicatorViewPager,
   PagerTitleIndicator,
   PagerTabIndicator,
   PagerDotIndicator
 } from 'rn-viewpager';
+import EntryVideo from '../EntryVideo';
 import {
   leftCaretImage,
-  ovalImage,
-  stepOneImage,
-  stepTwoImage,
-  stepThreeA,
-  stepThreeB,
 } from '../../assets';
 
 class HowToScene extends Component {
+  state = {
+    introPaused: true,
+    requestPaused: true,
+    donatePaused: true
+  }
   _renderTitleIndicator() {
     return <PagerTitleIndicator titles={['Update Email', 'Donate', 'Request']} />;
   }
@@ -44,15 +45,18 @@ class HowToScene extends Component {
     }];
     return <PagerTabIndicator tabs={tabs} />;
   }
+  toggleIntroPlay = (toggle) => {
+    this.setState({ introPaused: toggle });
+  }
+  toggleRequestPlay = (toggle) => {
+    this.setState({ requestPaused: toggle });
+  }
+  toggleDonatePlay = (toggle) => {
+    this.setState({ donatePaused: toggle });
+  }
   render() {
     const {
       container,
-      steps,
-      text,
-      icon,
-      oval,
-      textBottom,
-      threeB,
     } = styles;
     return (
       <View style={container}>
@@ -60,32 +64,30 @@ class HowToScene extends Component {
           style={container}
           indicator={this._renderDotIndicator()}
         >
-
-          <View style={steps}>
-            <Text style={text}>Step 1</Text>
-            <Image style={oval} source={ovalImage}>
-              <Image style={icon} source={stepOneImage} />
-            </Image>
-            <Text style={textBottom}>Watch a video request, {'\n'}or make your own</Text>
+          <View style={{ flex: 1 }}>
+            <EntryVideo
+              source={'https://s3.amazonaws.com/in-knead/howTo/intro/intro1.MOV'}
+              paused={this.state.introPaused}
+              togglePlay={this.toggleIntroPlay}
+            />
           </View>
 
-          <View style={steps}>
-            <Text style={text}>Step 2</Text>
-            <Image style={oval} source={ovalImage}>
-              <Image style={icon} source={stepTwoImage} />
-            </Image>
-            <Text style={textBottom}>Choose what to donate or request</Text>
+          <View style={{ flex: 1 }}>
+            <EntryVideo
+               source={'https://s3.amazonaws.com/in-knead/howTo/request/noah1.mov'}
+               paused={this.state.requestPaused}
+               togglePlay={this.toggleRequestPlay}
+            />
           </View>
 
-          <View style={steps}>
-            <Text style={text}>Step 3</Text>
-            <Image style={oval} source={ovalImage}>
-              <Image style={icon} source={stepThreeA}>
-                <Image style={threeB} source={stepThreeB} />
-              </Image>
-            </Image>
-            <Text style={textBottom}>send (or receive) your Gratitude!</Text>
+          <View style={{ flex: 1 }}>
+            <EntryVideo
+               source={'https://s3.amazonaws.com/in-knead/howTo/donate/jamo1.mov'}
+               paused={this.state.donatePaused}
+               togglePlay={this.toggleDonatePlay}
+            />
           </View>
+
         </IndicatorViewPager>
       </View>
     );
