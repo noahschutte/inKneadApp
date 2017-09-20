@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Image, View, Text } from 'react-native';
+import { View } from 'react-native';
 import {
   IndicatorViewPager,
   PagerTitleIndicator,
@@ -9,16 +9,13 @@ import {
 import EntryVideo from '../EntryVideo';
 import {
   leftCaretImage,
-  ovalImage,
-  stepOneImage,
-  stepTwoImage,
-  stepThreeA,
-  stepThreeB,
 } from '../../assets';
 
 class HowToScene extends Component {
   state = {
-    paused: true,
+    introPaused: true,
+    requestPaused: true,
+    donatePaused: true
   }
   _renderTitleIndicator() {
     return <PagerTitleIndicator titles={['Update Email', 'Donate', 'Request']} />;
@@ -48,18 +45,18 @@ class HowToScene extends Component {
     }];
     return <PagerTabIndicator tabs={tabs} />;
   }
-  togglePlay = (toggle) => {
-    this.setState({ paused: toggle });
+  toggleIntroPlay = (toggle) => {
+    this.setState({ introPaused: toggle });
+  }
+  toggleRequestPlay = (toggle) => {
+    this.setState({ requestPaused: toggle });
+  }
+  toggleDonatePlay = (toggle) => {
+    this.setState({ donatePaused: toggle });
   }
   render() {
     const {
       container,
-      steps,
-      text,
-      icon,
-      oval,
-      textBottom,
-      threeB,
     } = styles;
     return (
       <View style={container}>
@@ -70,24 +67,26 @@ class HowToScene extends Component {
           <View style={{ flex: 1 }}>
             <EntryVideo
               source={'https://s3.amazonaws.com/in-knead/howTo/intro/intro1.MOV'}
-              paused={this.state.paused}
-              togglePlay={this.togglePlay}
+              paused={this.state.introPaused}
+              togglePlay={this.toggleIntroPlay}
             />
           </View>
 
           <View style={{ flex: 1 }}>
             <EntryVideo
                source={'https://s3.amazonaws.com/in-knead/howTo/request/noah1.mov'}
-               paused={this.state.paused}
-               togglePlay={this.togglePlay}
+               paused={this.state.requestPaused}
+               togglePlay={this.toggleRequestPlay}
             />
           </View>
 
-          <EntryVideo
-             source={'https://s3.amazonaws.com/in-knead/howTo/donate/jamo1.mov'}
-             paused={this.state.paused}
-             togglePlay={this.togglePlay}
-          />
+          <View style={{ flex: 1 }}>
+            <EntryVideo
+               source={'https://s3.amazonaws.com/in-knead/howTo/donate/jamo1.mov'}
+               paused={this.state.donatePaused}
+               togglePlay={this.toggleDonatePlay}
+            />
+          </View>
 
         </IndicatorViewPager>
       </View>
