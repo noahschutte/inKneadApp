@@ -113,7 +113,7 @@ android {
         applicationId "com.buddyghee.inkneadapp"
         minSdkVersion 16
         targetSdkVersion 22
-        versionCode 14
+        versionCode 13
         versionName "1.0.4"
         ndk {
             abiFilters "armeabi-v7a", "x86"
