@@ -15,7 +15,15 @@ class HowToScene extends Component {
   state = {
     introPaused: true,
     requestPaused: true,
-    donatePaused: true
+    donatePaused: true,
+    introNumber: 1,
+    requestNumber: 1,
+    donateNumber: 1
+  }
+  componentDidMount() {
+    this.setState({ introNumber: this.randomNumber(4) });
+    this.setState({ requestNumber: this.randomNumber(2) });
+    this.setState({ donateNumber: this.randomNumber(3) });
   }
   _renderTitleIndicator() {
     return <PagerTitleIndicator titles={['Update Email', 'Donate', 'Request']} />;
@@ -54,6 +62,9 @@ class HowToScene extends Component {
   toggleDonatePlay = (toggle) => {
     this.setState({ donatePaused: toggle });
   }
+  randomNumber = (range) => {
+    return Math.floor(Math.random() * range) + 1;
+  }
   render() {
     const {
       container,
@@ -66,7 +77,7 @@ class HowToScene extends Component {
         >
           <View style={{ flex: 1 }}>
             <EntryVideo
-              source={'https://s3.amazonaws.com/in-knead/howTo/intro/intro1.MOV'}
+              source={`https://s3.amazonaws.com/in-knead/howTo/intro/intro${this.state.introNumber}.MOV`}
               paused={this.state.introPaused}
               togglePlay={this.toggleIntroPlay}
             />
@@ -74,7 +85,7 @@ class HowToScene extends Component {
 
           <View style={{ flex: 1 }}>
             <EntryVideo
-               source={'https://s3.amazonaws.com/in-knead/howTo/request/noah1.mov'}
+               source={`https://s3.amazonaws.com/in-knead/howTo/request/noah${this.state.requestNumber}.mov`}
                paused={this.state.requestPaused}
                togglePlay={this.toggleRequestPlay}
             />
@@ -82,7 +93,7 @@ class HowToScene extends Component {
 
           <View style={{ flex: 1 }}>
             <EntryVideo
-               source={'https://s3.amazonaws.com/in-knead/howTo/donate/jamo1.mov'}
+               source={`https://s3.amazonaws.com/in-knead/howTo/donate/jamo${this.state.donateNumber}.mov`}
                paused={this.state.donatePaused}
                togglePlay={this.toggleDonatePlay}
             />
