@@ -23,7 +23,7 @@
 		<dict>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>fb207872036361157</string>
+				<string>fb1249545858452794</string>
 			</array>
 		</dict>
 	</array>
@@ -32,7 +32,7 @@
 	<key>CodePushDeploymentKey</key>
 	<string>$(CODEPUSH_KEY)</string>
 	<key>FacebookAppID</key>
-	<string>207872036361157</string>
+	<string>1249545858452794</string>
 	<key>FacebookDisplayName</key>
 	<string>in knead</string>
 	<key>ITSAppUsesNonExemptEncryption</key>
